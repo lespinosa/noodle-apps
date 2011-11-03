@@ -1,0 +1,72 @@
+2011-11-02 15:23:55 Debug: Notice (8): Undefined variable: role_controller_permissions in [E:\wamp\www\noodleapps\app\Plugin\Acl\Controller\ArosController.php, line 582]
+Trace:
+ArosController::admin_get_role_controller_permission() - APP\Plugin\Acl\Controller\ArosController.php, line 582
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 473
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 107
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 89
+[main] - APP\webroot\index.php, line 96
+
+2011-11-02 15:23:55 Debug: Notice (8): Undefined variable: role_controller_permissions in [E:\wamp\www\noodleapps\app\Plugin\Acl\Controller\ArosController.php, line 582]
+Trace:
+ArosController::admin_get_role_controller_permission() - APP\Plugin\Acl\Controller\ArosController.php, line 582
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 473
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 107
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 89
+[main] - APP\webroot\index.php, line 96
+
+2011-11-02 15:23:55 Debug: Notice (8): Undefined variable: role_controller_permissions in [E:\wamp\www\noodleapps\app\Plugin\Acl\Controller\ArosController.php, line 582]
+Trace:
+ArosController::admin_get_role_controller_permission() - APP\Plugin\Acl\Controller\ArosController.php, line 582
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 473
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 107
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 89
+[main] - APP\webroot\index.php, line 96
+
+2011-11-02 15:23:55 Debug: Notice (8): Undefined variable: role_controller_permissions in [E:\wamp\www\noodleapps\app\Plugin\Acl\Controller\ArosController.php, line 582]
+Trace:
+ArosController::admin_get_role_controller_permission() - APP\Plugin\Acl\Controller\ArosController.php, line 582
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 473
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 107
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 89
+[main] - APP\webroot\index.php, line 96
+
+2011-11-02 15:23:56 Debug: Notice (8): Undefined variable: role_controller_permissions in [E:\wamp\www\noodleapps\app\Plugin\Acl\Controller\ArosController.php, line 582]
+Trace:
+ArosController::admin_get_role_controller_permission() - APP\Plugin\Acl\Controller\ArosController.php, line 582
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 473
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 107
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 89
+[main] - APP\webroot\index.php, line 96
+
+2011-11-02 15:23:56 Debug: Notice (8): Undefined variable: role_controller_permissions in [E:\wamp\www\noodleapps\app\Plugin\Acl\Controller\ArosController.php, line 582]
+Trace:
+ArosController::admin_get_role_controller_permission() - APP\Plugin\Acl\Controller\ArosController.php, line 582
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 473
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 107
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 89
+[main] - APP\webroot\index.php, line 96
+
+2011-11-02 15:23:56 Debug: Notice (8): Undefined variable: role_controller_permissions in [E:\wamp\www\noodleapps\app\Plugin\Acl\Controller\ArosController.php, line 582]
+Trace:
+ArosController::admin_get_role_controller_permission() - APP\Plugin\Acl\Controller\ArosController.php, line 582
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 473
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 107
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 89
+[main] - APP\webroot\index.php, line 96
+
+2011-11-02 15:23:56 Debug: Notice (8): Undefined variable: role_controller_permissions in [E:\wamp\www\noodleapps\app\Plugin\Acl\Controller\ArosController.php, line 582]
+Trace:
+ArosController::admin_get_role_controller_permission() - APP\Plugin\Acl\Controller\ArosController.php, line 582
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 473
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 107
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 89
+[main] - APP\webroot\index.php, line 96
+

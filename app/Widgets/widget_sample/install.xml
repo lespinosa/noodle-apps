@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<engadget>
+	<info>
+		<name>sample</name>
+		<type>widget</type>
+		<status>1</status>		
+		<version>0.1</version>
+		<location>site</location>
+		<method>upgrade</method>
+		<date>20/01/11</date>
+		<author>Luis Master</author>
+		<desc>Sample module for cNxus</desc>
+	</info>
+</engadget>

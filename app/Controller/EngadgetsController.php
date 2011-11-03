@@ -1,0 +1,155 @@
+<?php
+
+/**
+ * EngadgetsController.php
+ * Luis Manuel
+ * @package  Noodle
+ * @version  1.0
+ * @author  Luis Manuel Espinosa <luismaster809@hotmail.com>
+ * @license  http://www.opensource.org/licenses/mit-license.php The MIT License
+ * @copyright     Copyright 2011, iWebdevelope.com (http://iwebdevelope.com)
+ * @link     http://www.cnexuscms.com
+ */
+class EngadgetsController extends AppController
+{
+	public $name = 'Engadgets';
+	var $components = array('Noodle');
+	var $paginate = array(
+		'limit' => 25,
+		'order' => array(
+			'Engadget.name' => 'asc'
+		) 
+	);
+	var $zipStatus;
+	var $fileSetup = '';
+	function beforeFilter() {
+		parent::beforeFilter();
+		$this->Auth->allowedActions = array('*');	
+		//$this->Auth->allow(array('*', 'view'));		
+	}
+	public function admin_index(){
+		$this->set('location_site', 'Engadget install');
+		$this->set('title_layout', 'Install Extensions');	
+		$this->layout = 'admin';
+	}
+	public function admin_manager(){
+		$this->set('location_site', 'Engadget Manager');
+		$this->set('title_layout', 'Engadget Manager');
+		$this->layout = 'admin';
+		$this->Engadget->recursive = 0;
+		$this->set('engadgets', $this->paginate());
+	}
+	public function admin_install()
+	{
+		$this->set('location_site', 'Engadget install');
+		$this->set('title_layout', 'Install Engadgets');	
+		$this->layout = 'admin';
+	//$ext = strtolower(strrchr($this->request->data['Engadget']['file']['name'], '.'));
+		$tmp = ROOT . DS . APP_DIR . DS . 'tmp' . DS;
+		$uploaddir = $tmp . 'engadgets' . DS;
+		$uploadfile = $uploaddir . basename($this->request->data['Engadget']['file']['name']);
+		$packName = $this->request->data['Engadget']['file']['name'];
+		$packError = $this->request->data['Engadget']['file']['error'];
+		$ext = strtolower(strrchr($packName, '.'));
+		
+		if ($ext == '.zip') {
+			//Clear Temp folder
+			$this->Noodle->clearAll($uploaddir, false);
+			mkdir($uploaddir, 0755);
+			
+			switch ($ext) {
+				case '.zip':				
+					if (move_uploaded_file($this->request->data['Engadget']['file']['tmp_name'], $uploadfile)) {
+						$zip = new ZipArchive;						
+						if ($zip->open($uploaddir . $packName) == TRUE) {
+							for ($i = 0; $i < $zip->numFiles; $i++){								
+								$fileName = $zip->getNameIndex($i);
+								//verificamos si existe algun .exe
+								$extPerm = strtolower(strrchr($fileName, '.'));
+								if ($extPerm == '.xml'){
+									$this->fileSetup = $fileName;
+								}
+								if ($extPerm == '.exe' or $extPerm == '.lnk') {
+									$this->Session->setFlash(__('Existe un archivo .exe, dentro del zip', true));
+									$this->redirect(array('action' => 'index'));
+								}
+							}
+							$zip->extractTo($uploaddir);
+							$zip->close();
+							$this->zipStatus = 1;
+						} else {
+							$this->zipStatus = 0;
+						}
+						if($this->zipStatus == 1 && $packError == 0){
+							$xmlSetup = Xml::build($uploaddir . $this->fileSetup);
+							$engadgetType = $xmlSetup->info->type;							
+							$dest = ROOT . DS . APP_DIR . DS . 'Widgets' . DS;
+							unlink($uploaddir . $packName); // delete zip file
+							//Endgaget Type
+							switch ($engadgetType) {
+								case 'plugin':
+									
+									break;
+								
+								case 'widget':
+									//$dirExt = mkdir($dest.$xmlSetup->info->name, 0755);
+									$source = $uploaddir;
+									$folderWidget = $dest .strtolower($engadgetType.'_'.$xmlSetup->info->name);
+									$this->Noodle->fullMove($source, $folderWidget);
+									//Clear Temp folder
+									$this->Noodle->clearAll($uploaddir, false);
+									mkdir($uploaddir, 0755);
+									$this->Noodle->install($xmlSetup, 'widget');
+									break;
+								case 'theme':
+									
+									break;
+								case 'language':
+									
+									break;
+							}
+						}
+					    $this->Session->setFlash(__('El Widget %s fue instalado corretamente', $xmlSetup->info->name)); echo '<br />'.$xmlSetup->info->desc;
+					} else {
+						$this->Session->setFlash(__('El Widget %s no pudo ser instalado', $xmlSetup->info->name));
+					}					
+					break;
+				
+				case '.tar':
+					
+					break;
+			}
+			
+		} else {
+			$this->Session->setFlash(__('Package no valido', true));
+		}		
+	}
+	public function admin_uninstall($id = null){
+		$engadget = $this->Engadget->find('first', array(
+			'conditions' => array(
+				'Engadget.id' => $id
+			)
+		));
+		$appPath = ROOT . DS . APP_DIR . DS;
+		$type = strtolower($engadget['Engadget']['type']);
+		$name = $engadget['Engadget']['name'];
+		switch ($type) {
+			case 'plugin':
+				
+				break;
+			
+			case 'widget':
+				$nameWidget = strtolower($type.'_'.$name);
+				$souser = $appPath . 'Widgets' . DS . $nameWidget;
+				$this->Noodle->clearAll($souser, false);
+				$this->Noodle->uninstall($id, $type);
+				break;
+			case 'theme':
+				break;
+			case 'language':
+				break;
+		}
+	}
+
+	
+}

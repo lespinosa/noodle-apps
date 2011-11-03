@@ -1,0 +1,230 @@
+#form{
+	float: left;
+	margin: 0 0 10px 0;
+	padding:6px 12px;
+	width: 100%;
+	border: 4px solid #D3EBF9;
+	border-radius: 8px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;	
+}
+#form h3{
+	float: left;
+	margin: 0 0 0 8px;
+	text-transform: uppercase;
+	color: #21759B;
+}
+
+fieldset{
+	float:left;
+	margin:0;
+	padding:0;
+	border: 1px solid #DFDFDF;
+}
+fieldset legend {
+	margin:0 0 0 12px;
+	padding:4px 10px;
+	font-size:16px;
+	color: #227297;
+	background: #fff;
+}
+fieldset.details {
+	width: 50%;
+}
+fieldset.link_type,  fieldset.link_options{
+	margin: 0 0 12px 12px;
+	width: 40%;
+}
+
+#form label {
+	float:left;
+	margin:2px 0 0 8px;
+	width: 100px;
+}
+#form div.input, #form div.status, #form div.role_id{
+	float: left;
+	width:100%;
+	padding: 8px 0;
+	color:#646464;
+	font-weight: bold;
+}
+.input.textarea {
+	margin: 0 6px;
+}
+#form fieldset.details .input.text, div.input.select {
+	margin: 0 8px;
+}
+#form div.input input{
+	margin: 0;
+	padding: 2px 8px;
+	color:#646464;
+	border:1px solid #DFDFDF;
+	background: #fff;
+}
+#form select{
+	margin: 0;
+	padding:2px;
+	border:1px solid #ccc;
+	width:160px;
+	background: #fff;
+}
+#form div.submit input, #form .cancel, .button {
+	float:left;
+	margin:4px 8px;
+	padding: 2px 8px;
+	border:3px solid #D3EBF9;
+	border-radius: 4px;
+	color:#21759B;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	background: #fff;
+}
+/* Details link*/
+#form.link fieldset.details label {
+	float:left;
+	margin:0;
+	width: 100%;
+}
+#form.link fieldset.details input,
+#form.link fieldset.details textarea {
+	float:left;
+	margin:0;
+	padding:4px 0;
+	width: 94%;
+}
+#form.link fieldset.details textarea {
+	border: 1px solid #ccc;
+}
+#form.link fieldset.details  div.checkbox label{
+	float: left;
+	margin: 0;
+	padding: 0;
+	font-size:18px;
+	width: 90px;
+	
+}
+#form.link fieldset.details  div.checkbox input#MenuStatus{
+	float: left;
+	margin:7px 8px 0 0;
+	padding: 0;
+	width: 15px;
+}
+
+/* Details Contents*/
+#form.contents fieldset.details {
+	width: 99%;
+	padding: 0;
+	margin: 0;
+}
+#form.contents fieldset.details label {
+	float:left;
+	margin:0;
+	width: 99%;
+}
+#form input#ContentTitle,
+#form input#ContentAlias{
+	padding:12px 0;
+}
+
+#form.contents fieldset.details input,
+#form.contents fieldset.details textarea {
+	float:left;
+	margin:0;
+	padding:4px 0;
+	text-indent:8px;
+	width: 100%;
+}
+#form.contents fieldset.details textarea {
+	border: 1px solid #DFDFDF;
+}
+#form.contents fieldset.details  div.checkbox label{
+	float: left;
+	margin: 0;
+	padding: 0;
+	font-size:18px;
+	width: 90px;
+	
+}
+#form.contents fieldset.details  div.checkbox input#MenuStatus{
+	float: left;
+	margin:7px 8px 0 0;
+	padding: 0;
+	width: 15px;
+}
+#form.contents fieldset.options{
+	margin: 0 0 12px 12px;
+	width: 30%;
+}
+#form select.multi-cat{
+	width: 300px;
+	height: 300px;
+}
+/* Filtle*/
+#filtle {
+	float: left;
+	margin: 0 0 10px 0;
+	padding:6px 0;
+	width: 100%;
+	border: 4px solid #D3EBF9;
+	border-radius: 8px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;	
+}
+#filtle h3{
+	float: left;
+	margin: 0;
+	text-transform: uppercase;
+	color: #21759B;
+}
+
+#filtle label {
+	float:left;
+	margin:2px 6px 0 0px;
+}
+#filtle div.input, #filtlediv.status, #filtle div.role_id{
+	float: left;
+
+	padding: 8px 0;
+	color:#646464;
+	font-weight: bold;
+}
+
+#filtle div.input input{
+	margin: 0;
+	padding: 2px 8px;
+	color:#646464;
+	border:1px solid #DFDFDF;
+	background: #fff;
+}
+#filtle select{
+	margin: 0;
+	padding:2px;
+	border:1px solid #ccc;
+	width:125px;
+	background: #fff;
+}
+#filtle div.submit input, #form .cancel, .button {
+	float:left;
+	margin:4px 8px;
+	padding: 2px 8px;
+	border:3px solid #D3EBF9;
+	border-radius: 4px;
+	color:#21759B;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	background: #fff;
+}
+#filtle fieldset.filtle-title {
+	float: left;
+	margin:0 0 0 8px;
+	padding:0;
+	border: none;
+	width: 35%;
+}
+#filtle fieldset.select_option {
+	float: left;
+	margin:0;
+	padding:0;
+	border: none;
+	width: 64%;
+}
