@@ -3405,3 +3405,898 @@
 #1 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
 #2 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #3 {main}
+2011-11-03 21:37:39 Error: [MissingControllerException] Controller class ImagController could not be found.
+#0 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2011-11-03 21:37:47 Error: [MissingControllerException] Controller class ImagController could not be found.
+#0 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2011-11-04 23:45:08 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'conditions' in 'where clause'
+#0 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(436): PDOStatement->execute(Array)
+#1 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(403): DboSource->_execute('SELECT `Categor...', Array)
+#2 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(645): DboSource->execute('SELECT `Categor...', Array, Array)
+#3 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(1040): DboSource->fetchAll('SELECT `Categor...', false)
+#4 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(2458): DboSource->read(Object(Category), Array)
+#5 E:\wamp\www\noodleapps\lib\Cake\Model\Behavior\TreeBehavior.php(337): Model->find('all', Array)
+#6 [internal function]: TreeBehavior->generateTreeList(Object(Category), Array)
+#7 E:\wamp\www\noodleapps\lib\Cake\Model\BehaviorCollection.php(237): call_user_func_array(Array, Array)
+#8 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(716): BehaviorCollection->dispatchMethod(Object(Category), 'generateTreeLis...', Array)
+#9 E:\wamp\www\noodleapps\app\Controller\CategoriesController.php(78): Model->__call('generateTreeLis...', Array)
+#10 E:\wamp\www\noodleapps\app\Controller\CategoriesController.php(78): Category->generateTreeList(Array)
+#11 [internal function]: CategoriesController->admin_index()
+#12 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(473): ReflectionMethod->invokeArgs(Object(CategoriesController), Array)
+#13 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(107): Controller->invokeAction(Object(CakeRequest))
+#14 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(CategoriesController), Object(CakeRequest), Object(CakeResponse))
+#15 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2011-11-04 23:47:04 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'order = ('desc') AND conditions IN (NULL, Array, NULL)   ORDER BY `Category`.`lf' at line 1
+#0 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(436): PDOStatement->execute(Array)
+#1 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(403): DboSource->_execute('SELECT `Categor...', Array)
+#2 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(645): DboSource->execute('SELECT `Categor...', Array, Array)
+#3 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(1040): DboSource->fetchAll('SELECT `Categor...', false)
+#4 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(2458): DboSource->read(Object(Category), Array)
+#5 E:\wamp\www\noodleapps\lib\Cake\Model\Behavior\TreeBehavior.php(337): Model->find('all', Array)
+#6 [internal function]: TreeBehavior->generateTreeList(Object(Category), Array)
+#7 E:\wamp\www\noodleapps\lib\Cake\Model\BehaviorCollection.php(237): call_user_func_array(Array, Array)
+#8 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(716): BehaviorCollection->dispatchMethod(Object(Category), 'generateTreeLis...', Array)
+#9 E:\wamp\www\noodleapps\app\Controller\CategoriesController.php(79): Model->__call('generateTreeLis...', Array)
+#10 E:\wamp\www\noodleapps\app\Controller\CategoriesController.php(79): Category->generateTreeList(Array)
+#11 [internal function]: CategoriesController->admin_index()
+#12 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(473): ReflectionMethod->invokeArgs(Object(CategoriesController), Array)
+#13 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(107): Controller->invokeAction(Object(CakeRequest))
+#14 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(CategoriesController), Object(CakeRequest), Object(CakeResponse))
+#15 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2011-11-04 23:47:33 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'conditions' in 'where clause'
+#0 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(436): PDOStatement->execute(Array)
+#1 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(403): DboSource->_execute('SELECT `Categor...', Array)
+#2 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(645): DboSource->execute('SELECT `Categor...', Array, Array)
+#3 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(1040): DboSource->fetchAll('SELECT `Categor...', false)
+#4 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(2458): DboSource->read(Object(Category), Array)
+#5 E:\wamp\www\noodleapps\lib\Cake\Model\Behavior\TreeBehavior.php(337): Model->find('all', Array)
+#6 [internal function]: TreeBehavior->generateTreeList(Object(Category), Array)
+#7 E:\wamp\www\noodleapps\lib\Cake\Model\BehaviorCollection.php(237): call_user_func_array(Array, Array)
+#8 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(716): BehaviorCollection->dispatchMethod(Object(Category), 'generateTreeLis...', Array)
+#9 E:\wamp\www\noodleapps\app\Controller\CategoriesController.php(78): Model->__call('generateTreeLis...', Array)
+#10 E:\wamp\www\noodleapps\app\Controller\CategoriesController.php(78): Category->generateTreeList(Array)
+#11 [internal function]: CategoriesController->admin_index()
+#12 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(473): ReflectionMethod->invokeArgs(Object(CategoriesController), Array)
+#13 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(107): Controller->invokeAction(Object(CakeRequest))
+#14 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(CategoriesController), Object(CakeRequest), Object(CakeResponse))
+#15 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2011-11-05 03:13:38 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '".status_id" FROM `categories` AS `Category` LEFT JOIN `users` AS `User` ON (`Ca' at line 1
+#0 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(436): PDOStatement->execute(Array)
+#1 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(403): DboSource->_execute('SELECT $modelNa...', Array)
+#2 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(645): DboSource->execute('SELECT $modelNa...', Array, Array)
+#3 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(1040): DboSource->fetchAll('SELECT $modelNa...', false)
+#4 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(2458): DboSource->read(Object(Category), Array)
+#5 E:\wamp\www\noodleapps\app\View\Helper\Layout.php(28): Model->find('first', Array)
+#6 E:\wamp\www\noodleapps\app\View\Categories\admin_index.ctp(61): LayoutHelper->getStatus('Categories', 'Category', 2, 'img')
+#7 E:\wamp\www\noodleapps\lib\Cake\View\View.php(598): include('E:\wamp\www\noo...')
+#8 E:\wamp\www\noodleapps\lib\Cake\View\View.php(365): View->_render('E:\wamp\www\noo...')
+#9 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#10 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#11 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(CategoriesController), Object(CakeRequest), Object(CakeResponse))
+#12 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2011-11-05 03:14:55 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '".status_id" FROM `categories` AS `Category` LEFT JOIN `users` AS `User` ON (`Ca' at line 1
+#0 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(436): PDOStatement->execute(Array)
+#1 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(403): DboSource->_execute('SELECT .$modelN...', Array)
+#2 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(645): DboSource->execute('SELECT .$modelN...', Array, Array)
+#3 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(1040): DboSource->fetchAll('SELECT .$modelN...', false)
+#4 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(2458): DboSource->read(Object(Category), Array)
+#5 E:\wamp\www\noodleapps\app\View\Helper\Layout.php(28): Model->find('first', Array)
+#6 E:\wamp\www\noodleapps\app\View\Categories\admin_index.ctp(61): LayoutHelper->getStatus('Categories', 'Category', 2, 'img')
+#7 E:\wamp\www\noodleapps\lib\Cake\View\View.php(598): include('E:\wamp\www\noo...')
+#8 E:\wamp\www\noodleapps\lib\Cake\View\View.php(365): View->_render('E:\wamp\www\noo...')
+#9 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#10 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#11 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(CategoriesController), Object(CakeRequest), Object(CakeResponse))
+#12 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2011-11-05 03:15:40 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Category.status_id' in 'field list'
+#0 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(436): PDOStatement->execute(Array)
+#1 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(403): DboSource->_execute('SELECT `Categor...', Array)
+#2 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(645): DboSource->execute('SELECT `Categor...', Array, Array)
+#3 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(1040): DboSource->fetchAll('SELECT `Categor...', false)
+#4 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(2458): DboSource->read(Object(Category), Array)
+#5 E:\wamp\www\noodleapps\app\View\Helper\Layout.php(28): Model->find('first', Array)
+#6 E:\wamp\www\noodleapps\app\View\Categories\admin_index.ctp(61): LayoutHelper->getStatus('Categories', 'Category', 2, 'img')
+#7 E:\wamp\www\noodleapps\lib\Cake\View\View.php(598): include('E:\wamp\www\noo...')
+#8 E:\wamp\www\noodleapps\lib\Cake\View\View.php(365): View->_render('E:\wamp\www\noo...')
+#9 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#10 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#11 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(CategoriesController), Object(CakeRequest), Object(CakeResponse))
+#12 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2011-11-05 04:05:02 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'parent_id' in 'where clause'
+#0 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(436): PDOStatement->execute(Array)
+#1 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(403): DboSource->_execute('SELECT `Role`.`...', Array)
+#2 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(645): DboSource->execute('SELECT `Role`.`...', Array, Array)
+#3 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(1040): DboSource->fetchAll('SELECT `Role`.`...', false)
+#4 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(2458): DboSource->read(Object(Role), Array)
+#5 E:\wamp\www\noodleapps\app\View\Helper\Layout.php(99): Model->find('first', Array)
+#6 E:\wamp\www\noodleapps\app\View\Categories\admin_index.ctp(64): LayoutHelper->getAccess(2, 'text')
+#7 E:\wamp\www\noodleapps\lib\Cake\View\View.php(598): include('E:\wamp\www\noo...')
+#8 E:\wamp\www\noodleapps\lib\Cake\View\View.php(365): View->_render('E:\wamp\www\noo...')
+#9 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#10 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#11 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(CategoriesController), Object(CakeRequest), Object(CakeResponse))
+#12 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2011-11-05 04:05:14 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'parent_id' in 'where clause'
+#0 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(436): PDOStatement->execute(Array)
+#1 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(403): DboSource->_execute('SELECT `Role`.`...', Array)
+#2 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(645): DboSource->execute('SELECT `Role`.`...', Array, Array)
+#3 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(1040): DboSource->fetchAll('SELECT `Role`.`...', false)
+#4 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(2458): DboSource->read(Object(Role), Array)
+#5 E:\wamp\www\noodleapps\app\View\Helper\Layout.php(99): Model->find('first', Array)
+#6 E:\wamp\www\noodleapps\app\View\Categories\admin_index.ctp(64): LayoutHelper->getAccess(2, 'text')
+#7 E:\wamp\www\noodleapps\lib\Cake\View\View.php(598): include('E:\wamp\www\noo...')
+#8 E:\wamp\www\noodleapps\lib\Cake\View\View.php(365): View->_render('E:\wamp\www\noo...')
+#9 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#10 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#11 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(CategoriesController), Object(CakeRequest), Object(CakeResponse))
+#12 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2011-11-05 04:05:28 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'parent_id' in 'where clause'
+#0 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(436): PDOStatement->execute(Array)
+#1 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(403): DboSource->_execute('SELECT `Role`.`...', Array)
+#2 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(645): DboSource->execute('SELECT `Role`.`...', Array, Array)
+#3 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(1040): DboSource->fetchAll('SELECT `Role`.`...', false)
+#4 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(2458): DboSource->read(Object(Role), Array)
+#5 E:\wamp\www\noodleapps\app\View\Helper\Layout.php(99): Model->find('first', Array)
+#6 E:\wamp\www\noodleapps\app\View\Categories\admin_index.ctp(64): LayoutHelper->getAccess(2, 'text')
+#7 E:\wamp\www\noodleapps\lib\Cake\View\View.php(598): include('E:\wamp\www\noo...')
+#8 E:\wamp\www\noodleapps\lib\Cake\View\View.php(365): View->_render('E:\wamp\www\noo...')
+#9 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#10 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#11 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(CategoriesController), Object(CakeRequest), Object(CakeResponse))
+#12 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2011-11-05 04:05:34 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'parent_id' in 'where clause'
+#0 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(436): PDOStatement->execute(Array)
+#1 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(403): DboSource->_execute('SELECT `Role`.`...', Array)
+#2 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(645): DboSource->execute('SELECT `Role`.`...', Array, Array)
+#3 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(1040): DboSource->fetchAll('SELECT `Role`.`...', false)
+#4 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(2458): DboSource->read(Object(Role), Array)
+#5 E:\wamp\www\noodleapps\app\View\Helper\Layout.php(99): Model->find('first', Array)
+#6 E:\wamp\www\noodleapps\app\View\Categories\admin_index.ctp(64): LayoutHelper->getAccess(2, 'text')
+#7 E:\wamp\www\noodleapps\lib\Cake\View\View.php(598): include('E:\wamp\www\noo...')
+#8 E:\wamp\www\noodleapps\lib\Cake\View\View.php(365): View->_render('E:\wamp\www\noo...')
+#9 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#10 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#11 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(CategoriesController), Object(CakeRequest), Object(CakeResponse))
+#12 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2011-11-08 01:30:14 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '”œâ”€ Sport AND â”œâ”€ â”œâ”€ Extreme knitting AND Wor' at line 1
+#0 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(436): PDOStatement->execute(Array)
+#1 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(403): DboSource->_execute('SELECT `Menu`.`...', Array)
+#2 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(645): DboSource->execute('SELECT `Menu`.`...', Array, Array)
+#3 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(1040): DboSource->fetchAll('SELECT `Menu`.`...', false)
+#4 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(2458): DboSource->read(Object(Menu), Array)
+#5 E:\wamp\www\noodleapps\lib\Cake\Controller\Component\PaginatorComponent.php(172): Model->find('all', Array)
+#6 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(1024): PaginatorComponent->paginate(Array, Array, Array)
+#7 E:\wamp\www\noodleapps\app\Controller\MenusController.php(106): Controller->paginate(Array)
+#8 [internal function]: MenusController->admin_index()
+#9 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(473): ReflectionMethod->invokeArgs(Object(MenusController), Array)
+#10 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(107): Controller->invokeAction(Object(CakeRequest))
+#11 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(MenusController), Object(CakeRequest), Object(CakeResponse))
+#12 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2011-11-08 19:38:00 Error: [PDOException] SQLSTATE[HY000]: General error: 2006 MySQL server has gone away
+#0 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(436): PDOStatement->execute(Array)
+#1 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(403): DboSource->_execute('SELECT DISTINCT...', Array)
+#2 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(645): DboSource->execute('SELECT DISTINCT...', Array, Array)
+#3 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(513): DboSource->fetchAll('SELECT DISTINCT...')
+#4 [internal function]: DboSource->query('SELECT DISTINCT...')
+#5 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(2850): call_user_func_array(Array, Array)
+#6 E:\wamp\www\noodleapps\app\Controller\ContentsController.php(107): Model->query('SELECT DISTINCT...')
+#7 [internal function]: ContentsController->admin_index()
+#8 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(473): ReflectionMethod->invokeArgs(Object(ContentsController), Array)
+#9 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(107): Controller->invokeAction(Object(CakeRequest))
+#10 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(ContentsController), Object(CakeRequest), Object(CakeResponse))
+#11 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2011-11-08 20:41:06 Error: [MissingActionException] Action MenusController::admin_7() could not be found.
+#0 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(107): Controller->invokeAction(Object(CakeRequest))
+#1 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(MenusController), Object(CakeRequest), Object(CakeResponse))
+#2 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2011-11-08 21:51:05 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Menu.rght' in 'field list'
+#0 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(436): PDOStatement->execute(Array)
+#1 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(403): DboSource->_execute('SELECT `Menu`.`...', Array)
+#2 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(645): DboSource->execute('SELECT `Menu`.`...', Array, Array)
+#3 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(1040): DboSource->fetchAll('SELECT `Menu`.`...', false)
+#4 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(2458): DboSource->read(Object(Menu), Array)
+#5 E:\wamp\www\noodleapps\lib\Cake\Model\Behavior\TreeBehavior.php(145): Model->find('first', Array)
+#6 [internal function]: TreeBehavior->beforeSave(Object(Menu), Array)
+#7 E:\wamp\www\noodleapps\lib\Cake\Utility\ObjectCollection.php(110): call_user_func_array(Array, Array)
+#8 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(1568): ObjectCollection->trigger('beforeSave', Array, Array)
+#9 E:\wamp\www\noodleapps\app\Controller\MenusController.php(111): Model->save(Array)
+#10 [internal function]: MenusController->admin_add()
+#11 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(473): ReflectionMethod->invokeArgs(Object(MenusController), Array)
+#12 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(107): Controller->invokeAction(Object(CakeRequest))
+#13 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(MenusController), Object(CakeRequest), Object(CakeResponse))
+#14 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#15 {main}
+2011-11-13 04:08:48 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2011-11-13 04:14:54 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2011-11-13 04:21:04 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2011-11-13 04:21:09 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2011-11-13 22:26:16 Error: [MissingConnectionException] Database connection "SQLSTATE[HY000] [2006] MySQL server has gone away" is missing, or could not be created.
+#0 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(244): Mysql->connect()
+#1 E:\wamp\www\noodleapps\lib\Cake\Model\ConnectionManager.php(98): DboSource->__construct(Array)
+#2 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(3212): ConnectionManager::getDataSource('default')
+#3 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(1023): Model->setDataSource('default')
+#4 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(3236): Model->setSource('menus')
+#5 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(2458): Model->getDataSource()
+#6 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(1419): Model->find('first', Array)
+#7 E:\wamp\www\noodleapps\app\Controller\MenusController.php(145): Model->read()
+#8 [internal function]: MenusController->admin_edit('25', '7')
+#9 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(473): ReflectionMethod->invokeArgs(Object(MenusController), Array)
+#10 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(107): Controller->invokeAction(Object(CakeRequest))
+#11 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(MenusController), Object(CakeRequest), Object(CakeResponse))
+#12 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2011-11-13 22:26:20 Error: [MissingConnectionException] Database connection "SQLSTATE[HY000] [2002] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+" is missing, or could not be created.
+#0 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(244): Mysql->connect()
+#1 E:\wamp\www\noodleapps\lib\Cake\Model\ConnectionManager.php(98): DboSource->__construct(Array)
+#2 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(3212): ConnectionManager::getDataSource('default')
+#3 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(1023): Model->setDataSource('default')
+#4 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(3236): Model->setSource('menus')
+#5 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(2458): Model->getDataSource()
+#6 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(1419): Model->find('first', Array)
+#7 E:\wamp\www\noodleapps\app\Controller\MenusController.php(145): Model->read()
+#8 [internal function]: MenusController->admin_edit('25', '7')
+#9 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(473): ReflectionMethod->invokeArgs(Object(MenusController), Array)
+#10 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(107): Controller->invokeAction(Object(CakeRequest))
+#11 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(MenusController), Object(CakeRequest), Object(CakeResponse))
+#12 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2011-11-13 22:26:24 Error: [MissingConnectionException] Database connection "SQLSTATE[HY000] [2002] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+" is missing, or could not be created.
+#0 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(244): Mysql->connect()
+#1 E:\wamp\www\noodleapps\lib\Cake\Model\ConnectionManager.php(98): DboSource->__construct(Array)
+#2 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(3212): ConnectionManager::getDataSource('default')
+#3 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(1023): Model->setDataSource('default')
+#4 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(3236): Model->setSource('menus')
+#5 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(2458): Model->getDataSource()
+#6 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(1419): Model->find('first', Array)
+#7 E:\wamp\www\noodleapps\app\Controller\MenusController.php(145): Model->read()
+#8 [internal function]: MenusController->admin_edit('25', '7')
+#9 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(473): ReflectionMethod->invokeArgs(Object(MenusController), Array)
+#10 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(107): Controller->invokeAction(Object(CakeRequest))
+#11 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(MenusController), Object(CakeRequest), Object(CakeResponse))
+#12 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2011-11-13 22:26:33 Error: [MissingConnectionException] Database connection "SQLSTATE[HY000] [2002] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+" is missing, or could not be created.
+#0 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(244): Mysql->connect()
+#1 E:\wamp\www\noodleapps\lib\Cake\Model\ConnectionManager.php(98): DboSource->__construct(Array)
+#2 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(3212): ConnectionManager::getDataSource('default')
+#3 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(1023): Model->setDataSource('default')
+#4 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(3236): Model->setSource('menus')
+#5 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(2458): Model->getDataSource()
+#6 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(1419): Model->find('first', Array)
+#7 E:\wamp\www\noodleapps\app\Controller\MenusController.php(145): Model->read()
+#8 [internal function]: MenusController->admin_edit('25', '7')
+#9 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(473): ReflectionMethod->invokeArgs(Object(MenusController), Array)
+#10 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(107): Controller->invokeAction(Object(CakeRequest))
+#11 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(MenusController), Object(CakeRequest), Object(CakeResponse))
+#12 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2011-11-16 02:41:19 Error: [MissingConnectionException] Database connection "SQLSTATE[HY000] [2006] MySQL server has gone away" is missing, or could not be created.
+#0 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(244): Mysql->connect()
+#1 E:\wamp\www\noodleapps\lib\Cake\Model\ConnectionManager.php(98): DboSource->__construct(Array)
+#2 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(3212): ConnectionManager::getDataSource('default')
+#3 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(1023): Model->setDataSource('default')
+#4 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(3236): Model->setSource('menus')
+#5 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(2458): Model->getDataSource()
+#6 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(1419): Model->find('first', Array)
+#7 E:\wamp\www\noodleapps\app\Controller\MenusController.php(145): Model->read()
+#8 [internal function]: MenusController->admin_edit('25', '7')
+#9 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(473): ReflectionMethod->invokeArgs(Object(MenusController), Array)
+#10 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(107): Controller->invokeAction(Object(CakeRequest))
+#11 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(MenusController), Object(CakeRequest), Object(CakeResponse))
+#12 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2011-11-16 02:41:26 Error: [MissingConnectionException] Database connection "SQLSTATE[HY000] [2002] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+" is missing, or could not be created.
+#0 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(244): Mysql->connect()
+#1 E:\wamp\www\noodleapps\lib\Cake\Model\ConnectionManager.php(98): DboSource->__construct(Array)
+#2 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(3212): ConnectionManager::getDataSource('default')
+#3 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(1023): Model->setDataSource('default')
+#4 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(3236): Model->setSource('menus')
+#5 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(2458): Model->getDataSource()
+#6 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(1419): Model->find('first', Array)
+#7 E:\wamp\www\noodleapps\app\Controller\MenusController.php(145): Model->read()
+#8 [internal function]: MenusController->admin_edit('25', '7')
+#9 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(473): ReflectionMethod->invokeArgs(Object(MenusController), Array)
+#10 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(107): Controller->invokeAction(Object(CakeRequest))
+#11 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(MenusController), Object(CakeRequest), Object(CakeResponse))
+#12 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2011-11-16 22:29:25 Error: [MissingControllerException] Controller class ArticleController could not be found.
+#0 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2011-11-18 00:31:04 Error: [MissingConnectionException] Database connection "SQLSTATE[HY000] [2006] MySQL server has gone away" is missing, or could not be created.
+#0 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(244): Mysql->connect()
+#1 E:\wamp\www\noodleapps\lib\Cake\Model\ConnectionManager.php(98): DboSource->__construct(Array)
+#2 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(3212): ConnectionManager::getDataSource('default')
+#3 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(1023): Model->setDataSource('default')
+#4 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(3236): Model->setSource('menus')
+#5 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(2458): Model->getDataSource()
+#6 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(1419): Model->find('first', Array)
+#7 E:\wamp\www\noodleapps\app\Controller\MenusController.php(153): Model->read()
+#8 [internal function]: MenusController->admin_edit('25', '7', 'Single_Article')
+#9 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(473): ReflectionMethod->invokeArgs(Object(MenusController), Array)
+#10 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(107): Controller->invokeAction(Object(CakeRequest))
+#11 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(MenusController), Object(CakeRequest), Object(CakeResponse))
+#12 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2011-11-20 01:13:06 Error: [MissingConnectionException] Database connection "SQLSTATE[42000] [1049] Unknown database 'cnexus2'" is missing, or could not be created.
+#0 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(244): Mysql->connect()
+#1 E:\wamp\www\noodleapps\lib\Cake\Model\ConnectionManager.php(98): DboSource->__construct(Array)
+#2 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(3212): ConnectionManager::getDataSource('default')
+#3 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(1023): Model->setDataSource('default')
+#4 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(3236): Model->setSource('menus')
+#5 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(2458): Model->getDataSource()
+#6 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(1419): Model->find('first', Array)
+#7 E:\wamp\www\noodleapps\app\Controller\MenusController.php(158): Model->read()
+#8 [internal function]: MenusController->admin_edit('26', '7')
+#9 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(473): ReflectionMethod->invokeArgs(Object(MenusController), Array)
+#10 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(107): Controller->invokeAction(Object(CakeRequest))
+#11 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(MenusController), Object(CakeRequest), Object(CakeResponse))
+#12 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2011-11-20 01:13:31 Error: [MissingConnectionException] Database connection "SQLSTATE[HY000] [2002] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+" is missing, or could not be created.
+#0 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(244): Mysql->connect()
+#1 E:\wamp\www\noodleapps\lib\Cake\Model\ConnectionManager.php(98): DboSource->__construct(Array)
+#2 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(3212): ConnectionManager::getDataSource('default')
+#3 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(1023): Model->setDataSource('default')
+#4 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(3236): Model->setSource('menus')
+#5 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(2458): Model->getDataSource()
+#6 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(1419): Model->find('first', Array)
+#7 E:\wamp\www\noodleapps\app\Controller\MenusController.php(158): Model->read()
+#8 [internal function]: MenusController->admin_edit('26', '7')
+#9 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(473): ReflectionMethod->invokeArgs(Object(MenusController), Array)
+#10 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(107): Controller->invokeAction(Object(CakeRequest))
+#11 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(MenusController), Object(CakeRequest), Object(CakeResponse))
+#12 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2011-11-21 00:03:59 Error: [MissingConnectionException] Database connection "SQLSTATE[HY000] [2006] MySQL server has gone away" is missing, or could not be created.
+#0 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(244): Mysql->connect()
+#1 E:\wamp\www\noodleapps\lib\Cake\Model\ConnectionManager.php(98): DboSource->__construct(Array)
+#2 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(3212): ConnectionManager::getDataSource('default')
+#3 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(1023): Model->setDataSource('default')
+#4 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(3236): Model->setSource('menus')
+#5 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(2458): Model->getDataSource()
+#6 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(1419): Model->find('first', Array)
+#7 E:\wamp\www\noodleapps\app\Controller\MenusController.php(158): Model->read()
+#8 [internal function]: MenusController->admin_edit('26', '7', 'Single_Article')
+#9 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(473): ReflectionMethod->invokeArgs(Object(MenusController), Array)
+#10 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(107): Controller->invokeAction(Object(CakeRequest))
+#11 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(MenusController), Object(CakeRequest), Object(CakeResponse))
+#12 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2011-11-21 00:22:45 Error: [MissingConnectionException] Database connection "SQLSTATE[42000] [1049] Unknown database 'cnexus2'" is missing, or could not be created.
+#0 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(244): Mysql->connect()
+#1 E:\wamp\www\noodleapps\lib\Cake\Model\ConnectionManager.php(98): DboSource->__construct(Array)
+#2 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(3212): ConnectionManager::getDataSource('default')
+#3 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(1023): Model->setDataSource('default')
+#4 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(3236): Model->setSource('menus')
+#5 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(2458): Model->getDataSource()
+#6 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(1419): Model->find('first', Array)
+#7 E:\wamp\www\noodleapps\app\Controller\MenusController.php(158): Model->read()
+#8 [internal function]: MenusController->admin_edit('26', '7', 'Single_Article')
+#9 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(473): ReflectionMethod->invokeArgs(Object(MenusController), Array)
+#10 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(107): Controller->invokeAction(Object(CakeRequest))
+#11 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(MenusController), Object(CakeRequest), Object(CakeResponse))
+#12 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2011-11-21 00:23:01 Error: [MissingConnectionException] Database connection "SQLSTATE[HY000] [2002] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+" is missing, or could not be created.
+#0 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(244): Mysql->connect()
+#1 E:\wamp\www\noodleapps\lib\Cake\Model\ConnectionManager.php(98): DboSource->__construct(Array)
+#2 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(3212): ConnectionManager::getDataSource('default')
+#3 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(1023): Model->setDataSource('default')
+#4 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(3236): Model->setSource('menus')
+#5 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(2458): Model->getDataSource()
+#6 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(1419): Model->find('first', Array)
+#7 E:\wamp\www\noodleapps\app\Controller\MenusController.php(158): Model->read()
+#8 [internal function]: MenusController->admin_edit('26', '7', 'Single_Article')
+#9 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(473): ReflectionMethod->invokeArgs(Object(MenusController), Array)
+#10 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(107): Controller->invokeAction(Object(CakeRequest))
+#11 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(MenusController), Object(CakeRequest), Object(CakeResponse))
+#12 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2011-11-22 23:04:33 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
+#0 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(436): PDOStatement->execute(Array)
+#1 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(403): DboSource->_execute('UPDATE `menus` ...', Array)
+#2 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\Database\Mysql.php(376): DboSource->execute('UPDATE `menus` ...')
+#3 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(1614): Mysql->update(Object(Menu), Array, Array)
+#4 E:\wamp\www\noodleapps\app\Controller\MenusController.php(175): Model->save(Array)
+#5 [internal function]: MenusController->admin_edit('25', '7')
+#6 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(473): ReflectionMethod->invokeArgs(Object(MenusController), Array)
+#7 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(107): Controller->invokeAction(Object(CakeRequest))
+#8 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(MenusController), Object(CakeRequest), Object(CakeResponse))
+#9 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2011-11-22 23:05:01 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
+#0 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(436): PDOStatement->execute(Array)
+#1 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(403): DboSource->_execute('UPDATE `menus` ...', Array)
+#2 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\Database\Mysql.php(376): DboSource->execute('UPDATE `menus` ...')
+#3 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(1614): Mysql->update(Object(Menu), Array, Array)
+#4 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(2054): Model->save(Array, Array)
+#5 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(1891): Model->saveAssociated(Array, Array)
+#6 E:\wamp\www\noodleapps\app\Controller\MenusController.php(175): Model->saveAll(Array)
+#7 [internal function]: MenusController->admin_edit('25', '7')
+#8 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(473): ReflectionMethod->invokeArgs(Object(MenusController), Array)
+#9 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(107): Controller->invokeAction(Object(CakeRequest))
+#10 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(MenusController), Object(CakeRequest), Object(CakeResponse))
+#11 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2011-11-22 23:05:59 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
+#0 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(436): PDOStatement->execute(Array)
+#1 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(403): DboSource->_execute('UPDATE `menus` ...', Array)
+#2 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\Database\Mysql.php(376): DboSource->execute('UPDATE `menus` ...')
+#3 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(1614): Mysql->update(Object(Menu), Array, Array)
+#4 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(2054): Model->save(Array, Array)
+#5 E:\wamp\www\noodleapps\app\Controller\MenusController.php(175): Model->saveAssociated(Array)
+#6 [internal function]: MenusController->admin_edit('25', '7')
+#7 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(473): ReflectionMethod->invokeArgs(Object(MenusController), Array)
+#8 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(107): Controller->invokeAction(Object(CakeRequest))
+#9 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(MenusController), Object(CakeRequest), Object(CakeResponse))
+#10 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2011-11-23 00:30:38 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ' `modified` = '2011-11-23 00:30:38'  WHERE `menus`.`id` = 25' at line 1
+#0 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(436): PDOStatement->execute(Array)
+#1 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(403): DboSource->_execute('UPDATE `menus` ...', Array)
+#2 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\Database\Mysql.php(376): DboSource->execute('UPDATE `menus` ...')
+#3 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(1614): Mysql->update(Object(Menu), Array, Array)
+#4 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(1485): Model->save(Array, Array)
+#5 E:\wamp\www\noodleapps\app\Controller\MenusController.php(176): Model->saveField('params', Object(stdClass))
+#6 [internal function]: MenusController->admin_edit('25', '7')
+#7 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(473): ReflectionMethod->invokeArgs(Object(MenusController), Array)
+#8 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(107): Controller->invokeAction(Object(CakeRequest))
+#9 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(MenusController), Object(CakeRequest), Object(CakeResponse))
+#10 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2011-11-23 00:31:13 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
+#0 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(436): PDOStatement->execute(Array)
+#1 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(403): DboSource->_execute('UPDATE `menus` ...', Array)
+#2 E:\wamp\www\noodleapps\lib\Cake\Model\Datasource\Database\Mysql.php(376): DboSource->execute('UPDATE `menus` ...')
+#3 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(1614): Mysql->update(Object(Menu), Array, Array)
+#4 E:\wamp\www\noodleapps\lib\Cake\Model\Model.php(1485): Model->save(Array, Array)
+#5 E:\wamp\www\noodleapps\app\Controller\MenusController.php(176): Model->saveField('params', Array)
+#6 [internal function]: MenusController->admin_edit('25', '7')
+#7 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(473): ReflectionMethod->invokeArgs(Object(MenusController), Array)
+#8 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(107): Controller->invokeAction(Object(CakeRequest))
+#9 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(MenusController), Object(CakeRequest), Object(CakeResponse))
+#10 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2011-11-23 01:10:10 Error: [MissingActionException] Action WidgetsController::admin_add() could not be found.
+#0 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(107): Controller->invokeAction(Object(CakeRequest))
+#1 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(WidgetsController), Object(CakeRequest), Object(CakeResponse))
+#2 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2011-11-23 02:20:13 Error: [MissingViewException] View file "E:\wamp\www\noodleapps\app\View\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(363): View->_getViewFileName(NULL)
+#1 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#2 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2011-11-23 02:39:40 Error: [MissingViewException] View file "E:\wamp\www\noodleapps\app\View\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(363): View->_getViewFileName(NULL)
+#1 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#2 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2011-11-23 02:39:59 Error: [MissingViewException] View file "E:\wamp\www\noodleapps\app\View\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(363): View->_getViewFileName(NULL)
+#1 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#2 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2011-11-23 02:40:58 Error: [MissingViewException] View file "E:\wamp\www\noodleapps\app\View\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(363): View->_getViewFileName(NULL)
+#1 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#2 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2011-11-23 02:46:26 Error: [MissingViewException] View file "E:\wamp\www\noodleapps\app\View\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(363): View->_getViewFileName(NULL)
+#1 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#2 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2011-11-23 02:47:01 Error: [MissingViewException] View file "E:\wamp\www\noodleapps\app\View\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(363): View->_getViewFileName(NULL)
+#1 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#2 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2011-11-23 02:49:34 Error: [MissingViewException] View file "E:\wamp\www\noodleapps\app\View\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(363): View->_getViewFileName(NULL)
+#1 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#2 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2011-11-23 02:54:08 Error: [MissingViewException] View file "E:\wamp\www\noodleapps\app\View\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(363): View->_getViewFileName(NULL)
+#1 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#2 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2011-11-23 02:54:26 Error: [MissingViewException] View file "E:\wamp\www\noodleapps\app\View\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(363): View->_getViewFileName(NULL)
+#1 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#2 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2011-11-23 02:54:43 Error: [MissingViewException] View file "E:\wamp\www\noodleapps\app\View\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(363): View->_getViewFileName(NULL)
+#1 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#2 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2011-11-23 02:56:50 Error: [MissingViewException] View file "E:\wamp\www\noodleapps\app\View\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(363): View->_getViewFileName(NULL)
+#1 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#2 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2011-11-23 03:17:18 Error: [MissingHelperException] Helper class LayoutHelper could not be found.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(577): HelperCollection->load('Layout', Array)
+#1 E:\wamp\www\noodleapps\lib\Cake\View\View.php(359): View->loadHelpers()
+#2 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#4 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#5 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2011-11-23 03:17:37 Error: [MissingHelperException] Helper class LayoutHelper could not be found.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(577): HelperCollection->load('Layout', Array)
+#1 E:\wamp\www\noodleapps\lib\Cake\View\View.php(359): View->loadHelpers()
+#2 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#4 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#5 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2011-11-23 03:18:05 Error: [MissingHelperException] Helper class LayoutHelper could not be found.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(577): HelperCollection->load('Layout', Array)
+#1 E:\wamp\www\noodleapps\lib\Cake\View\View.php(359): View->loadHelpers()
+#2 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#4 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#5 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2011-11-23 03:18:18 Error: [MissingHelperException] Helper class LayoutHelper could not be found.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(577): HelperCollection->load('Layout', Array)
+#1 E:\wamp\www\noodleapps\lib\Cake\View\View.php(359): View->loadHelpers()
+#2 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#4 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#5 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2011-11-23 03:28:30 Error: [MissingHelperException] Helper class LayoutHelper could not be found.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(577): HelperCollection->load('Layout', Array)
+#1 E:\wamp\www\noodleapps\lib\Cake\View\View.php(359): View->loadHelpers()
+#2 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#4 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#5 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2011-11-23 03:28:35 Error: [MissingHelperException] Helper class LayoutHelper could not be found.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(577): HelperCollection->load('Layout', Array)
+#1 E:\wamp\www\noodleapps\lib\Cake\View\View.php(359): View->loadHelpers()
+#2 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#4 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#5 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2011-11-23 03:29:33 Error: [MissingHelperException] Helper class LayoutHelper could not be found.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(577): HelperCollection->load('Layout', Array)
+#1 E:\wamp\www\noodleapps\lib\Cake\View\View.php(359): View->loadHelpers()
+#2 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#4 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#5 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2011-11-23 03:29:50 Error: [MissingHelperException] Helper class LayoutHelper could not be found.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(577): HelperCollection->load('Layout', Array)
+#1 E:\wamp\www\noodleapps\lib\Cake\View\View.php(359): View->loadHelpers()
+#2 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#4 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#5 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2011-11-23 03:31:07 Error: [MissingHelperException] Helper class LayoutHelper could not be found.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(577): HelperCollection->load('Layout', Array)
+#1 E:\wamp\www\noodleapps\lib\Cake\View\View.php(359): View->loadHelpers()
+#2 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#4 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#5 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2011-11-23 03:32:07 Error: [MissingHelperException] Helper class LayoutHelper could not be found.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(577): HelperCollection->load('Layout', Array)
+#1 E:\wamp\www\noodleapps\lib\Cake\View\View.php(359): View->loadHelpers()
+#2 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#4 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#5 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2011-11-23 03:37:08 Error: [MissingViewException] View file "E:\wamp\www\noodleapps\app\View\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(363): View->_getViewFileName(NULL)
+#1 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#2 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2011-11-23 03:37:21 Error: [MissingViewException] View file "E:\wamp\www\noodleapps\app\View\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(363): View->_getViewFileName(NULL)
+#1 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#2 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2011-11-23 03:37:56 Error: [MissingViewException] View file "E:\wamp\www\noodleapps\app\View\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(363): View->_getViewFileName(NULL)
+#1 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#2 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2011-11-23 03:37:59 Error: [MissingViewException] View file "E:\wamp\www\noodleapps\app\View\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(363): View->_getViewFileName(NULL)
+#1 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#2 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2011-11-23 03:38:05 Error: [MissingViewException] View file "E:\wamp\www\noodleapps\app\View\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(363): View->_getViewFileName(NULL)
+#1 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#2 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2011-11-23 03:41:50 Error: [MissingViewException] View file "E:\wamp\www\noodleapps\app\View\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(363): View->_getViewFileName(NULL)
+#1 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#2 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2011-11-23 03:42:24 Error: [MissingViewException] View file "E:\wamp\www\noodleapps\app\View\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(363): View->_getViewFileName(NULL)
+#1 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#2 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2011-11-23 03:42:35 Error: [MissingViewException] View file "E:\wamp\www\noodleapps\app\View\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(363): View->_getViewFileName(NULL)
+#1 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#2 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2011-11-23 03:42:55 Error: [MissingViewException] View file "E:\wamp\www\noodleapps\app\View\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(363): View->_getViewFileName(NULL)
+#1 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#2 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2011-11-23 03:43:54 Error: [MissingViewException] View file "E:\wamp\www\noodleapps\app\View\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(363): View->_getViewFileName(NULL)
+#1 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#2 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2011-11-23 03:45:45 Error: [MissingViewException] View file "E:\wamp\www\noodleapps\app\View\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(363): View->_getViewFileName(NULL)
+#1 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#2 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2011-11-23 03:45:55 Error: [MissingViewException] View file "E:\wamp\www\noodleapps\app\View\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(363): View->_getViewFileName(NULL)
+#1 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#2 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2011-11-23 03:46:15 Error: [MissingViewException] View file "E:\wamp\www\noodleapps\app\View\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(363): View->_getViewFileName(NULL)
+#1 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#2 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2011-11-23 03:46:55 Error: [MissingViewException] View file "E:\wamp\www\noodleapps\app\View\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(363): View->_getViewFileName(NULL)
+#1 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#2 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2011-11-23 03:47:24 Error: [MissingViewException] View file "E:\wamp\www\noodleapps\app\View\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(363): View->_getViewFileName(NULL)
+#1 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#2 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2011-11-23 03:48:13 Error: [MissingViewException] View file "E:\wamp\www\noodleapps\app\View\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(363): View->_getViewFileName(NULL)
+#1 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#2 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2011-11-23 03:48:50 Error: [MissingViewException] View file "E:\wamp\www\noodleapps\app\View\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(363): View->_getViewFileName(NULL)
+#1 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#2 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2011-11-23 03:49:22 Error: [MissingViewException] View file "E:\wamp\www\noodleapps\app\View\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(363): View->_getViewFileName(NULL)
+#1 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#2 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2011-11-23 03:50:08 Error: [MissingViewException] View file "E:\wamp\www\noodleapps\app\View\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(363): View->_getViewFileName(NULL)
+#1 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#2 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2011-11-23 03:50:47 Error: [MissingViewException] View file "E:\wamp\www\noodleapps\app\View\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(363): View->_getViewFileName(NULL)
+#1 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#2 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2011-11-23 03:55:51 Error: [MissingViewException] View file "E:\wamp\www\noodleapps\app\View\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(363): View->_getViewFileName(NULL)
+#1 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#2 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2011-11-23 03:56:09 Error: [MissingViewException] View file "E:\wamp\www\noodleapps\app\View\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(363): View->_getViewFileName(NULL)
+#1 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#2 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2011-11-23 03:56:19 Error: [MissingViewException] View file "E:\wamp\www\noodleapps\app\View\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(363): View->_getViewFileName(NULL)
+#1 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#2 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2011-11-23 04:00:30 Error: [MissingViewException] View file "E:\wamp\www\noodleapps\app\View\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(363): View->_getViewFileName(NULL)
+#1 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#2 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2011-11-23 04:00:34 Error: [MissingViewException] View file "E:\wamp\www\noodleapps\app\View\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(363): View->_getViewFileName(NULL)
+#1 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#2 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2011-11-23 04:01:01 Error: [MissingViewException] View file "E:\wamp\www\noodleapps\app\View\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(363): View->_getViewFileName(NULL)
+#1 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#2 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2011-11-23 04:01:09 Error: [MissingViewException] View file "E:\wamp\www\noodleapps\app\View\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(363): View->_getViewFileName(NULL)
+#1 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#2 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2011-11-23 22:14:12 Error: [MissingViewException] View file "E:\wamp\www\noodleapps\app\View\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(363): View->_getViewFileName(NULL)
+#1 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#2 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2011-11-23 22:14:19 Error: [MissingViewException] View file "E:\wamp\www\noodleapps\app\View\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(363): View->_getViewFileName(NULL)
+#1 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#2 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2011-11-23 22:15:39 Error: [MissingViewException] View file "E:\wamp\www\noodleapps\app\View\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(363): View->_getViewFileName(NULL)
+#1 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#2 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2011-11-23 22:22:25 Error: [MissingViewException] View file "E:\wamp\www\noodleapps\app\View\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(363): View->_getViewFileName(NULL)
+#1 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#2 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2011-11-23 22:24:22 Error: [MissingViewException] View file "E:\wamp\www\noodleapps\app\View\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(363): View->_getViewFileName(NULL)
+#1 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#2 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2011-11-23 22:24:25 Error: [MissingViewException] View file "E:\wamp\www\noodleapps\app\View\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp\www\noodleapps\lib\Cake\View\View.php(363): View->_getViewFileName(NULL)
+#1 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#2 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#3 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2011-11-23 22:41:13 Error: [MissingActionException] Action WidgetsController::admin_add() could not be found.
+#0 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(107): Controller->invokeAction(Object(CakeRequest))
+#1 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(WidgetsController), Object(CakeRequest), Object(CakeResponse))
+#2 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2011-11-23 22:43:37 Error: [CakeException] Method params does not exist
+#0 E:\wamp\www\noodleapps\app\View\Helper\Layout.php(194): CakeRequest->__call('params', Array)
+#1 E:\wamp\www\noodleapps\app\View\Helper\Layout.php(194): CakeRequest->params('controller')
+#2 E:\wamp\www\noodleapps\app\View\Elements\admin\header.ctp(26): LayoutHelper->getSubnav('widgets_Manager')
+#3 E:\wamp\www\noodleapps\lib\Cake\View\View.php(598): include('E:\wamp\www\noo...')
+#4 E:\wamp\www\noodleapps\lib\Cake\View\View.php(320): View->_render('E:\wamp\www\noo...', Array)
+#5 E:\wamp\www\noodleapps\app\View\Layouts\admin.ctp(40): View->element('admin/header')
+#6 E:\wamp\www\noodleapps\lib\Cake\View\View.php(598): include('E:\wamp\www\noo...')
+#7 E:\wamp\www\noodleapps\lib\Cake\View\View.php(414): View->_render('E:\wamp\www\noo...')
+#8 E:\wamp\www\noodleapps\lib\Cake\View\View.php(376): View->renderLayout('<div class="wid...', 'admin')
+#9 E:\wamp\www\noodleapps\lib\Cake\Controller\Controller.php(899): View->render(NULL, NULL)
+#10 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(114): Controller->render()
+#11 E:\wamp\www\noodleapps\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(WidgetsController), Object(CakeRequest), Object(CakeResponse))
+#12 E:\wamp\www\noodleapps\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}

@@ -1,4 +1,3 @@
-<h2><?php echo $title_layout; ?></h2>
 <div id="form" class="contents">
 <div class="vertical-tabs">
 	
@@ -92,9 +91,7 @@
 	</div>
 </div>
 
-<div class="clear"></div>
-
-	
+<div class="clear"></div>	
   <?php
         echo $this->Form->end('Save');
         echo $this->Html->link(__('Cancel'), array(
@@ -106,9 +103,7 @@
     ?>
 
 </div>
-
 </div>
-
 <script type="text/javascript">
 	CKEDITOR.replace( 'ContentBody',
     {

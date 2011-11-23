@@ -25,15 +25,15 @@ class EngadgetsController extends AppController
 	function beforeFilter() {
 		parent::beforeFilter();
 		$this->Auth->allowedActions = array('*');	
-		//$this->Auth->allow(array('*', 'view'));		
+		//$this->Auth->allow(array('*', 'view'));
 	}
 	public function admin_index(){
-		$this->set('location_site', 'Engadget install');
-		$this->set('title_layout', 'Install Extensions');	
+		$this->set('location_site', 'Engadget_install');
+		$this->set('title_layout', 'Engadget Install');	
 		$this->layout = 'admin';
 	}
 	public function admin_manager(){
-		$this->set('location_site', 'Engadget Manager');
+		$this->set('location_site', 'Engadget_Manager');
 		$this->set('title_layout', 'Engadget Manager');
 		$this->layout = 'admin';
 		$this->Engadget->recursive = 0;
@@ -41,8 +41,8 @@ class EngadgetsController extends AppController
 	}
 	public function admin_install()
 	{
-		$this->set('location_site', 'Engadget install');
-		$this->set('title_layout', 'Install Engadgets');	
+		$this->set('location_site', 'Engadget_install');
+		$this->set('title_layout', 'Engadget install');	
 		$this->layout = 'admin';
 	//$ext = strtolower(strrchr($this->request->data['Engadget']['file']['name'], '.'));
 		$tmp = ROOT . DS . APP_DIR . DS . 'tmp' . DS;
@@ -125,11 +125,16 @@ class EngadgetsController extends AppController
 		}		
 	}
 	public function admin_uninstall($id = null){
+		//$id = array_keys($this->request->data('Engadgets.checkbox'));		
 		$engadget = $this->Engadget->find('first', array(
 			'conditions' => array(
 				'Engadget.id' => $id
 			)
 		));
+		if($id != $engadget['Engadget']['id']){
+			$this->Session->setFlash(__('Invalid id for Engadget'));
+			$this->redirect(array('action' => 'manager'));
+		}
 		$appPath = ROOT . DS . APP_DIR . DS;
 		$type = strtolower($engadget['Engadget']['type']);
 		$name = $engadget['Engadget']['name'];
@@ -143,6 +148,8 @@ class EngadgetsController extends AppController
 				$souser = $appPath . 'Widgets' . DS . $nameWidget;
 				$this->Noodle->clearAll($souser, false);
 				$this->Noodle->uninstall($id, $type);
+				$this->redirect(array('action' => 'manager'));
+				
 				break;
 			case 'theme':
 				break;

@@ -119,7 +119,7 @@ class ContentsController extends AppController
 	public function admin_add()
 	{
 		$this->layout = 'admin';
-		$this->set('title_layout', 'Add Article');
+		$this->set('title_layout', 'Articles Manager: Add Article');
 		if($this->request->is('post')) {
 			if ($this->Content->save($this->request->data)) {
 				$this->Session->setFlash(__('Your Article has been saved.', true));
@@ -135,7 +135,7 @@ class ContentsController extends AppController
 	}
 	public function admin_edit($id = null)
 	{
-		$this->set('title_layout', 'Edit Article');
+		$this->set('title_layout', 'Articles Manager: Edit Article');
 		$this->layout = 'admin';
 		$this->Content->id = $id;
 		if (!$this->Content->id && empty($this->request->data)) {

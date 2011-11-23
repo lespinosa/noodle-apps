@@ -1,9 +1,7 @@
 <div class="contents index">
-<h2 class="contents-icon"><?php echo $title_layout; ?></h2>
 <ul class="add_icon">
 	<li><?php echo $this->Html->image('admin/icons/add_icon.png', array('alt' => 'Add', 'url' => 'add/'));?></li>
 	<li class="add-u"><?php echo $this->Html->link(__('Agregar Article', true), array('action'=>'add')); ?></li>
-
 </ul>
 <div class="clear"></div>
 <div id="filtle">
@@ -66,7 +64,7 @@
 		<td class="select-all"><?php echo $this->Form->checkbox('id', array('name'=> 'id', 'value' => $content['Content']['id']));?></td>
 		<td class="id"><?php echo $content['Content']['id'];?></td>
 		<td class="name"><?php echo $this->Html->link($content['Content']['title'], array('action' => 'edit', $content['Content']['id']));?></td>
-		<td class="status"><?php echo $this->Layout->getStatus($content['Content']['status'], 'img')?></td>
+		<td class="status"><?php echo $this->Layout->getStatus(null, null,$content['Content']['status'], 'img')?></td>
 		<td class="featured"><?php echo $this->Layout->getFeatured($content['Content']['featured'], 'img')?></td>
 		<td class="cat"><?php echo $this->Layout->getCategory($content['Content']['category_id'])?></td>
 		<td class="ordering"><?php echo $this->Layout->getOrdering('Content',$content['Content']['id'], null, 'img', $content['Content']['lft']);?></td>

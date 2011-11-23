@@ -25,7 +25,7 @@ class UsersController extends AppController{
 	   
 	}
 	function admin_index() {
-		$this->set('title_layout', 'Users Lists');
+		$this->set('title_layout', 'Users Manager');
 		$this->layout = 'admin';
         $this->User->recursive = 0;
         $this->set('users', $this->paginate());
@@ -56,7 +56,7 @@ class UsersController extends AppController{
         
     }
     function admin_view($id) {
-    	$this->set('title_layout', 'View Users');
+    	$this->set('title_layout', 'Users Manager: View Users');
 		$this->layout = 'admin';
         if (!$id) {
             $this->Session->setFlash(__('Invalid User.', true));
@@ -98,7 +98,7 @@ class UsersController extends AppController{
         $this->set(compact('roles'));
 	}
  	function admin_edit($id = null) {
- 		$this->set('title_layout', 'Edit User');
+ 		$this->set('title_layout', 'Users Manager: Edit User');
  		$this->layout = 'admin';
  		$this->User->id = $id;
         if (!$this->User->id && empty($this->request->data)) {

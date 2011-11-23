@@ -1,5 +1,4 @@
 <div class="widgets index">
-	<h2 class="widgets-icon"><?php echo $title_layout;?></h2>
 	<ul class="add_icon">
 		<li><?php echo $this->Html->image('admin/icons/add_icon.png', array('alt' => 'add', 'url' => 'add/'));?>
 		</li>

@@ -1,4 +1,3 @@
-<h2><?php echo $title_layout; ?></h2>
 <div id="form" class="contents">
 <div class="vertical-tabs">
 <?php echo $this->Form->create('Category');?>
@@ -30,7 +29,8 @@
 			<?php endif;?>
 			<?php echo $this->Form->input('parent_id', array('label' => 'Parent Category', 'options' => array (
 			  				0 =>'Category Root', 'Categories' => $parents)));?>
-			<?php echo $this->Form->input('status', array('type' => 'checkbox'));?>
+			<?php echo $this->Form->input('status', array('options' => array(
+					0 => 'Select Status', 1 => 'Published', 2 => 'Unpublished')));?>
 			<?php echo $this->Form->input('description', array('label' => 'Description', 'cols' => 60));?>
 		</fieldset>
 	</div>

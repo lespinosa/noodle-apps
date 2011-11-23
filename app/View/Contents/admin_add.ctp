@@ -1,4 +1,3 @@
-<h2><?php echo $title_layout; ?></h2>
 <div id="form" class="contents">
 <div class="vertical-tabs">
 	

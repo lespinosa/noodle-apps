@@ -1,9 +1,3 @@
-<ul class="crumbs">
-	<li><?php $this->Html->addCrumb('Dashboard', '/admin'); ?></li>
-	<li><?php $this->Html->addCrumb('Users', '/admin/users'); ?></li>
-	<li><?php $this->Html->addCrumb('View User', ''); ?></li>
-</ul>
-<h2><?php echo $title_layout; ?>: <?php echo $user['User']['username']?></h2>
 <?php
 $userName				= $user['User']['username'];
 $userEmail				= $user['User']['email'];

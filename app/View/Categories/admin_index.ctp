@@ -1,37 +1,34 @@
-<ul class="crumbs">
-	<li><?php $this->Html->addCrumb('Dashboard', '/admin'); ?></li>
-	<li><?php $this->Html->addCrumb('Categories', ''); ?></li>
-</ul>
 <div class="categories index">
-<h2 class="categories-icon"><?php echo $title_layout; ?></h2>
 <ul class="add_icon">
 	<li><?php echo $this->Html->image('admin/icons/add_icon.png', array('alt' => 'Ver Perfil', 'url' => 'add/'));?></li>
 	<li class="add-u"><?php echo $this->Html->link(__('Agregar Category', true), array('action'=>'add')); ?></li>
 
 </ul>
 <div class="clear"></div>
-<div id="form">
-	<h3><?php echo __('Filtral por:', true);?></h3>
+<div id="filtle">
 	<div class="clear"></div>
-	<?php echo $this->Form->create('Categories', array('action'=>'index')); ?>
-	<?php
-		$options = array(1 => 'Active', 2 => 'Blocked', 0 => 'Cualquiera');
-		$attributes = array('value' => 0);
-		$optionsRol = array(0 => 'Cualquiera', 'Roles' => $roles);
-		?>
-	<?php echo $this->Form->input('title');?>	
-	<div class="role_id"><?php echo __('<label>Roles</label>', true) . $this->Form->select('role_id', $optionsRol, $attributes);?></div>
-	<div class="status"><?php echo __('<label>Status</label>', true) . $this->Form->select('status', $options, $attributes);?></div>
-	<?php echo $this->Html->link('Reset', array('action' => 'index'), array('class' => 'cancel'));?>
-	<?php echo $this->Form->end('Filter');?>
+	<?php echo $this->Form->create('Category', array('action'=>'index')); ?>
+		<fieldset class="filtle-title">
+		<?php echo $this->Form->input('filter_search', array('label' => 'Filter:'));?>
+		<?php echo $this->Form->button('Search', array('type' => 'submit', 'class' => 'button'));?>
+		<?php echo $this->Html->link(__('Reset', true), array('action' => 'index'), array('class' => 'button'));?>
+	</fieldset>
+	<?php $opt = array('type' => 'hidden'); echo $this->Form->end($opt);?>
+	<?php echo $this->Form->create('Category', array('action'=>'index')); ?>
+		<fieldset class="select_option">
+			<?php echo $this->Form->input('filter_status', array('label' => false, 'onchange' => 'this.form.submit()', 'options'=> array(
+					0 => 'Select Status', 1 => 'Published', 2 => 'Unpublished')));?>
+
+			<?php echo $this->Form->input('filter_role', array('label' => false, 'onchange' => 'this.form.submit()', 'options' => array(
+				0 => 'Select Access', 'Access' => $roles)));?>
+			<?php echo $this->Form->input('filter_language', array('label' => false, 'onchange' => 'this.form.submit()', 'options' => array(
+					0 => 'Select Language')));?>
+	</fieldset>		
+
+	<?php $opt = array('type' => 'hidden'); echo $this->Form->end($opt);?>
 		
 </div>
 
-<?php 
-echo $this->Paginator->counter(array(
-'format' => __('Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%')
-));
-?>
 <div id="table-content">
 
 <table  cellpadding="0" cellspacing="0">
@@ -44,6 +41,7 @@ echo $this->Paginator->counter(array(
 		<th><h3><?php echo $this->Paginator->sort(__('status'));?></h3></th>
 		<th><h3><?php echo $this->Paginator->sort(__('ordering'));?><?php echo $this->Html->image('admin/icons/save_icon.png', array('alt' => 'Save order', 'class' => 'save-order'));?></h3> </th>
 		<th><h3><?php echo $this->Paginator->sort(__('access'));?></h3></th>
+		<th><h3><?php echo $this->Paginator->sort(__('language_id'));?></h3></th>
 		<th><h3><?php echo $this->Paginator->sort(__('Actions'));?></h3></th>
 		
 
@@ -60,11 +58,11 @@ echo $this->Paginator->counter(array(
 		<td class="select-all"><?php echo $this->Form->checkbox('id', array('name'=> 'id', 'value' => $categoryId));?></td>
 		<td class="id"><?php echo $categoryId;?></td>
 		<td class="name"><?php echo $this->Html->link($categoryTitle, array('action' => 'edit', $categoryId));?></td>
-		<td class="status"><?php echo $this->Layout->getStatus($categoryStatus[$categoryId], 'img')?></td>
+		<td class="status"><?php echo $this->Layout->getStatus('Categories', 'Category', $categoryId, 'img')?></td>
 		<td class="ordering">
-			<?php echo $this->Layout->getOrdering('Category', $categoryId, null, 'img', $categoryLeft[$categoryId]);?></td>
-		
-		<td></td>
+			<?php echo $this->Layout->getOrdering('Category', $categoryId, null, 'img', $categoryLeft[$categoryId]);?></td>		
+		<td class="access"><?php echo $this->Layout->getAccess($categoryId, 'text');?></td>
+		<td><?php echo "lenguage"?></td>
 		<td class="action"><?php echo $this->Html->link(
 						$this->Html->image('admin/icons/edit_icon.png', array('alt' => 'Editar')),
 						array('action' => 'edit', $categoryId), array('escape' => false));?>

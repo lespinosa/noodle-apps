@@ -29,39 +29,105 @@ class MenusController extends AppController
 		
 	}
 	public function admin_index($id = 7){
-		$this->set('title_layout', 'Menu Items');
+		    $data = new stdClass();
+			$data->title = "luis";
+			$data->fecha = "12/04/77";
+			
+   			echo json_encode($data);
+
+
+		if ($id == null) {
+			$menuId = $this->request->data('Menu.filter_menutype');
+		} elseif($this->request->data('Menu.filter_menutype') == 0) {
+			$menuId = $id;
+		} else {
+			$menuId = $this->request->data('Menu.filter_menutype');
+		}
+		$this->set('title_layout', 'Menu Manager: Menu Items');
  		$this->layout = 'admin';
-		$menuType = $id;
+		$menuType = $menuId;
         $this->Menu->recursive = 0;
 		$linksTree = $this->Menu->generateTreeList(array(
-				'Menu.menutype_id' => $id,
+				'Menu.menutype_id' => $menuId,
 				));
-		$linksStatus = $this->Menu->find('list', array(
-            'conditions' => array(
-                'Menu.menutype_id' => $id,
-            ),
-            'fields' => array(
-                'Menu.id',
-                'Menu.status',
-            ),
-        ));
 		$linksMenuType = $this->Menu->find('list', array(
             'conditions' => array(
-                'Menu.menutype_id' => $id,
+                'Menu.menutype_id' => $menuId,
             ),
             'fields' => array(
                 'Menu.id',
                 'Menu.menutype_id',
             ),
         ));
-		//$this->data = $someCategories;
 		$roles = $this->Role->find('list', array('order' => array('Role.id' => 'asc')));
+		$menutypes = $this->Menu->Menutype->find('list');
         $this->set('menus', $this->paginate());
-		$this->set(compact('linksTree', 'linksStatus', 'linksMenuType', 'menuType', 'roles'));	
+		$this->set(compact('linksTree', 'linksMenuType', 'menuType', 'roles', 'menutypes'));
+				
+		// Filtle
+		$filter_title		= $this->request->data('Menu.filter_search');
+		$filter_status		= $this->request->data('Menu.filter_status');
+		$filter_menutype	= $this->request->data('Menu.filter_menutype');
+		$filter_access		= $this->request->data('Menu.filter_role');
+		$filter_lang		= $this->request->data('Menu.filter_language');
+
+		// title condition
+		if(!empty($filter_title)) {
+			$titleData = $this->Menu->find('all', array('order' => array('Menu.title' => 'desc'),
+			'conditions' => array('Menu.title LIKE' => "%$filter_title%")));
+			$this->set('menus', $titleData);
+		}
+		// status condition
+		if($filter_status >= 1 or $filter_menutype > 0 or $filter_access > 0 or $filter_lang > 0) {
+			
+			// Codition Status
+			if($filter_status >= 1) {
+				$condition_status = array('Menu.status' => (int)$filter_status);
+			} else {
+				$condition_status = null;
+			}
+			// Codition menutype
+			if($filter_menutype > 0) {
+				$condition_menutype = array('Menu.menutype_id' => (int)$filter_menutype);
+			} else {
+				$condition_menutype = null;
+			}
+			// Codition Access
+			if($filter_access > 0) {
+				$condition_access = array('Menu.role_id' => (int)$filter_access);
+			} else {
+				$condition_access = null;
+			}
+			
+			// Codition Language
+			if($filter_lang > 0) {
+				$condition_lang = array('Menu.user_id' => (int)$filter_lang);
+			} else {
+				$condition_lang = null;
+			}
+			$linksTree = $this->Menu->generateTreeList(array(
+					$condition_status,
+					$condition_menutype,
+					$condition_access,
+					$condition_lang,
+					
+			));
+			
+			$this->set(compact('linksTree'));
+		}
+		
 		
 	}
-	public function admin_add($id = null){
-		$this->set('title_layout', 'Add Link');
+	function admin_liststype($id = null, $menuTypeId = null, $link_type = null){
+		$this->set('title_layout', '');
+		$this->layout = 'clear';
+		$itemId = $id;
+		$this->set(compact('itemId', 'menuTypeId', '$link_type'));
+	}
+	public function admin_add($id = null, $menuTypeId = null, $linkType = null){
+		$this->set('title_layout', 'Menu Manager: Add Link');
+		$itemId = $id;
+		$link_type = $linkType;
 		if (!empty($this->request->data)){
 			if ($this->Menu->save($this->request->data)){
 				$this->Session->setFlash(__('El enlace fue salvado.', true));
@@ -70,16 +136,33 @@ class MenusController extends AppController
 				$this->Session->setFlash(__('El enlace no ha podido ser guardado.', true));
 			}
 		}
+		
 		$menuTypeId = $id;
 		$menutypes = $this->Menu->Menutype->find('list');
-		$parents = $this->Menu->generateTreeList(array(
-				'Menu.menutype_id' => $id,
+		$parentLinks = $this->Menu->generateTreeList(array(
+				'Menu.menutype_id' => $menuTypeId
 				), '_');
-      	$this->set(compact('menutypes', 'menuTypeId', 'parents'));
+      	$users = $this->Menu->User->find('list');
+		$roles = $this->Menu->Role->find('list', array('order' => array('Role.id' => 'asc')));
+      	$this->set(compact('menutypes', 'menuTypeId', 'parentLinks', 'roles', 'users', 'link_type', 'itemId'));
+		
+		
 	}
-	public function admin_edit($id = null, $menuTypeId = null){
-		$this->set('title_layout', 'Edit Link');
+	public function admin_edit($id = null, $menuTypeId = null, $linkType = null){
+		$this->set('title_layout', 'Menu Manager: Edit Link');
+		$data = new stdClass();
+		$data->param1 = $this->request->data('Menu.param1');
+		$data->param2 = $this->request->data('Menu.param2');
+		//$this->request->data('Menu.param', json_encode($data));
+		//$this->Form->input('params', array('value' => json_encode($data)));
 		$this->Menu->id = $id;
+		$itemId = $id;
+		if($linkType == null){
+			$link_type = $this->request->data('Menu.link_type');
+		} else {
+			$link_type = $linkType;
+		}
+		
 		if (!$this->Menu->id && empty($this->request->data)) {
 			$this->Session->setFlash(__('Menu invalido.', true));
 			$this->redirect(array('action' => 'index', $menuTypeId));
@@ -90,6 +173,7 @@ class MenusController extends AppController
 			
 		} else {
 			if ($this->Menu->save($this->request->data)) {
+				$this->Menu->saveField('params', json_encode($data));
 				$this->Session->setFlash(__('El Menu ha sido actualizado.', true));
 				$this->redirect(array('action' => 'index', $menuTypeId));
 				
@@ -97,11 +181,12 @@ class MenusController extends AppController
 			
 		}
 		$menuTypeId = $menuTypeId;
+		$roles = $this->Role->find('list', array('order' => array('Role.id' => 'asc')));
 		$menutypes = $this->Menu->Menutype->find('list');
 		$parentLinks = $this->Menu->generateTreeList(array(
 				'Menu.menutype_id' => $menuTypeId
 				), '_');
-      	$this->set(compact('menutypes', 'menuTypeId', 'parentLinks'));
+      	$this->set(compact('menutypes', 'menuTypeId', 'parentLinks', 'roles', 'link_type', 'itemId'));
 
 	}
 	public function admin_delete($id = null, $menuTypeId = null) {

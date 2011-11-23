@@ -21,13 +21,14 @@ class WidgetsController extends AppController
 	);
 	function beforeFilter() {
 		parent::beforeFilter();
-		$this->set('location_site', 'widgets');
+		$this->set('location_site', 'widgets');		
 		$this->Auth->allowedActions = array('*');	
 		//$this->Auth->allow(array('*', 'view'));
 		
 	}	
 	public function admin_index(){
 		$this->layout = 'admin';
+		$this->set('location_site', 'widgets_Manager');	
 		$this->set('title_layout', 'Widgets Manager');
 		$this->Widget->recursive = 0;
 		$this->set('widgets', $this->paginate());

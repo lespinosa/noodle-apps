@@ -13,7 +13,7 @@
 class AppController extends Controller
 {
 	public $components = array('Acl', 'Auth', 'Session');
-    public $helpers = array('Html', 'Form', 'Session', 'Paginator', 'Layout', 'Js' => 'Jquery');
+    public $helpers = array('Html', 'Form', 'Session', 'Paginator', 'Layout', 'Js' => 'Jquery', 'Noodle');
 	
     function beforeFilter() {
         //Configure AuthComponent
@@ -23,7 +23,7 @@ class AppController extends Controller
 		$this->Auth->allow('display');
 		$AuthUser = $this->Auth->user('name');
 		$AuthId = $this->Auth->user('id');
-		$UserId = $this->Auth->user('id');
+		$UserId = $AuthId;
 		$this->set(compact('AuthUser', 'AuthId', 'UserId'));
     }
 }

@@ -10,7 +10,7 @@
 class Menu extends AppModel
 {
 	var $name = 'Menu';
-	var $belongsTo = array('Menutype');
+	var $belongsTo = array('Menutype', 'User', 'Role');
 	var $actsAs = array('Tree' => array(
 			'keyPath' => null,
 			'valuePath' => null,

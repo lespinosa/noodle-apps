@@ -1,9 +1,4 @@
-<ul class="crumbs">
-	<li><?php $this->Html->addCrumb('Dashboard', '/admin'); ?></li>
-	<li><?php $this->Html->addCrumb('Menus', ''); ?></li>
-</ul>
 <div class="menus index">
-<h2 class="menus-icon"><?php echo $title_layout; ?></h2>
 <ul class="add_icon">
 	<li><?php echo $this->Html->image('admin/icons/add_icon.png', array('alt' => 'Add', 'url' => 'add/'));?></li>
 	<li class="add-u"><?php echo $this->Html->link(__('Agregar Menu', true), array('action'=>'add')); ?></li>
@@ -43,7 +38,7 @@ foreach ($menus as $menu):
 			<?php echo $menu['Menutype']['title']; ?>
 		</td>
 		<td>
-			<?php echo $this->Layout->getStatus($menu['Menutype']['status'], 'img'); ?>
+			<?php echo $this->Layout->getStatus(null, null, $menu['Menutype']['status'], 'img'); ?>
 		</td>
 		<td>
 			<?php echo $menu['Menutype']['description']; ?>

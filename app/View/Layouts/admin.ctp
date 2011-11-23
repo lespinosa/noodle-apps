@@ -13,7 +13,8 @@
             'admin/layout',
             'admin/vertical-tabs',
             'forms',
-            'ui/redmond/jquery.ui.all'
+            'ui/redmond/jquery.ui.all',
+            'colorbox'
         ));
 		echo $this->Html->script(array(
 				'jquery-1.6.4.min',
@@ -27,7 +28,7 @@
 				'ui/jquery.ui.dialog',
 				'ui/jquery.ui.datepicker',
 				'../ckeditor/ckeditor',
-				
+				'jquery.colorbox'
 		));
 		echo $scripts_for_layout;
 	?>
@@ -37,13 +38,11 @@
 
 	 <div id="wrapper">
         <?php echo $this->element('admin/header'); ?>
-         <div class="clear"></div>
+         <div class="clear"></div>         
         <div id="main">
-        	<ul class="crumbs">
-	      	  <li><?php echo $this->Html->getCrumbs(' > ','Home Site'); ?></li>     
-	        </ul> 
-
-			<?php echo $this->Session->flash(); ?>
+        	<?php echo $this->Layout->getTitle($title_layout, $location_site);?>
+        	
+        	<?php echo $this->Session->flash(); ?>
 			<?php echo $this->Session->flash('auth');?>
 
 			<?php echo $content_for_layout; ?>
@@ -64,7 +63,8 @@
 		$( "#tabs" ).tabs();
 	});
 	</script>
-<script type="text/javascript">
+<script>
+		
 		$(document).ready(function()
 		{
 			$("#paradigm_all").click(function()				
@@ -86,34 +86,46 @@
 			});
 		
 		});
-		$("input#ContentTitle, input#CategoryTitle").keyup(function () {
-      	var value = $(this).val();
+		$("input#ContentTitle, input#CategoryTitle, input#MenuTitle").keyup(function () {
+      	var value = $(this).val().toLowerCase();
       		$("input.slug").val(value.replace(/ /g, "_"));
     	}).keyup();
+    	$("input:checkbox:checked").keyup(function () {
+      	var value = $(this).val();
+      		$("span").value;
+    	}).keyup();
     	
-    	  $("select#ContentRoleId").change(function () {
+    
+    	  $("select#ContentRoleId, select#MenuRoleId").change(function () {
           var str = "";
-          $("select#ContentRoleId option:selected").each(function () {
+          $("select#ContentRoleId option:selected, select#MenuRoleId option:selected").each(function () {
                 str += $(this).text() + " ";
               });
-          $("input#ContentAccess").val(str);
+          $("input#ContentAccess, input#MenuAccess").val(str);
         })
         .change();
-        $("select#ContentUserId").change(function (){
+        $("select#ContentUserId, select#MenuUserId").change(function (){
         	var str = "";
-        	$("select#ContentUserId option:selected").each(function(){
+        	$("select#ContentUserId option:selected, select#MenuUserId option:selected").each(function(){
         		str += $(this).text() + " ";
         	});
-        	$("input#ContentCreatedBy").val(str);
+        	$("input#ContentCreatedBy, input#MenuCreatedBy").val(str);
         })
-        .change()
-	//top menu 
+        .change();
+        $(".list-type").colorbox({iframe:true, width:"70%", height: "60%", opacity: "0.7"});
+        
+	/*top menu 
 	var site = function() {
 		this.navLi = $('#nav li').children('ul').hide().end();
 		this.init();
-	};
-		
+	};*/
 </script>
+<!--
+<script>
+	// increase the default animation speed to exaggerate the effect
+	$.fx.speeds._default = 100;
+</script>
+-->
 <?php echo $this->Js->writeBuffer();?>
 </body>
 </html>

@@ -1,9 +1,3 @@
-<ul class="crumbs">
-	<li><?php $this->Html->addCrumb('Dashboard', '/admin'); ?></li>
-	<li><?php $this->Html->addCrumb('Users', '/admin/users'); ?></li>
-	<li><?php $this->Html->addCrumb('New User', ''); ?></li>
-</ul>
-<h2><?php echo $title_layout; ?></h2>
 <div id="form">
 <?php echo $this->Form->create('User');?>
 

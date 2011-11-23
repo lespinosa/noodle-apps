@@ -29,31 +29,81 @@ fieldset legend {
 	background: #fff;
 }
 fieldset.details {
-	width: 50%;
+	width: 60%;
 }
-fieldset.link_type,  fieldset.link_options{
+fieldset.link_options{
 	margin: 0 0 12px 12px;
-	width: 40%;
+	width: 38%;
+}
+fieldset.link_type{
+	width: 98%;
+	border: none;
+}
+fieldset.link_type ul{
+	margin:0 0 8px 8px;
+	padding: 0;
+	font-size: 18px;
+	color: #1F7297;
+}
+fieldset.link_type ul li{
+	float:left;
+	margin:0;
+	padding: 8px 0;
+	border-bottom:1px solid #DFDFDF;
+	width: 100%;	
+}
+fieldset.link_type ul li span{
+	margin:8px 0;
+	padding: 0 0 0 22px;
+	background: url(../img/admin/arow.png) no-repeat left;
+}
+fieldset.link_type ul.sub{
+	font-size: 13px;
+	margin: 0 0 -8px -8px;
+}
+fieldset.link_type ul.sub li{
+	float:left;
+	margin:0;
+	padding:0 12px;
+	border-bottom:none;
+	clear:none;
+	background: url(../img/admin/list-sep.png) no-repeat right;
+	width:auto;
+}
+fieldset.link_type ul.sub li.last{
+	background: none;
+}
+#form .list-type{
+	float: left;
+	margin: 0 0 0 8px;
+	color: #227297;
 }
 
 #form label {
 	float:left;
 	margin:2px 0 0 8px;
 	width: 100px;
+	color:#646464;
+	font-weight: bold;
 }
 #form div.input, #form div.status, #form div.role_id{
 	float: left;
 	width:100%;
-	padding: 8px 0;
-	color:#646464;
+	padding: 8px 0;	
 	font-weight: bold;
+}
+#form input#MenuLinkType{
+	width: 200px;
+	margin:0;
+	padding: 6px 8px;
+	color:#646464;
+	border:1px solid #DFDFDF;
+	background: #fff;
 }
 .input.textarea {
 	margin: 0 6px;
 }
-#form fieldset.details .input.text, div.input.select {
-	margin: 0 8px;
-}
+
 #form div.input input{
 	margin: 0;
 	padding: 2px 8px;
@@ -80,6 +130,10 @@ fieldset.link_type,  fieldset.link_options{
 	background: #fff;
 }
 /* Details link*/
+#form.link fieldset.details {
+	margin:0 12px 0 0;
+	padding:8px;
+}
 #form.link fieldset.details label {
 	float:left;
 	margin:0;
@@ -89,8 +143,11 @@ fieldset.link_type,  fieldset.link_options{
 #form.link fieldset.details textarea {
 	float:left;
 	margin:0;
-	padding:4px 0;
+	padding:6px 0;
 	width: 94%;
+}
+#form.link fieldset.details select {
+	padding: 6px;
 }
 #form.link fieldset.details textarea {
 	border: 1px solid #ccc;
@@ -183,7 +240,6 @@ fieldset.link_type,  fieldset.link_options{
 }
 #filtle div.input, #filtlediv.status, #filtle div.role_id{
 	float: left;
-
 	padding: 8px 0;
 	color:#646464;
 	font-weight: bold;
@@ -197,10 +253,12 @@ fieldset.link_type,  fieldset.link_options{
 	background: #fff;
 }
 #filtle select{
+	float:left;
 	margin: 0;
 	padding:2px;
+	font-size: 11px;
 	border:1px solid #ccc;
-	width:125px;
+	width:110px;
 	background: #fff;
 }
 #filtle div.submit input, #form .cancel, .button {
@@ -215,16 +273,15 @@ fieldset.link_type,  fieldset.link_options{
 	background: #fff;
 }
 #filtle fieldset.filtle-title {
-	float: left;
+	float:left;
 	margin:0 0 0 8px;
 	padding:0;
 	border: none;
-	width: 35%;
 }
 #filtle fieldset.select_option {
-	float: left;
-	margin:0;
+	float:right;
+	margin:0 6px 0 0;
 	padding:0;
 	border: none;
-	width: 64%;
+
 }

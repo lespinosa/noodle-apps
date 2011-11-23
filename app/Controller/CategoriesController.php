@@ -30,25 +30,67 @@ class CategoriesController extends AppController
 		$this->set('title_layout', 'Category Manager');
 		$this->Category->recursive = 0;
 		$categoryTree = $this->Category->generateTreeList(null);
-		$categoryStatus = $this->Category->find('list', array(
-			'fields' => array(
-				'Category.id'
-				), 
-		));
-		$categoryLeft = $this->Category->find('list', array(
-			'fields' => array(
-				'Category.lft'
-				), 
-		));
 		$this->set('categories', $this->paginate());
-		$this->set(compact('categoryTree', 'categoryStatus', 'categoryLeft'));
+		$this->set(compact('categoryTree'));
+		// Filtle
+		$filter_title	= $this->request->data('Category.filter_search');
+		$filter_status	= $this->request->data('Category.filter_status');
+		$filter_access	= $this->request->data('Category.filter_role');
+		$filter_lang	= $this->request->data('Category.filter_language');
+	
+		// title condition
+		if(!empty($filter_title)) {
+			$titleData = $this->Category->find('all', array('order' => array('Category.title' => 'desc'),
+			'conditions' => array('Category.title LIKE' => "%$filter_title%")));
+			$this->set('categoryTree', $titleData);
+		}
+		// status condition
+		if($filter_status >= 1 or $filter_access > 0 or $filter_lang > 0) {
+			
+			// Codition Status
+			if($filter_status >= 1) {
+				$condition_status = array('Category.status' => (int)$filter_status);
+			} else {
+				$condition_status = null;
+			}
+			
+			// Codition Access
+			if($filter_access > 0) {
+				$condition_access = array('Category.role_id' => (int)$filter_access);
+			} else {
+				$condition_access = null;
+			}
+			
+			// Codition Language
+			if($filter_lang > 0) {
+				$condition_lang = array('Category.user_id' => (int)$filter_lang);
+			} else {
+				$condition_lang = null;
+			}
+		
+			$categoryTree = $this->Category->generateTreeList(array(
+					$condition_status,
+					$condition_access,
+					$condition_lang,
+					
+			));
+			$this->set(compact('categoryTree'));
+		}
+		$categoryStatus = $this->Category->find('list');
+		$categoryLeft = $this->Category->find('list', array(
+				'fields' => array(
+					'Category.lft'
+					), 
+			));
+		$roles = $this->Category->Role->find('list');		
+		$this->set(compact('categoryLeft', 'roles'));
 	}
 	
 	
 	public function admin_add()
 	{
 		$this->layout = 'admin';
-		$this->set('title_layout', 'Add Category');
+		$this->set('title_layout', 'Category Manager: Add Category');
 		
 		if(!empty($this->request->data)) {
 			if ($this->Category->save($this->request->data)) {
@@ -59,11 +101,12 @@ class CategoriesController extends AppController
 			}
 		}
 		$parents = $this->Category->generateTreeList(null, '_');
-		$this->set(compact('parents'));
+		$roles = $this->Category->Role->find('list');
+		$this->set(compact('parents', 'roles'));
 	}
 	public function admin_edit($id = null) {
 		$this->layout = 'admin';
-		$this->set('title_layout', 'Edit Category');
+		$this->set('title_layout', 'Category Manager: Edit Category');
 		$this->Category->id = $id;
 		if (!$this->Category->id && empty($this->request->data)) {
 			$this->Session->setFlash(__(' Invalid Category id', true));
@@ -78,7 +121,9 @@ class CategoriesController extends AppController
 			}
 		}
 		$parents = $this->Category->generateTreeList(null, '_');
-		$this->set(compact('parents'));
+		$roles = $this->Category->Role->find('list');
+		$this->set(compact('parents', 'roles'));
+		
 	}
 	public function admin_delete($id = null) {
 		$this->layout = 'admin';

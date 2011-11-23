@@ -17,10 +17,25 @@ class LayoutHelper extends Helper
 	/*function __construct($argument) {
 		
 	}*/
-	public function getStatus($value, $type = ''){
+	function getStatus($ctlName = '', $modelName = '', $statusValue, $type = ''){
+		
+		if(!empty($ctlName) && !empty($modelName)){
+			App::import('Controller', '$ctlName');
+			$ctlValue = $ctlName.'Controller';
+			$app = new $ctlValue;
+			$value = $app->$modelName->find('first', array(
+						'conditions' => array(
+							$modelName.'.id' => $statusValue,
+						),
+					));
+			$status = $value[$modelName]['status'];
+		} else {
+			$status = $statusValue;
+		}
+				
 		switch ($type) {
 			case 'img':
-				if($value == 1){
+				if($status == 1){
 					$output = '<div class="status">'. $this->Html->image('admin/icons/tick.png', array('alt' => 'Published')) . '</div>';
 				} else {
 					$output = '<div class="status">'. $this->Html->image('admin/icons/cross.png', array('alt' => 'Unpublished')) . '</div>';
@@ -30,7 +45,7 @@ class LayoutHelper extends Helper
 			
 			default:
 			case 'text':
-				if($value == 1){
+				if($status == 1){
 					$output = "Published";
 				} else {
 					$output = 'Unpublished';
@@ -39,7 +54,7 @@ class LayoutHelper extends Helper
 				break;
 		}
 	}
-	public function getFeatured($value, $type = ''){
+	function getFeatured($value, $type = ''){
 		switch ($type) {
 			case 'img':
 				if($value  == 1){
@@ -61,7 +76,7 @@ class LayoutHelper extends Helper
 				break;
 		}
 	}
-	public function getCategory($id) {
+	function getCategory($id) {
 		App::import('Controller', 'Categories');
 		$Content = new CategoriesController;
 		$output = $Content->Category->find('first', array(
@@ -69,7 +84,7 @@ class LayoutHelper extends Helper
 		return '<span>'.$output['Category']['title']. '</span>';
 		
 	}
-	public function getAccess($id, $type = null){
+	function getAccess($id, $type = null){
 		App::import('Controller', 'Roles');
 		switch ($type) {
 			case 'img':
@@ -86,7 +101,7 @@ class LayoutHelper extends Helper
 		}
 		
 	}
-	public function getAuthor($modelName, $uid = null, $type = null){
+	function getAuthor($modelName, $uid = null, $type = null){
 		App::import('Controller', 'Users');
 		$data	= new UsersController;
 		switch ($type) {
@@ -108,7 +123,18 @@ class LayoutHelper extends Helper
 		}
 	
 	}
-	public function getOrdering($modelName = null, $Id, $linksMenuType = null, $type = null, $lft = null){
+	function getLeft($ctlName, $modelName, $Id = null){
+		App::import('Controller', $ctlName);
+		$ctl = $ctlName.'Controller';
+		$data = new $ctl;
+		$left = $data->$modelName->find('first', array(
+					'conditions' => array($modelName.'.id' => $Id),
+					'fields' => $modelName.'.lft'
+				));
+		return $left[$modelName]['lft'];
+		
+	}
+	function getOrdering($modelName = null, $Id, $linksMenuType = null, $type = null, $lft = null){
 		switch ($type) {
 			case 'img':
 				$output = "<ul class='ordering'>";
@@ -146,7 +172,7 @@ class LayoutHelper extends Helper
 				break;
 		}		
 	}
-	public function getMenu(){
+	function getMenu(){
 		App::import('Controller', 'menutypes');
 		$app = new MenutypesController;
 		$menus = $app->Menutype->find('all', array(
@@ -163,7 +189,7 @@ class LayoutHelper extends Helper
 			
 		}
 	}
-	public function getSubnav($location){
+	function getSubnav($location= null){
 		$locatinNav = strtolower($location);
 		switch ($locatinNav) {
 			case 'contents':
@@ -202,16 +228,30 @@ class LayoutHelper extends Helper
 				echo "<li class='active'>".__('Acl Manager', true) . "</li>";
 				break;
 
-				case 'engadget install':
+				case 'engadget_install':
 					echo "<li class='active'>".__('Install', true) . "</li>";
 					echo "<li>". $this->Html->link(__('Engadgets Manager', true), array('controller' => 'engadgets', 'action' => 'manager')). "</li>";
+					echo "<li>". $this->Html->link(__('Widgets Manager', true), array('controller' => 'widgets', 'action' => 'index')). "</li>";
 					break;
-				case 'engadget manager':
+				case 'engadget_manager':
 					echo "<li>". $this->Html->link(__('Install', true), array('controller' => 'engadgets', 'action' => 'index')). "</li>";
 					echo "<li class='active'>".__('Engadgets Manager', true) . "</li>";
-					
+					echo "<li>". $this->Html->link(__('Widgets Manager', true), array('controller' => 'widgets', 'action' => 'index')). "</li>";					
+					break;
+				
+				case 'widgets_manager':
+					echo "<li>". $this->Html->link(__('Install', true), array('controller' => 'engadgets', 'action' => 'index')). "</li>";
+					echo "<li>". $this->Html->link(__('Engadgets Manager', true), array('controller' => 'engadgets', 'action' => 'manager')). "</li>";
+					echo "<li class='active'>".__('Widgets Manager', true) . "</li>";					
 					break;
 		}
 	}
-	
+	function getTitle($layout_title, $location_site) {
+		$ctlName = strtolower($location_site);
+		$class = $ctlName."_title";
+		$output = "<h2 class='$class'>";
+		$output .= $layout_title;
+		$output .= "</h2>";
+		return $output;
+	}
 }

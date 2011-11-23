@@ -1,11 +1,4 @@
-<ul class="crumbs">
-	<li><?php $this->Html->addCrumb('Dashboard', '/admin'); ?></li>
-	<li><?php $this->Html->addCrumb('Roles', '/admin/roles'); ?></li>
-	<li><?php $this->Html->addCrumb('Roles Lists', ''); ?></li>
-</ul>
-
 <div class="roles index">
-<h2 class="roles-icon"><?php echo $title_layout; ?></h2>
 <ul class="add_icon">
 	<li><?php echo $this->Html->image('admin/icons/add_icon.png', array('alt' => 'Ver Perfil', 'url' => 'add/'));?></li>
 	<li class="add-u"><?php echo $this->Html->link(__('Crear un Rol', true), array('action'=>'add')); ?></li>

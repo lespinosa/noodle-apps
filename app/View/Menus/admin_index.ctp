@@ -1,37 +1,39 @@
-<ul class="crumbs">
-	<li><?php $this->Html->addCrumb('Dashboard', '/admin'); ?></li>
-	<li><?php $this->Html->addCrumb('Menus', ''); ?></li>
-</ul>
 <div class="menus index">
-<h2 class="menus-icon"><?php echo $title_layout; ?></h2>
 <ul class="add_icon">
 	<li><?php echo $this->Html->image('admin/icons/add_icon.png', array('alt' => 'Ver Perfil', 'url' => 'add/'));?></li>
 	<li class="add-u"><?php echo $this->Html->link(__('Agregar Link', true), array('action'=>'add', $menuType)); ?></li>
 
 </ul>
-<div class="clear"></div>
-<div id="form">
-	<h3><?php echo __('Filtral por:', true);?></h3>
+<div class="clear"></div><div id="filtle">
 	<div class="clear"></div>
-	<?php echo $this->Form->create('Menus', array('action'=>'index')); ?>
-	<?php
-		$options = array(1 => 'Active', 2 => 'Blocked', 0 => 'Cualquiera');
-		$attributes = array('value' => 0);
-		$optionsRol = array(0 => 'Cualquiera', 'Roles' => $roles);
-		?>
-	<?php echo $this->Form->input('title');?>	
-	<div class="role_id"><?php echo __('<label>Roles</label>', true) . $this->Form->select('role_id', $optionsRol, $attributes);?></div>
-	<div class="status"><?php echo __('<label>Status</label>', true) . $this->Form->select('status', $options, $attributes);?></div>
-	<?php echo $this->Html->link('Reset', array('action' => 'index'), array('class' => 'cancel'));?>
-	<?php echo $this->Form->end('Filter');?>
+	<?php echo $this->Form->create('Menu', array('action'=>'index')); ?>
+		<fieldset class="filtle-title">
+		<?php echo $this->Form->input('filter_search', array('label' => 'Filter:'));?>
+		<?php echo $this->Form->button('Search', array('type' => 'submit', 'class' => 'button'));?>
+		<?php echo $this->Html->link(__('Reset', true), array('action' => 'index'), array('class' => 'button'));?>
+	</fieldset>
+	<?php $opt = array('type' => 'hidden'); echo $this->Form->end($opt);?>
+	<?php echo $this->Form->create('Menu', array('action' => 'index')); ?>
+		<fieldset class="select_option">
+			<div class="input select">
+			<?php 
+			$options = array($menutypes);
+			$attributes = array('value' => $menuType, 'onchange' => 'this.form.submit()');
+			echo $this->Form->select('filter_menutype', $options, $attributes);?>
+			</div>		
+			<?php echo $this->Form->input('filter_status', array('label' => false, 'onchange' => 'this.form.submit()', 'options'=> array(
+					0 => 'Select Status', 1 => 'Published', 2 => 'Unpublished')));?>
+								
+			<?php echo $this->Form->input('filter_role', array('label' => false, 'onchange' => 'this.form.submit()', 'options' => array(
+				0 => 'Select Access', 'Access' => $roles)));?>
+			<?php echo $this->Form->input('filter_language', array('label' => false, 'onchange' => 'this.form.submit()', 'options' => array(
+					0 => 'Select Language')));?>
+	</fieldset>		
+
+	<?php $opt = array('type' => 'hidden'); echo $this->Form->end($opt);?>
 		
 </div>
 
-<?php 
-echo $this->Paginator->counter(array(
-'format' => __('Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%')
-));
-?>
 <div id="table-content">
 
 <table  cellpadding="0" cellspacing="0">
@@ -60,9 +62,9 @@ echo $this->Paginator->counter(array(
 		<td class="select-all"><?php echo $this->Form->checkbox('id', array('name'=> 'id', 'value' => $linkId));?></td>
 		<td class="id"><?php echo $linkId;?></td>
 		<td class="name"><?php echo $this->Html->link($linksTitle, array('action' => 'edit', $linkId, $menuType));?></td>
-		<td class="status"><?php echo $this->Layout->getStatus($linksStatus[$linkId], 'img')?></td>
-		<td class="ordering"><?php echo $this->Layout->getOrdering('Menu', $linkId, $linksMenuType[$linkId], 'img');?></td>
-		<td></td>
+		<td class="status"><?php echo $this->Layout->getStatus('Menus', 'Menu', $linkId, 'img')?></td>
+		<td class="ordering"><?php echo $this->Layout->getOrdering('Menu', $linkId, $linksMenuType[$linkId], 'img', $this->Layout->getLeft('Menus', 'Menu', $linkId));?></td>
+		<td><?php echo $this->Layout->getAccess($linkId, null);?></td>
 		<td class="action"><?php echo $this->Html->link(
 						$this->Html->image('admin/icons/edit_icon.png', array('alt' => 'Editar')),
 						array('action' => 'edit', $linkId, $menuType), array('escape' => false));?>

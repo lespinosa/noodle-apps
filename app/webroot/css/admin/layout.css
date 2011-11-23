@@ -262,14 +262,14 @@ h3.cpanel-title.info{
 	background: url(../../img/admin/icons/info_icon.png) no-repeat left;
 }
 /* Main Style */
-#main {width:90%; margin: 20px auto;}
+#main {width:94%; margin: 0 auto; padding: 0;}
 /* General style */
 
 #table-content,
 div.admin_view{
 	float: left;
 	margin: 8px 0;
-	padding:6px;
+	padding:6px 0;
 	width: 100%;
 	border: 3px solid #D3EBF9;
 	border-radius: 8px;
@@ -280,8 +280,9 @@ div.admin_view{
 	padding:8px;
 }
 #table-content table{
+	margin:0 auto;
 	padding:6px;
-	width: 100%;
+	width: 99%;
 }
 #table-content table th{
 	text-align:left;
@@ -457,6 +458,53 @@ td.select-all {
 	width: 20px;
 	text-align: center;
 }
+ul.add_icon {
+	float:left;
+	margin: 0 0 20px 0;
+	padding: 0;
+	font-size: 16px;
+	font-weight: bold;
+}
+ul.add_icon li {
+	float: left;
+	padding:0 8px 0 0;
+}
+ul.add_icon li.add-u{
+	margin: 2px 0 0 0;
+}
+h2.contents_title,
+h2.categories_title,
+h2.users_title,
+h2.roles_title,
+h2.engadget_install_title,
+h2.engadget_manager_title{
+	margin:0 0 30px 0;
+	padding: 8px 0 8px 53px;
+	color:#000;
+	font-size:26px;
+	border-bottom: 1px dashed #ccc;
+}
+h2.contents_title{
+ 	background: url(../../img/admin/icons/content48x48_icon.png)no-repeat;
+}
+h2.categories_title{
+ 	background: url(../../img/admin/icons/icon-48-category.png)no-repeat;
+}
+h2.users_title{
+ 	background: url(../../img/admin/icons/search-user_icon.png)no-repeat;
+}
+h2.roles_title{
+ 	background: url(../../img/admin/icons/group48x48_icon.png)no-repeat;
+}
+h2.engadget_install_title,
+h2.engadget_manager_title{
+ 	background: url(../../img/admin/icons/engadgets_icon48x48.png)no-repeat;
+}
+#list_type {
+	padding:10px;	
+	background:#fff;
+}
+
 /*Foter Style */
 #footer {
 	margin: 0;

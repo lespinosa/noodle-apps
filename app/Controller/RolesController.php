@@ -18,7 +18,7 @@ class RolesController extends AppController {
 	  	$this->set('location_site', 'roles');
 	}
  	function admin_index() {
- 		$this->set('title_layout', 'Role Lists');
+ 		$this->set('title_layout', 'Role Manager');
  		$this->layout = 'admin';
         $this->Role->recursive = 0;
         $this->set('roles', $this->paginate());
@@ -26,7 +26,7 @@ class RolesController extends AppController {
 	
  
     function admin_view($id = null) {
-    	$this->set('title_layout', 'View Role');
+    	$this->set('title_layout', 'Role Manager: View Role');
     	$this->layout = 'admin';
     	$this->Role->id = $id;
         if (!$this->Role->id) {
@@ -37,7 +37,7 @@ class RolesController extends AppController {
     }
 	public function admin_add() {
 		$this->layout = 'admin';
-		$this->set('title_layout', 'Add new Role');
+		$this->set('title_layout', 'Role Manager: Add Role');
 		if (!empty($this->request->data)) {
 			if ($this->Role->save($this->request->data)) {
 				$this->Session->setFlash(__('Your User has been saved.', true));
@@ -49,7 +49,7 @@ class RolesController extends AppController {
 	}
 	function admin_edit($id = nul) {
 		$this->layout = 'admin';
-		$this->set('title_layout', 'Edital Rol');
+		$this->set('title_layout', 'Role Manager: Edital Rol');
 		$this->Role->id = $id;
         if (!$this->Role->id && empty($this->request->data)) {
             $this->Session->setFlash(__('Invalid Role', true));

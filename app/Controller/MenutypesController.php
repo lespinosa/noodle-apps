@@ -27,7 +27,7 @@ class MenutypesController extends AppController
 		$this->set('menus', $this->paginate());
 	}
 	public function admin_add(){
-		$this->set('title_layout', 'Agregar Menu');
+		$this->set('title_layout', 'Menu Manager: Add Menu');
 		if(!empty($this->request->data)){
 			if($this->Menutype->save($this->request->data)){
 				$this->Session->setFlash(__('Your User has been saved.', true));
@@ -38,7 +38,7 @@ class MenutypesController extends AppController
 		}
 	}
 	public function admin_edit($id = null){
-		$this->set('title_layout', 'Editar Menu');
+		$this->set('title_layout', 'Menu Manager: Editar Menu');
 		$this->Menutype->id = $id;
 		if(!$this->Menutype->id && empty($this->request->data)){
 			$this->Session->stFlash(__('Menu invalido', true));
