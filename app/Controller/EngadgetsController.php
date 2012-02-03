@@ -30,12 +30,12 @@ class EngadgetsController extends AppController
 	public function admin_index(){
 		$this->set('location_site', 'Engadget_install');
 		$this->set('title_layout', 'Engadget Install');	
-		$this->layout = 'admin';
+		
 	}
 	public function admin_manager(){
 		$this->set('location_site', 'Engadget_Manager');
 		$this->set('title_layout', 'Engadget Manager');
-		$this->layout = 'admin';
+		
 		$this->Engadget->recursive = 0;
 		$this->set('engadgets', $this->paginate());
 	}
@@ -43,7 +43,7 @@ class EngadgetsController extends AppController
 	{
 		$this->set('location_site', 'Engadget_install');
 		$this->set('title_layout', 'Engadget install');	
-		$this->layout = 'admin';
+		
 	//$ext = strtolower(strrchr($this->request->data['Engadget']['file']['name'], '.'));
 		$tmp = ROOT . DS . APP_DIR . DS . 'tmp' . DS;
 		$uploaddir = $tmp . 'engadgets' . DS;

@@ -34,8 +34,7 @@ class ContentsController extends AppController
 		$contents = $this->Content->find('all');
 		$this->set('contents', $contents);
 	}
-	public function admin_index(){
-		$this->layout = 'admin';
+	public function admin_index(){		
 		$this->set('title_layout', 'Articles Manager');
 		$this->Content->recursive = 0;
 		$this->set('contents', $this->paginate());
@@ -100,8 +99,7 @@ class ContentsController extends AppController
 					
 			));
 			$this->set('contents', $contentsData);
-		}
-		
+		}		
 		$categories = $this->Content->Category->generateTreeList(null, '_');
 		$contentUserId = $this->Content->find('list', array('fields' => 'user_id'));
 		$access = $this->Content->query("SELECT DISTINCT c.access FROM contents as c");
@@ -117,8 +115,7 @@ class ContentsController extends AppController
 	}
 	
 	public function admin_add()
-	{
-		$this->layout = 'admin';
+	{	
 		$this->set('title_layout', 'Articles Manager: Add Article');
 		if($this->request->is('post')) {
 			if ($this->Content->save($this->request->data)) {
@@ -136,7 +133,6 @@ class ContentsController extends AppController
 	public function admin_edit($id = null)
 	{
 		$this->set('title_layout', 'Articles Manager: Edit Article');
-		$this->layout = 'admin';
 		$this->Content->id = $id;
 		if (!$this->Content->id && empty($this->request->data)) {
 			$this->Session->setFlash(__('Articles invalido.', true));
@@ -157,7 +153,6 @@ class ContentsController extends AppController
 		$this->set(compact('categories', 'roles', 'users'));
 	}
 	public function admin_delete($id = null) {
-		$this->layout = 'admin';
 		$this->Content->id = $id;
 		if (!$this->Content->id) {
 			$this->Session->setFlash(__('Invalid id for Article', true));

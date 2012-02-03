@@ -20,7 +20,7 @@ class MenusController extends AppController
 	function beforeFilter() {
 	   parent::beforeFilter(); 
 	  $this->Auth->allowedActions = array('*');
-	  $this->layout = 'admin';
+	  
 	
 	  $this->set('location_site', 'menus');
 	 // $this->Auth->allow(array('*', 'logout', 'login'));	   
@@ -38,7 +38,7 @@ class MenusController extends AppController
 			$menuId = $this->request->data('Menu.filter_menutype');
 		}
 		$this->set('title_layout', 'Menu Manager: Menu Items');
- 		$this->layout = 'admin';
+ 		
 		$menuType = $menuId;
         $this->Menu->recursive = 0;
 		$linksTree = $this->Menu->generateTreeList(array(

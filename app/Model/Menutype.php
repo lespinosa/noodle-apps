@@ -13,6 +13,5 @@ class Menutype extends AppModel
 	
 	function parentNode() {
 	    return null;
-	}
-	
+	}	
 }

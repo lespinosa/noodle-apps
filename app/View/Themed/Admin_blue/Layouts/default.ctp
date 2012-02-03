@@ -75,7 +75,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 	</div>
 	  <div class="clear"></div>
     <?php echo $this->element('admin/footer'); ?>
-    !-- JS Tabs -->
+    <!-- JS Tabs -->
 <script>
 	$(function() {
 		$( ".vertical-tabs" ).tabs().addClass( "ui-helper-clearfix" ).removeClass("ui-corner-all").removeClass("ui-tabs");

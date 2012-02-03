@@ -20,13 +20,11 @@ class CategoriesController extends AppController
 	);
 	function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->allowedActions = array('*');
-		
+		$this->Auth->allowedActions = array('*');		
 		$this->set('location_site', 'categories');
 	}
 	public function admin_index($id = null)
-	{
-		$this->layout = 'admin';
+	{		
 		$this->set('title_layout', 'Category Manager');
 		$this->Category->recursive = 0;
 		$categoryTree = $this->Category->generateTreeList(null);
@@ -84,14 +82,12 @@ class CategoriesController extends AppController
 			));
 		$roles = $this->Category->Role->find('list');		
 		$this->set(compact('categoryLeft', 'roles'));
-	}
-	
+	}	
 	
 	public function admin_add()
 	{
-		$this->layout = 'admin';
-		$this->set('title_layout', 'Category Manager: Add Category');
 		
+		$this->set('title_layout', 'Category Manager: Add Category');
 		if(!empty($this->request->data)) {
 			if ($this->Category->save($this->request->data)) {
 				$this->Session->setFlash(__('Your Category has been saved.', true));
@@ -105,7 +101,6 @@ class CategoriesController extends AppController
 		$this->set(compact('parents', 'roles'));
 	}
 	public function admin_edit($id = null) {
-		$this->layout = 'admin';
 		$this->set('title_layout', 'Category Manager: Edit Category');
 		$this->Category->id = $id;
 		if (!$this->Category->id && empty($this->request->data)) {
@@ -126,7 +121,6 @@ class CategoriesController extends AppController
 		
 	}
 	public function admin_delete($id = null) {
-		$this->layout = 'admin';
 		$this->Category->id = $id;
 		if (!$this->Category->id) {
 			$this->Session->setFlash(__('Invalid Id for Category', true));

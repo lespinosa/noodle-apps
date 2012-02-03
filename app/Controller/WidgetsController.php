@@ -24,7 +24,6 @@ class WidgetsController extends AppController
 		parent::beforeFilter();
 		$this->set('location_site', 'widgets');		
 		$this->Auth->allowedActions = array('*');
-		$this->layout = 'admin';
 		//$this->Auth->allow(array('*', 'view'));
 		
 	}	
