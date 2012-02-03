@@ -13,5 +13,7 @@
 class Engadget extends AppModel
 {
 	public $name = 'Engadget';
-	
+	function parentNode() {
+	    return null;
+	}
 }

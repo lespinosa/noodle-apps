@@ -124,12 +124,12 @@ class AclReflectorComponent extends Component
 					// Get the controller name
 					$controller_class_name = Inflector::camelize(substr($file, 0, strlen($file) - strlen('.php')));
 					
-					if(!$filter_default_controller || Inflector::camelize($plugin_name) != $controller_class_name)
+					if(!$filter_default_controller || Inflector::camelize($plugin_name) . 'Controller' != $controller_class_name)
 					{
+					    App::uses($controller_class_name, $plugin_name . '.Controller');
+					    
     					if (!preg_match('/^'. Inflector::camelize($plugin_name) . 'App/', $controller_class_name))
     					{
-    					    App::uses($controller_class_name, $plugin_name . '.Controller');
-    					    
     					    $plugins_controllers[] = array('file' => $fileName, 'name' => Inflector::camelize($plugin_name) . "/" . substr($controller_class_name, 0, strlen($controller_class_name) - strlen('Controller')));
     					}
 					}

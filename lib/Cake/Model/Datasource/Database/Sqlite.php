@@ -250,7 +250,7 @@ class Sqlite extends DboSource {
 		if (in_array($col, array('text', 'integer', 'float', 'boolean', 'timestamp', 'date', 'datetime', 'time'))) {
 			return $col;
 		}
-		if (strpos($col, 'varchar') !== false) {
+		if (strpos($col, 'char') !== false) {
 			return 'string';
 		}
 		if (in_array($col, array('blob', 'clob'))) {
@@ -330,7 +330,7 @@ class Sqlite extends DboSource {
  * @return mixed array with results fetched and mapped to column names or false if there is no results left to fetch
  */
 	public function fetchResult() {
-		if ($row = $this->_result->fetch()) {
+		if ($row = $this->_result->fetch(PDO::FETCH_NUM)) {
 			$resultRow = array();
 			foreach ($this->map as $col => $meta) {
 				list($table, $column, $type) = $meta;

@@ -63,4 +63,22 @@ Cache::config('default', array('engine' => 'File'));
  * CakePlugin::load('DebugKit'); //Loads a single plugin named DebugKit
  *
  */
+/* require APP . 'Lib' . DS .'NoodleApp.php';
+ 
+ if (!defined('WIDGETS')) {
+	define('WIDGETS', ROOT . DS . 'widgets' . DS);
+}*/
+// Construimos los directorios adicionales donde estaran los helper
+$dir = APP.'Widgets'.DS;
+if ($widgetDir = opendir($dir)){
+	while (($widgetName = readdir($widgetDir)) !== false){
+		//Search Helpers
+		 App::build(array('View/Helper' => array(APP.'Widgets'.DS.$widgetName.DS.'Helper'.DS, APP.'Widgets'.DS.$widgetName.DS)));
+		 //Search Models
+		 App::build(array('Model' => array(APP.'Widgets'.DS.$widgetName.DS.'Model'.DS, APP.'Widgets'.DS.$widgetName.DS)));
+	}
+	closedir($widgetDir);
+}
 CakePlugin::load('Acl', array('bootstrap' => true));
+
+//App::build(array('View/Helper' => array(APP.'Widgets'.DS)));

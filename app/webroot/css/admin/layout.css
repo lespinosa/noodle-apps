@@ -504,7 +504,40 @@ h2.engadget_manager_title{
 	padding:10px;	
 	background:#fff;
 }
+div.desc{
+	float: left;
+	margin:0 0 0 8px;
+	width:100%; 
+}
+#form div.desc label{
+	float: left;
+	margin:0;
+	width:170px; 
+}
+/*clear theme style*/
+#clear-theme ul{
+	margin:0;
+	padding:0 12px;
+	display: block;
+}
+#clear-theme ul li{
+    margin: 0;
+    padding: 8px 0;
+    border-bottom: 1px solid #DFDFDF;
 
+}
+#clear-theme ul li a {
+	color: #1F7297;
+    font-size: 18px;
+    margin: 8px 0;
+    padding: 0 0 0 22px;
+	background: url("../../img/admin/arow.png") no-repeat left center;
+}
+#clear-theme ul li span{
+	margin:0;
+	padding: 0;
+	display: block;
+}
 /*Foter Style */
 #footer {
 	margin: 0;

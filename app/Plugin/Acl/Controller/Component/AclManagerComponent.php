@@ -1,4 +1,7 @@
 <?php
+/**
+ * @property AclReflectorComponent $AclReflector
+ */
 class AclManagerComponent extends Component
 {
     var $components = array('Acl', 'Acl.AclReflector', 'Session');

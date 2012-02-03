@@ -9,10 +9,11 @@
  * @copyright     Copyright 2011, iWebdevelope.com (http://iwebdevelope.com)
  * @link     http://www.cnexuscms.com
  */
+define('ROOT_WIDGETS', APP.'widgets'.DS);
 
 class NoodleHelper extends AppHelper
 {
-	var $helpers = array('Html', 'Session', 'Form');
+	var $helpers = array('Html', 'Session', 'Form', 'Menus');
 	
 	function getListType($itemId, $menuTypeId){
 		$output = "<fieldset class='link_type'>";
@@ -117,5 +118,47 @@ class NoodleHelper extends AppHelper
 				unset($options['default']);
 			}
 			return sprintf($url, $this->_parseAttributes($options), $title);
+	}
+	public function import($type = null, $modName, $fileName){
+		switch ($type) {
+			case 'Helper':
+				require_once ROOT_WIDGETS.$modName.DS.'helper'.DS.$fileName.'.php';
+				break;
+			
+			default:
+				
+				break;
+		}
+	}
+	public function modOptions($type = null){
+		switch ($type) {
+			case 'tab-links':				
+				return $this->Menus->getTabLink();
+				break;
+			
+			case 'tab-contents':
+				return $this->Menus->getTabContents();
+				break;
+		}		
+	
+	}
+	
+	// Get params $this->Noodle->params('menutype', array('type'=>'text', 'label' => 'sample'), 'set');
+	public function params($fieldName = null, $options = array()){
+		$getparams = new stdClass();		
+		$datajSon = $this->request->data('Widget.params');
+		$params = json_decode($datajSon);	
+		
+		if($datajSon == null or empty($params->$fieldName)){
+			return $this->Form->input('Params.'.$fieldName, $options);
+		} else {
+			$option = array_replace($options, array('value' => $params->$fieldName));
+			return $this->Form->input('Params.'.$fieldName, $option);
+					
+		}			
+	}
+	public function getParams(){
+		echo $this->params(NULL, null, 'get');
+		
 	}
 }

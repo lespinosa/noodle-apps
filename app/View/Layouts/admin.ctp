@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
 	<?php echo $this->Html->charset(); ?>
 	<title>
@@ -11,14 +11,16 @@
 			'reset',
 			'960_12_col',
             'admin/layout',
-            'admin/vertical-tabs',
             'forms',
+            'admin/vertical-tabs',           
             'ui/redmond/jquery.ui.all',
             'colorbox'
         ));
 		echo $this->Html->script(array(
 				'jquery-1.6.4.min',
-				'ui/jquery.ui.core',
+				'ui/jquery-ui-1.8.16.custom',
+				'ui/jquery-ui-timepicker-addon',
+				/*'ui/jquery.ui.core',
 				'ui/jquery.ui.widget',
 				'ui/jquery.ui.tabs',
 				'ui/jquery.ui.mouse',
@@ -26,7 +28,7 @@
 				'ui/jquery.ui.draggable',
 				'ui/jquery.ui.position',
 				'ui/jquery.ui.dialog',
-				'ui/jquery.ui.datepicker',
+				'ui/jquery.ui.datepicker',*/
 				'../ckeditor/ckeditor',
 				'jquery.colorbox'
 		));
@@ -35,7 +37,6 @@
 </head>
 
 <body>
-
 	 <div id="wrapper">
         <?php echo $this->element('admin/header'); ?>
          <div class="clear"></div>         
@@ -62,7 +63,8 @@
 	$(function() {
 		$( "#tabs" ).tabs();
 	});
-	</script>
+</script>
+		
 <script>
 		
 		$(document).ready(function()
@@ -76,12 +78,9 @@
 				});
 			});					
 		});
-		var _imageR = "/noodleapps/img/admin/icons/calendar.gif";
 		$(function() {
-			$( ".datepicker" ).datepicker({			
-				showOn: "button",
-				buttonImage: _imageR,
-				buttonImageOnly: true,
+			$( ".datetimepicker" ).datetimepicker({			
+				timeFormat: 'h:mm',
 				dateFormat: 'yy-mm-dd'
 			});
 		
@@ -113,6 +112,7 @@
         })
         .change();
         $(".list-type").colorbox({iframe:true, width:"70%", height: "60%", opacity: "0.7"});
+         $("a.colorbox").colorbox({iframe:true, width:"70%", height: "60%", opacity: "0.7"});
         
 	/*top menu 
 	var site = function() {
@@ -127,5 +127,6 @@
 </script>
 -->
 <?php echo $this->Js->writeBuffer();?>
+<?php echo $this->element('sql_dump'); ?>
 </body>
 </html>

@@ -94,7 +94,7 @@ class EngadgetsController extends AppController
 								case 'widget':
 									//$dirExt = mkdir($dest.$xmlSetup->info->name, 0755);
 									$source = $uploaddir;
-									$folderWidget = $dest .strtolower($engadgetType.'_'.$xmlSetup->info->name);
+									$folderWidget = $dest .strtolower($xmlSetup->info->name);
 									$this->Noodle->fullMove($source, $folderWidget);
 									//Clear Temp folder
 									$this->Noodle->clearAll($uploaddir, false);
@@ -109,9 +109,9 @@ class EngadgetsController extends AppController
 									break;
 							}
 						}
-					    $this->Session->setFlash(__('El Widget %s fue instalado corretamente', $xmlSetup->info->name)); echo '<br />'.$xmlSetup->info->desc;
+					    $this->Session->setFlash(__('El Widget %s fue instalado corretamente', $xmlSetup->info->title));
 					} else {
-						$this->Session->setFlash(__('El Widget %s no pudo ser instalado', $xmlSetup->info->name));
+						$this->Session->setFlash(__('El Widget %s no pudo ser instalado', $xmlSetup->info->title));
 					}					
 					break;
 				
@@ -137,14 +137,13 @@ class EngadgetsController extends AppController
 		}
 		$appPath = ROOT . DS . APP_DIR . DS;
 		$type = strtolower($engadget['Engadget']['type']);
-		$name = $engadget['Engadget']['name'];
+		$nameWidget = $engadget['Engadget']['name'];
 		switch ($type) {
 			case 'plugin':
 				
 				break;
 			
 			case 'widget':
-				$nameWidget = strtolower($type.'_'.$name);
 				$souser = $appPath . 'Widgets' . DS . $nameWidget;
 				$this->Noodle->clearAll($souser, false);
 				$this->Noodle->uninstall($id, $type);

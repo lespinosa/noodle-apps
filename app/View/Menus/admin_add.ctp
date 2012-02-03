@@ -87,8 +87,8 @@
 			<?php echo $this->Form->input('user_id', array('label' => 'Users Lists', 'options' => array(
 					$AuthId => $AuthUser, 'Users List' => $users)));?>
 			<?php echo $this->Form->input('created_by', array('label' => 'Created by'));?>
-			<?php echo $this->Form->input('publish_up', array('type' => 'text', 'class' => 'datepicker'));?>
-			<?php echo $this->Form->input('publish_down', array('type' => 'text', 'class' => 'datepicker'));?>
+			<?php echo $this->Form->input('publish_up', array('type' => 'text', 'class' => 'datetimepicker'));?>
+			<?php echo $this->Form->input('publish_down', array('type' => 'text', 'class' => 'datetimepicker'));?>
 		</fieldset>
 	</div>
 	<div id="tabs-5">

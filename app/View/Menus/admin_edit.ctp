@@ -71,7 +71,7 @@
 		    <?php echo $this->Form->input('language');?>
 		    <?php
 		    	$datajSon = $this->request->data('Menu.params');
-				$params = json_decode($datajSon); 	
+				$params = json_decode($datajSon);	
 				echo $this->Form->input('param1', array('value' => $params->param1));
 				echo $this->Form->input('param2', array('value' => $params->param2));		
 				

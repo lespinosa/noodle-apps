@@ -67,48 +67,53 @@ echo $this->element('Aros/links');
 	$js_init_done = array();
 	$previous_ctrl_name = '';
 	
-	foreach($actions['app'] as $controller_name => $ctrl_infos)
+	if(isset($actions['app']) && is_array($actions['app']))
 	{
-		if($previous_ctrl_name != $controller_name)
-		{
-			$previous_ctrl_name = $controller_name;
-
-			$color = (isset($color) && $color == 'color1') ? 'color2' : 'color1';
-		}
-
-		foreach($ctrl_infos as $ctrl_info)
-		{
-    		echo '<tr class="' . $color . '">
-    		';
-
-    		echo '<td>' . $controller_name . '->' . $ctrl_info['name'] . '</td>';
-
-	    	echo '<td>';
-	    	echo '<span id="right__' . $user[$user_model_name][$user_pk_name] . '_' . $controller_name . '_' . $ctrl_info['name'] . '">';
-
-	    	/*
-			* The right of the action for the role must still be loaded
-	    	*/
-	        echo $this->Html->image('/acl/img/ajax/waiting16.gif', array('title' => __d('acl', 'loading')));
-
-		    if(!in_array($controller_name . '_' . $user[$user_model_name][$user_pk_name], $js_init_done))
-	        {
-	        	$js_init_done[] = $controller_name . '_' . $user[$user_model_name][$user_pk_name];
-	        	$this->Js->buffer('init_register_user_controller_toggle_right("' . $this->Html->url('/', true) . '", "' . $user[$user_model_name][$user_pk_name] . '", "", "' . $controller_name . '", "' . __d('acl', 'The ACO node is probably missing. Please try to rebuild the ACOs first.') . '");');
-	        }
-	        
-	    	echo '</span>';
-
-	    	echo ' ';
-	    	echo $this->Html->image('/acl/img/ajax/waiting16.gif', array('id' => 'right__' . $user[$user_model_name][$user_pk_name] . '_' . $controller_name . '_' . $ctrl_info['name'] . '_spinner', 'style' => 'display:none;'));
-
-	    	echo '</td>';
-	    	echo '</tr>
-	    	';
-		}
+    	foreach($actions['app'] as $controller_name => $ctrl_infos)
+    	{
+    		if($previous_ctrl_name != $controller_name)
+    		{
+    			$previous_ctrl_name = $controller_name;
+    
+    			$color = (isset($color) && $color == 'color1') ? 'color2' : 'color1';
+    		}
+    
+    		foreach($ctrl_infos as $ctrl_info)
+    		{
+        		echo '<tr class="' . $color . '">
+        		';
+    
+        		echo '<td>' . $controller_name . '->' . $ctrl_info['name'] . '</td>';
+    
+    	    	echo '<td>';
+    	    	echo '<span id="right__' . $user[$user_model_name][$user_pk_name] . '_' . $controller_name . '_' . $ctrl_info['name'] . '">';
+    
+    	    	/*
+    			* The right of the action for the role must still be loaded
+    	    	*/
+    	        echo $this->Html->image('/acl/img/ajax/waiting16.gif', array('title' => __d('acl', 'loading')));
+    
+    		    if(!in_array($controller_name . '_' . $user[$user_model_name][$user_pk_name], $js_init_done))
+    	        {
+    	        	$js_init_done[] = $controller_name . '_' . $user[$user_model_name][$user_pk_name];
+    	        	$this->Js->buffer('init_register_user_controller_toggle_right("' . $this->Html->url('/', true) . '", "' . $user[$user_model_name][$user_pk_name] . '", "", "' . $controller_name . '", "' . __d('acl', 'The ACO node is probably missing. Please try to rebuild the ACOs first.') . '");');
+    	        }
+    	        
+    	    	echo '</span>';
+    
+    	    	echo ' ';
+    	    	echo $this->Html->image('/acl/img/ajax/waiting16.gif', array('id' => 'right__' . $user[$user_model_name][$user_pk_name] . '_' . $controller_name . '_' . $ctrl_info['name'] . '_spinner', 'style' => 'display:none;'));
+    
+    	    	echo '</td>';
+    	    	echo '</tr>
+    	    	';
+    		}
+    	}
 	}
 	?>
 	<?php
+	if(isset($actions['plugin']) && is_array($actions['plugin']))
+	{
     	foreach($actions['plugin'] as $plugin_name => $plugin_ctrler_infos)
     	{
     	    echo '<tr class="title"><td colspan="2">' . __d('acl', 'Plugin') . ' ' . $plugin_name . '</td></tr>
@@ -155,7 +160,8 @@ echo $this->element('Aros/links');
     	        }
     	    }
     	}
-    	?>
+	}
+    ?>
 	</table>
     <?php
     echo $this->Html->image('/acl/img/design/tick.png') . ' ' . __d('acl', 'authorized');

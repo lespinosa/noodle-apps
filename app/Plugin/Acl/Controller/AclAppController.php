@@ -7,13 +7,14 @@
  */
 class AclAppController extends AppController
 {
-    var $components = array('Acl', 'Auth', 'Session', 'Acl.AclManager', 'Acl.AclReflector');
+    var $components = array('Acl', 'Auth', 'Session', 'RequestHandler', 'Acl.AclManager', 'Acl.AclReflector');
 	
     function beforeFilter()
 	{
 	    parent :: beforeFilter();
-	    
+	    $this->Auth->allowedActions = array('*');
 		$this->_check_config();
+		$this->layout = 'admin';
 	}
     
 	private function _check_config()

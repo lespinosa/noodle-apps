@@ -11,7 +11,7 @@
 class MenutypesController extends AppController
 {
 	var $name = 'Menutypes';
-	
+	public $uses = array('Menutypes', 'Menus');
 	function beforeFilter() {
 	   parent::beforeFilter(); 
 	  $this->Auth->allowedActions = array('*');

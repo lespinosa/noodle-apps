@@ -8,11 +8,11 @@
  * @copyright     Copyright 2011, iWebdevelope.com (http://iwebdevelope.com)
  * @link     http://www.cnexuscms.com
  */
-App::uses('Role', 'Model');
+
 class LayoutHelper extends Helper
 {
 	
-	var $helpers = array('Html', 'Session', 'Form');
+	var $helpers = array('Html', 'Session', 'Form', 'Widgets');
 
 	/*function __construct($argument) {
 		
@@ -254,4 +254,27 @@ class LayoutHelper extends Helper
 		$output .= "</h2>";
 		return $output;
 	}
+	
+	// get Widget
+	public function getWidget($position = '', $options = array()){
+		App::import('Controller', 'Widgets');		
+		$this->App = new WidgetsController;
+		$widget = $this->App->Widget->find('all', array(
+							'fields' => array('Widget.title','Widget.id','Widget.widget', 'Widget.params', 'Widget.position', 'Widget.status'),
+							'conditions' => array('Widget.position' => $position, 'Widget.status' => 1),							
+							'order' => array('Widget.lft' => 'desc') 
+						)
+					);
+	//print_r($this->App->Widget->query("SELECT * FROM widgets AS W LIMIT 2;"));
+	//	print_r($widget);
+		
+		$numWidget = $this->App->Widget->find('count');
+		for ($i = 1; $i <= $numWidget; $i++) {
+    		$n = ($i - 1);
+			echo $this->Widgets->element($widget[$n]['Widget']['widget'], $widget[$n]['Widget']['widget'], array(
+    "options" => array('params' => $widget[$n]['Widget'], 'position' =>$position)));
+		}	
+		
+	}
+	
 }

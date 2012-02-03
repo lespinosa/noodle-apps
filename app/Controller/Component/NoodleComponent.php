@@ -26,13 +26,15 @@ class NoodleComponent extends Component
 				$app = new EngadgetsController;
 				$app->Engadget->set(array(
 					'name' => $xmlSetup->info->name,
+					'title' => $xmlSetup->info->title,
 					'location' => $xmlSetup->info->location,
 					'status' => $xmlSetup->info->status,
 					'type' => $xmlSetup->info->type,
 					'version' => $xmlSetup->info->version,
 					'date' => $xmlSetup->info->date,
 					'author' => $xmlSetup->info->author,
-					'folder' => $xmlSetup->info->folder	
+					'folder' => $xmlSetup->info->folder,
+					'description' => $xmlSetup->info->desc,
 				));
 				$app->Engadget->save();
 

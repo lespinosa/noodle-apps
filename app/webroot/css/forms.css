@@ -285,3 +285,19 @@ fieldset.link_type ul.sub li.last{
 	border: none;
 
 }
+/*General Style*/
+#form .datetime {
+	float:left;
+	margin:4px 0;
+	padding:0 22px 0 0;
+	display: inline;
+	background:url(../img/admin/icons/calendar.gif)no-repeat right;
+
+}
+#form .datetime input{
+	color: #646464;
+    margin: 0;
+    padding: 2px 8px;  
+    border: 1px solid #DFDFDF;    
+    background: #FFFFFF;
+}

@@ -73,10 +73,10 @@ App :: build(array('locales' => App :: pluginPath('Acl') . DS . 'locale'));
 /*
  * Indicates whether the roles permissions page must load through Ajax
  */
-Configure :: write('acl.gui.roles_permissions.ajax', true);
+Configure :: write('acl.gui.roles_permissions.ajax', false);
 
 /*
  * Indicates whether the users permissions page must load through Ajax
  */
-Configure :: write('acl.gui.users_permissions.ajax', true);
+Configure :: write('acl.gui.users_permissions.ajax', false);
 ?>

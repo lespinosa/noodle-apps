@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <engadget>
 	<info>
-		<name>sample</name>
+		<title>Widget Menu</title>
+		<name>widget_menu</name>
 		<type>widget</type>
 		<status>1</status>		
 		<version>0.1</version>
@@ -9,6 +10,6 @@
 		<method>upgrade</method>
 		<date>20/01/11</date>
 		<author>Luis Master</author>
-		<desc>Sample module for cNxus</desc>
+		<desc>This module displays a menu on the frontend.</desc>
 	</info>
 </engadget>

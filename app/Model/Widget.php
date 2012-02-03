@@ -13,7 +13,7 @@
 class Widget extends AppModel
 {
 	public $name = "Widget";
-	var $belongsTo = array('Engadget');
+	var $belongsTo = array('Engadget', 'User', 'Role');
 	
 	function parentNode(){
 		return null;

@@ -29,13 +29,7 @@ class MenusController extends AppController
 		
 	}
 	public function admin_index($id = 7){
-		    $data = new stdClass();
-			$data->title = "luis";
-			$data->fecha = "12/04/77";
-			
-   			echo json_encode($data);
-
-
+		   
 		if ($id == null) {
 			$menuId = $this->request->data('Menu.filter_menutype');
 		} elseif($this->request->data('Menu.filter_menutype') == 0) {
