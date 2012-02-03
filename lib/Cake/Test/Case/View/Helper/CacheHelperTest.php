@@ -68,6 +68,7 @@ class CacheHelperTest extends CakeTestCase {
 			$this->markTestSkipped('TMP/views is not writable %s');
 		}
 	}
+
 /**
  * setUp method
  *
@@ -108,7 +109,6 @@ class CacheHelperTest extends CakeTestCase {
 		$this->Controller->request->addParams(array(
 			'controller' => 'cache_test',
 			'action' => 'cache_parsing',
-			'url' => array(),
 			'pass' => array(),
 			'named' => array()
 		));
@@ -142,7 +142,6 @@ class CacheHelperTest extends CakeTestCase {
 		$this->Controller->request->addParams(array(
 			'controller' => 'cache_test',
 			'action' => 'cache_parsing',
-			'url' => array(),
 			'pass' => array('風街ろまん'),
 			'named' => array()
 		));
@@ -158,6 +157,7 @@ class CacheHelperTest extends CakeTestCase {
 
 		@unlink($filename);
 	}
+
 /**
  * Test cache parsing with cake:nocache tags in view file.
  *
@@ -168,7 +168,6 @@ class CacheHelperTest extends CakeTestCase {
 		$this->Controller->request->addParams(array(
 			'controller' => 'cache_test',
 			'action' => 'cache_parsing',
-			'url' => array(),
 			'pass' => array(),
 			'named' => array()
 		));
@@ -203,7 +202,6 @@ class CacheHelperTest extends CakeTestCase {
 		$this->Controller->request->addParams(array(
 			'controller' => 'cache_test',
 			'action' => 'cache_parsing',
-			'url' => array(),
 			'pass' => array(),
 			'named' => array()
 		));
@@ -235,7 +233,6 @@ class CacheHelperTest extends CakeTestCase {
 		$this->Controller->request->addParams(array(
 			'controller' => 'cache_test',
 			'action' => 'cache_complex',
-			'url' => array(),
 			'pass' => array(),
 			'named' => array()
 		));
@@ -255,14 +252,14 @@ class CacheHelperTest extends CakeTestCase {
 		$this->assertRegExp('/C\. Layout After Test Element/', $result);
 		$this->assertRegExp('/D\. In View File/', $result);
 		$this->assertRegExp('/E\. Layout After Content/', $result);
-		//$this->assertRegExp('/F\. In Element With No Cache Tags/', $result);
+		$this->assertRegExp('/F\. In Element With No Cache Tags/', $result);
 		$this->assertRegExp('/G\. Layout After Content And After Element With No Cache Tags/', $result);
 		$this->assertNotRegExp('/1\. layout before content/', $result);
 		$this->assertNotRegExp('/2\. in plain element/', $result);
 		$this->assertNotRegExp('/3\. layout after test element/', $result);
 		$this->assertNotRegExp('/4\. in view file/', $result);
 		$this->assertNotRegExp('/5\. layout after content/', $result);
-		//$this->assertNotRegExp('/6\. in element with no cache tags/', $result);
+		$this->assertNotRegExp('/6\. in element with no cache tags/', $result);
 		$this->assertNotRegExp('/7\. layout after content and after element with no cache tags/', $result);
 
 		$filename = CACHE . 'views' . DS . 'cachetest_cache_complex.php';
@@ -275,14 +272,14 @@ class CacheHelperTest extends CakeTestCase {
 		$this->assertRegExp('/C\. Layout After Test Element/', $contents);
 		$this->assertRegExp('/D\. In View File/', $contents);
 		$this->assertRegExp('/E\. Layout After Content/', $contents);
-		//$this->assertRegExp('/F\. In Element With No Cache Tags/', $contents);
+		$this->assertRegExp('/F\. In Element With No Cache Tags/', $contents);
 		$this->assertRegExp('/G\. Layout After Content And After Element With No Cache Tags/', $contents);
 		$this->assertRegExp('/1\. layout before content/', $contents);
 		$this->assertNotRegExp('/2\. in plain element/', $contents);
 		$this->assertRegExp('/3\. layout after test element/', $contents);
 		$this->assertRegExp('/4\. in view file/', $contents);
 		$this->assertRegExp('/5\. layout after content/', $contents);
-		//$this->assertRegExp('/6\. in element with no cache tags/', $contents);
+		$this->assertRegExp('/6\. in element with no cache tags/', $contents);
 		$this->assertRegExp('/7\. layout after content and after element with no cache tags/', $contents);
 	}
 
@@ -296,7 +293,6 @@ class CacheHelperTest extends CakeTestCase {
 		$this->Controller->params = array(
 			'controller' => 'cache_test',
 			'action' => 'cache_parsing',
-			'url' => array(),
 			'pass' => array(),
 			'named' => array()
 		);
@@ -330,7 +326,6 @@ class CacheHelperTest extends CakeTestCase {
 		$this->Controller->params = array(
 			'controller' => 'cache_test',
 			'action' => 'cache_parsing',
-			'url' => array(),
 			'pass' => array(),
 			'named' => array()
 		);
@@ -366,7 +361,6 @@ class CacheHelperTest extends CakeTestCase {
 		$this->Controller->request->addParams(array(
 			'controller' => 'cache_test',
 			'action' => 'cache_parsing',
-			'url' => array(),
 			'pass' => array(),
 			'named' => array()
 		));
@@ -409,7 +403,6 @@ class CacheHelperTest extends CakeTestCase {
 		$this->Controller->request->addParams(array(
 			'controller' => 'cache_test',
 			'action' => 'cache_parsing',
-			'url' => array(),
 			'pass' => array(),
 			'named' => array()
 		));
@@ -441,7 +434,6 @@ class CacheHelperTest extends CakeTestCase {
 		$this->Controller->request->addParams(array(
 			'controller' => 'cache_test',
 			'action' => 'cache_parsing',
-			'url' => array(),
 			'pass' => array(1, 2),
 			'named' => array(
 				'name' => 'mark',
@@ -465,6 +457,38 @@ class CacheHelperTest extends CakeTestCase {
 	}
 
 /**
+ * Test that query string parameters are included in the cache filename.
+ *
+ * @return void
+ */
+	public function testCacheWithQueryStringParams() {
+		Router::reload();
+
+		$this->Controller->cache_parsing();
+		$this->Controller->request->addParams(array(
+			'controller' => 'cache_test',
+			'action' => 'cache_parsing',
+			'pass' => array(),
+			'named' => array()
+		));
+		$this->Controller->request->query = array('q' => 'cakephp');
+		$this->Controller->cacheAction = array(
+			'cache_parsing' => 21600
+		);
+		$this->Controller->request->here = '/cache_test/cache_parsing';
+
+		$View = new View($this->Controller);
+		$result = $View->render('index');
+
+		$this->assertNotRegExp('/cake:nocache/', $result);
+		$this->assertNotRegExp('/php echo/', $result);
+
+		$filename = CACHE . 'views' . DS . 'cache_test_cache_parsing_q_cakephp.php';
+		$this->assertTrue(file_exists($filename), 'Missing cache file ' . $filename);
+		@unlink($filename);
+	}
+
+/**
  * test that custom routes are respected when generating cache files.
  *
  * @return void
@@ -478,7 +502,6 @@ class CacheHelperTest extends CakeTestCase {
 			'lang' => 'en',
 			'controller' => 'cache_test',
 			'action' => 'cache_parsing',
-			'url' => array(),
 			'pass' => array(),
 			'named' => array()
 		));
@@ -516,7 +539,6 @@ class CacheHelperTest extends CakeTestCase {
 		$this->Controller->params = array(
 			'controller' => 'cacheTest',
 			'action' => 'cache_name',
-			'url' => array(),
 			'pass' => array(),
 			'named' => array()
 		);
@@ -533,7 +555,7 @@ class CacheHelperTest extends CakeTestCase {
 		$filename = CACHE . 'views' . DS . 'cache_cachetest_cache_name.php';
 		$this->assertTrue(file_exists($filename));
 		@unlink($filename);
-    }
+	}
 
 /**
  * test that afterRender checks the conditions correctly.
@@ -546,10 +568,13 @@ class CacheHelperTest extends CakeTestCase {
 		$View->cacheAction = '+1 day';
 		$View->output = 'test';
 
-		$Cache = $this->getMock('CacheHelper', array('cache'), array($View));
-		$Cache->expects($this->once())->method('cache')
-			->with('posts/index', $View->output, false);
-		$Cache->afterRender('posts/index');
+		$Cache = $this->getMock('CacheHelper', array('_parseContent'), array($View));
+		$Cache->expects($this->once())
+			->method('_parseContent')
+			->with('posts/index', 'content')
+			->will($this->returnValue(''));
+
+		$Cache->afterRenderFile('posts/index', 'content');
 
 		Configure::write('Cache.check', false);
 		$Cache->afterRender('posts/index');
@@ -571,8 +596,11 @@ class CacheHelperTest extends CakeTestCase {
 		$View->output = 'test';
 
 		$Cache = $this->getMock('CacheHelper', array('cache'), array($View));
-		$Cache->expects($this->once())->method('cache')
-			->with('posts/index', $View->output, true);
+		$Cache->expects($this->once())
+			->method('cache')
+			->with('posts/index', $View->output)
+			->will($this->returnValue(''));
+
 		$Cache->afterLayout('posts/index');
 
 		Configure::write('Cache.check', false);
@@ -595,7 +623,6 @@ class CacheHelperTest extends CakeTestCase {
 		$this->Controller->params = array(
 			'controller' => 'cacheTest',
 			'action' => 'cache_empty_sections',
-			'url' => array(),
 			'pass' => array(),
 			'named' => array()
 		);

@@ -122,6 +122,36 @@ class RegisterCategory extends ClassRegisterModel {
  */
 	public $name = 'RegisterCategory';
 }
+ /**
+ * RegisterPrefixedDs class
+ *
+ * @package       Cake.Test.Case.Utility
+ */
+class RegisterPrefixedDs extends ClassRegisterModel {
+
+/**
+ * useDbConfig property
+ *
+ * @var string 'doesnotexist'
+ */
+	public $useDbConfig = 'doesnotexist';
+}
+
+/**
+ * Abstract class for testing ClassRegistry.
+ */
+abstract class ClassRegistryAbstractModel extends ClassRegisterModel {
+
+	abstract function doSomething();
+}
+
+/**
+ * Interface for testing ClassRegistry
+ */
+interface ClassRegistryInterfaceTest {
+
+	function doSomething();
+}
 
 /**
  * ClassRegistryTest class
@@ -271,10 +301,49 @@ class ClassRegistryTest extends CakeTestCase {
 	}
 
 /**
+ * Tests prefixed datasource names for test purposes
+ *
+ */
+	public function testPrefixedTestDatasource() {
+		ClassRegistry::config(array('testing' => true));
+		$Model = ClassRegistry::init('RegisterPrefixedDs');
+		$this->assertEquals('test', $Model->useDbConfig);
+		ClassRegistry::removeObject('RegisterPrefixedDs');
+
+		$testConfig = ConnectionManager::getDataSource('test')->config;
+		ConnectionManager::create('test_doesnotexist', $testConfig);
+
+		$Model = ClassRegistry::init('RegisterArticle');
+		$this->assertEquals('test', $Model->useDbConfig);
+		$Model = ClassRegistry::init('RegisterPrefixedDs');
+		$this->assertEquals('test_doesnotexist', $Model->useDbConfig);
+	}
+
+/**
  * Tests that passing the string parameter to init() will return false if the model does not exists
  *
  */
 	public function testInitStrict() {
 		$this->assertFalse(ClassRegistry::init('NonExistent', true));
+	}
+
+/**
+ * Test that you cannot init() an abstract class. An exception will be raised.
+ *
+ * @expectedException CakeException
+ * @return void
+ */
+	public function testInitAbstractClass() {
+		ClassRegistry::init('ClassRegistryAbstractModel');
+	}
+	
+/**
+ * Test that you cannot init() an abstract class. A exception will be raised.
+ *
+ * @expectedException CakeException
+ * @return void
+ */
+	public function testInitInterface() {
+		ClassRegistry::init('ClassRegistryInterfaceTest');
 	}
 }

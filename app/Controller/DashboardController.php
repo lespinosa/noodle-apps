@@ -16,7 +16,7 @@ class DashboardController extends AppController
 	function beforeFilter() {
 	    parent::beforeFilter(); 
 	  	$this->Auth->allowedActions = array('*');
-	 	$this->layout = 'admin';
+	 	
 		$this->set('location_site', 'admin');
 	 	//$this->Auth->allow(array('*', 'logout', 'login'));
 	   

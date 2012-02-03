@@ -54,7 +54,7 @@ class TreeBehaviorNumberTest extends CakeTestCase {
  *
  * @var array
  */
-	public $fixtures = array('core.number_tree');
+	public $fixtures = array('core.number_tree', 'core.person');
 
 /**
  * testInitialize method
@@ -171,6 +171,57 @@ class TreeBehaviorNumberTest extends CakeTestCase {
 
 		$result = $this->Tree->verify();
 		$this->assertSame($result, true);
+	}
+
+/**
+ * testRecoverUsingParentMode method
+ *
+ * @return void
+ */
+	public function testRecoverUsingParentMode() {
+		extract($this->settings);
+		$this->Tree = new $modelClass();
+		$this->Tree->Behaviors->disable('Tree');
+
+		$this->Tree->save(array('parent_id' => null, 'name' => 'Main', $parentField => null, $leftField => 0, $rightField => 0));
+		$node1	= $this->Tree->id;
+
+		$this->Tree->create();
+		$this->Tree->save(array('parent_id' => null, 'name' => 'About Us', $parentField => $node1, $leftField => 0, $rightField => 0));
+		$node11	= $this->Tree->id;
+		$this->Tree->create();
+		$this->Tree->save(array('parent_id' => null, 'name' => 'Programs', $parentField => $node1, $leftField => 0, $rightField => 0));
+		$node12	= $this->Tree->id;
+		$this->Tree->create();
+		$this->Tree->save(array('parent_id' => null, 'name' => 'Mission and History', $parentField => $node11, $leftField => 0, $rightField => 0));
+		$this->Tree->create();
+		$this->Tree->save(array('parent_id' => null, 'name' => 'Overview', $parentField => $node12, $leftField => 0, $rightField => 0));
+
+		$this->Tree->Behaviors->enable('Tree');
+
+		$result = $this->Tree->verify();
+		$this->assertNotSame($result, true);
+
+		$result = $this->Tree->recover();
+		$this->assertTrue($result);
+
+		$result = $this->Tree->verify();
+		$this->assertTrue($result);
+
+		$result = $this->Tree->find('first', array(
+			'fields' => array('name', $parentField, $leftField, $rightField),
+			'conditions' => array('name' => 'Main'),
+			'recursive' => -1
+		));
+		$expected = array(
+			$modelClass => array(
+				'name' => 'Main',
+				$parentField => null,
+				$leftField => 1,
+				$rightField => 10
+			)
+		);
+		$this->assertEquals($expected, $result);
 	}
 
 /**
@@ -1053,7 +1104,7 @@ class TreeBehaviorNumberTest extends CakeTestCase {
 			array($modelClass => array('id' => 3, 'name' => '1.1.1', $parentField => 2, $leftField => 3, $rightField => 4)),
 			array($modelClass => array('id' => 4, 'name' => '1.1.2', $parentField => 2, $leftField => 5, $rightField => 6)),
 			array($modelClass => array('id' => 5, 'name' => '1.2', $parentField => 1, $leftField => 8, $rightField => 13)),
-			array($modelClass => array( 'id' => 6, 'name' => '1.2.1', $parentField => 5, $leftField => 9, $rightField => 10)),
+			array($modelClass => array('id' => 6, 'name' => '1.2.1', $parentField => 5, $leftField => 9, $rightField => 10)),
 			array($modelClass => array('id' => 7, 'name' => '1.2.2', $parentField => 5, $leftField => 11, $rightField => 12)));
 		$this->assertEquals($total, $expects);
 
@@ -1149,7 +1200,7 @@ class TreeBehaviorNumberTest extends CakeTestCase {
 			array($modelClass => array('id' => 3, 'name' => '1.1.1', $parentField => 2, $leftField => 3, $rightField => 4)),
 			array($modelClass => array('id' => 4, 'name' => '1.1.2', $parentField => 2, $leftField => 5, $rightField => 6)),
 			array($modelClass => array('id' => 5, 'name' => '1.2', $parentField => 1, $leftField => 8, $rightField => 13)),
-			array($modelClass => array( 'id' => 6, 'name' => '1.2.1', $parentField => 5, $leftField => 9, $rightField => 10)),
+			array($modelClass => array('id' => 6, 'name' => '1.2.1', $parentField => 5, $leftField => 9, $rightField => 10)),
 			array($modelClass => array('id' => 7, 'name' => '1.2.2', $parentField => 5, $leftField => 11, $rightField => 12))
 		);
 		$this->assertEquals($total, $expects);
@@ -1202,6 +1253,7 @@ class TreeBehaviorNumberTest extends CakeTestCase {
 		$this->assertTrue($this->Tree->cacheQueries, 'cacheQueries was not restored after reorder(). %s');
 		$this->Tree->cacheQueries = $original;
 	}
+
 /**
  * testGenerateTreeListWithSelfJoin method
  *
@@ -1231,5 +1283,88 @@ class TreeBehaviorNumberTest extends CakeTestCase {
 		$this->assertSame($this->Tree->childCount(2), $this->Tree->childCount(array('id' => 2)));
 		$this->assertSame($this->Tree->getParentNode(2), $this->Tree->getParentNode(array('id' => 2)));
 		$this->assertSame($this->Tree->getPath(4), $this->Tree->getPath(array('id' => 4)));
+	}
+
+/**
+ * testFindThreaded method
+ *
+ * @return void
+ */
+	public function testFindThreaded() {
+		$this->loadFixtures('Person');
+		$Model = new Person();
+		$Model->recursive = -1;
+		$Model->Behaviors->attach('Tree', array('parent' => 'mother_id'));
+
+		$result = $Model->find('threaded');
+		$expected = array(
+			array(
+				'Person' => array(
+					'id' => '4',
+					'name' => 'mother - grand mother',
+					'mother_id' => '0',
+					'father_id' => '0'
+				),
+				'children' => array(
+					array(
+						'Person' => array(
+							'id' => '2',
+							'name' => 'mother',
+							'mother_id' => '4',
+							'father_id' => '5'
+						),
+						'children' => array(
+							array(
+								'Person' => array(
+									'id' => '1',
+									'name' => 'person',
+									'mother_id' => '2',
+									'father_id' => '3'
+								),
+								'children' => array()
+							)
+						)
+					)
+				)
+			),
+			array(
+				'Person' => array(
+					'id' => '5',
+					'name' => 'mother - grand father',
+					'mother_id' => '0',
+					'father_id' => '0'
+				),
+				'children' => array()
+			),
+			array(
+				'Person' => array(
+					'id' => '6',
+					'name' => 'father - grand mother',
+					'mother_id' => '0',
+					'father_id' => '0'
+				),
+				'children' => array(
+					array(
+						'Person' => array(
+							'id' => '3',
+							'name' => 'father',
+							'mother_id' => '6',
+							'father_id' => '7'
+						),
+						'children' => array()
+					)
+				)
+			),
+			array(
+				'Person' => array(
+					'id' => '7',
+					'name' => 'father - grand father',
+					'mother_id' => '0',
+					'father_id' => '0'
+				),
+				'children' => array()
+			)
+		);
+		$this->assertEquals($expected, $result);
 	}
 }

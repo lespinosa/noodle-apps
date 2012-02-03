@@ -126,6 +126,7 @@ class MyCustomExceptionRenderer extends ExceptionRenderer {
 		echo 'widget thing is missing';
 	}
 }
+
 /**
  * Exception class for testing app error handlers and custom errors.
  *
@@ -142,12 +143,14 @@ class MissingWidgetThingException extends NotFoundException { }
 class ExceptionRendererTest extends CakeTestCase {
 
 	public $_restoreError = false;
+
 /**
  * setup create a request object to get out of router later.
  *
  * @return void
  */
 	public function setUp() {
+		parent::setUp();
 		App::build(array(
 			'views' => array(
 				CAKE . 'Test' . DS . 'test_app' . DS . 'View'. DS
@@ -164,17 +167,18 @@ class ExceptionRendererTest extends CakeTestCase {
 	}
 
 /**
- * teardown
+ * tearDown
  *
  * @return void
  */
-	public function teardown() {
+	public function tearDown() {
 		Configure::write('debug', $this->_debug);
 		Configure::write('Error', $this->_error);
 		App::build();
 		if ($this->_restoreError) {
 			restore_error_handler();
 		}
+		parent::tearDown();
 	}
 
 /**
@@ -406,6 +410,7 @@ class ExceptionRendererTest extends CakeTestCase {
 		$result = ob_get_clean();
 		$this->assertContains('Not Found', $result);
 	}
+
 /**
  * test that error400 doesn't expose XSS
  *
@@ -487,10 +492,10 @@ class ExceptionRendererTest extends CakeTestCase {
 				404
 			),
 			array(
-				new MissingTableException(array('table' => 'articles', 'class' => 'Article')),
+				new MissingTableException(array('table' => 'articles', 'class' => 'Article', 'ds' => 'test')),
 				array(
 					'/<h2>Missing Database Table<\/h2>/',
-					'/table <em>articles<\/em> for model <em>Article<\/em>/'
+					'/Table <em>articles<\/em> for model <em>Article<\/em> was not found in datasource <em>test<\/em>/'
 				),
 				500
 			),
@@ -687,9 +692,9 @@ class ExceptionRendererTest extends CakeTestCase {
 		$ExceptionRenderer->render();
 		$result = ob_get_clean();
 
-		$this->assertRegExp('/<h2>Database Error<\/h2>/', $result);
-		$this->assertRegExp('/There was an error in the SQL query/', $result);
-		$this->assertRegExp('/SELECT \* from poo_query < 5 and :seven/', $result);
-		$this->assertRegExp('/"seven" => 7/', $result);
+		$this->assertContains('<h2>Database Error</h2>', $result);
+		$this->assertContains('There was an error in the SQL query', $result);
+		$this->assertContains('SELECT * from poo_query < 5 and :seven', $result);
+		$this->assertContains("'seven' => (int) 7", $result);
 	}
 }

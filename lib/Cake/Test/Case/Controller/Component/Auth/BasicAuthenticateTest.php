@@ -47,6 +47,7 @@ class BasicAuthenticateTest extends CakeTestCase {
 			'fields' => array('username' => 'user', 'password' => 'password'),
 			'userModel' => 'User',
 			'realm' => 'localhost',
+			'recursive' => 0
 		));
 
 		$password = Security::hash('password', null, true);
@@ -57,7 +58,7 @@ class BasicAuthenticateTest extends CakeTestCase {
 	}
 
 /**
- * teardown
+ * tearDown
  *
  * @return void
  */
@@ -163,6 +164,7 @@ class BasicAuthenticateTest extends CakeTestCase {
 		$result = $this->auth->authenticate($request, $this->response);
 		$this->assertFalse($result);
 	}
+
 /**
  * test authenticate sucesss
  *

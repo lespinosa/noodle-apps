@@ -12,9 +12,8 @@ class AclAppController extends AppController
     function beforeFilter()
 	{
 	    parent :: beforeFilter();
-	    $this->Auth->allowedActions = array('*');
+	    
 		$this->_check_config();
-		$this->layout = 'admin';
 	}
     
 	private function _check_config()

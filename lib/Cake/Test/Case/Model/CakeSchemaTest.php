@@ -440,12 +440,14 @@ class SchemaPrefixAuthUser extends CakeTestModel {
  * @var string
  */
 	public $name = 'SchemaPrefixAuthUser';
+
 /**
  * table prefix
  *
  * @var string
  */
 	public $tablePrefix = 'auth_';
+
 /**
  * useTable
  *
@@ -640,8 +642,11 @@ class CakeSchemaTest extends CakeTestCase {
  */
 	public function testSchemaReadWithConfigPrefix() {
 		$this->skipIf($this->db instanceof Sqlite, 'Cannot open 2 connections to Sqlite');
+		
 		$db = ConnectionManager::getDataSource('test');
 		$config = $db->config;
+		$this->skipIf(!empty($config['prefix']), 'This test can not be executed with datasource prefix set.');
+		
 		$config['prefix'] = 'schema_test_prefix_';
 		ConnectionManager::create('schema_prefix', $config);
 		$read = $this->Schema->read(array('connection' => 'schema_prefix', 'models' => false));
@@ -691,9 +696,9 @@ class CakeSchemaTest extends CakeTestCase {
  * @return void
  */
 	public function testSchemaReadWithCrossDatabase() {
-		$config = new DATABASE_CONFIG();
+		$config = ConnectionManager::enumConnectionObjects();
 		$this->skipIf(
-			!isset($config->test) || !isset($config->test2),
+			!isset($config['test']) || !isset($config['test2']),
 			'Primary and secondary test databases not configured, skipping cross-database join tests.'
 			. ' To run these tests, you must define $test and $test2 in your database configuration.'
 		);
@@ -743,6 +748,7 @@ class CakeSchemaTest extends CakeTestCase {
 		$result = $this->Schema->generateTable('posts', $posts);
 		$this->assertRegExp('/public \$posts/', $result);
 	}
+
 /**
  * testSchemaWrite method
  *

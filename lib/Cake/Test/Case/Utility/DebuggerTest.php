@@ -44,7 +44,7 @@ class DebuggerTest extends CakeTestCase {
  * @return void
  */
 	public function setUp() {
-		parent::setup();
+		parent::setUp();
 		Configure::write('debug', 2);
 		Configure::write('log', false);
 	}
@@ -55,7 +55,7 @@ class DebuggerTest extends CakeTestCase {
  * @return void
  */
 	public function tearDown() {
-		parent::teardown();
+		parent::tearDown();
 		Configure::write('log', true);
 		if ($this->_restoreError) {
 			restore_error_handler();
@@ -140,8 +140,8 @@ class DebuggerTest extends CakeTestCase {
 			'a' => array(
 				'href' => "javascript:void(0);",
 				'onclick' => "preg:/document\.getElementById\('cakeErr[a-z0-9]+\-trace'\)\.style\.display = " .
-				             "\(document\.getElementById\('cakeErr[a-z0-9]+\-trace'\)\.style\.display == 'none'" .
-				             " \? '' \: 'none'\);/"
+							 "\(document\.getElementById\('cakeErr[a-z0-9]+\-trace'\)\.style\.display == 'none'" .
+							 " \? '' \: 'none'\);/"
 			),
 			'b' => array(), 'Notice', '/b', ' (8)',
 		));
@@ -162,14 +162,14 @@ class DebuggerTest extends CakeTestCase {
 
 		Debugger::output('js', array(
 			'traceLine' => '{:reference} - <a href="txmt://open?url=file://{:file}' .
-			               '&line={:line}">{:path}</a>, line {:line}'
+							 '&line={:line}">{:path}</a>, line {:line}'
 		));
 		$result = Debugger::trace();
 		$this->assertRegExp('/' . preg_quote('txmt://open?url=file://', '/') . '(\/|[A-Z]:\\\\)' . '/', $result);
 
 		Debugger::output('xml', array(
 			'error' => '<error><code>{:code}</code><file>{:file}</file><line>{:line}</line>' .
-			           '{:description}</error>',
+						 '{:description}</error>',
 			'context' => "<context>{:context}</context>",
 			'trace' => "<stack>{:trace}</stack>",
 		));
@@ -221,7 +221,7 @@ class DebuggerTest extends CakeTestCase {
 
 		Debugger::addFormat('js', array(
 			'traceLine' => '{:reference} - <a href="txmt://open?url=file://{:file}' .
-			               '&line={:line}">{:path}</a>, line {:line}'
+							 '&line={:line}">{:path}</a>, line {:line}'
 		));
 		Debugger::outputAs('js');
 
@@ -230,7 +230,7 @@ class DebuggerTest extends CakeTestCase {
 
 		Debugger::addFormat('xml', array(
 			'error' => '<error><code>{:code}</code><file>{:file}</file><line>{:line}</line>' .
-			           '{:description}</error>',
+						 '{:description}</error>',
 		));
 		Debugger::outputAs('xml');
 
@@ -295,33 +295,54 @@ class DebuggerTest extends CakeTestCase {
 		$Controller = new Controller();
 		$Controller->helpers = array('Html', 'Form');
 		$View = new View($Controller);
-		$result = Debugger::exportVar($View);
-		$expected = 'View
-		View::$Helpers = HelperCollection object
-		View::$plugin = NULL
-		View::$name = ""
-		View::$passedArgs = array
-		View::$helpers = array
-		View::$viewPath = ""
-		View::$viewVars = array
-		View::$view = NULL
-		View::$layout = "default"
-		View::$layoutPath = NULL
-		View::$autoLayout = true
-		View::$ext = ".ctp"
-		View::$subDir = NULL
-		View::$theme = NULL
-		View::$cacheAction = false
-		View::$validationErrors = array
-		View::$hasRendered = false
-		View::$uuids = array
-		View::$output = false
-		View::$request = NULL
-		View::$elementCache = "default"';
+		$View->int = 2;
+		$View->float = 1.333;
 
-		$result = str_replace(array("\t", "\r\n", "\n"), "", $result);
-		$expected =  str_replace(array("\t", "\r\n", "\n"), "", $expected);
-		$this->assertEquals($expected, $result);
+		$result = Debugger::exportVar($View);
+		$expected = <<<TEXT
+object(View) {
+	Helpers => object(HelperCollection) {}
+	Blocks => object(ViewBlock) {}
+	plugin => null
+	name => ''
+	passedArgs => array()
+	helpers => array(
+		(int) 0 => 'Html',
+		(int) 1 => 'Form'
+	)
+	viewPath => ''
+	viewVars => array()
+	view => null
+	layout => 'default'
+	layoutPath => null
+	autoLayout => true
+	ext => '.ctp'
+	subDir => null
+	theme => null
+	cacheAction => false
+	validationErrors => array()
+	hasRendered => false
+	uuids => array()
+	request => null
+	elementCache => 'default'
+	int => (int) 2
+	float => (float) 1.333
+}
+TEXT;
+		$this->assertTextEquals($expected, $result);
+
+		$data = array(
+			1 => 'Index one',
+			5 => 'Index five'
+		);
+		$result = Debugger::exportVar($data);
+		$expected = <<<TEXT
+array(
+	(int) 1 => 'Index one',
+	(int) 5 => 'Index five'
+)
+TEXT;
+		$this->assertTextEquals($expected, $result);
 	}
 
 /**
@@ -337,7 +358,7 @@ class DebuggerTest extends CakeTestCase {
 		Debugger::log('cool');
 		$result = file_get_contents(LOGS . 'debug.log');
 		$this->assertRegExp('/DebuggerTest\:\:testLog/i', $result);
-		$this->assertRegExp('/"cool"/', $result);
+		$this->assertRegExp("/'cool'/", $result);
 
 		unlink(TMP . 'logs' . DS . 'debug.log');
 
@@ -346,8 +367,8 @@ class DebuggerTest extends CakeTestCase {
 		$this->assertRegExp('/DebuggerTest\:\:testLog/i', $result);
 		$this->assertRegExp('/\[main\]/', $result);
 		$this->assertRegExp('/array/', $result);
-		$this->assertRegExp('/"whatever",/', $result);
-		$this->assertRegExp('/"here"/', $result);
+		$this->assertRegExp("/'whatever',/", $result);
+		$this->assertRegExp("/'here'/", $result);
 	}
 
 /**
@@ -357,23 +378,31 @@ class DebuggerTest extends CakeTestCase {
  */
 	public function testDump() {
 		$var = array('People' => array(
-					array(
-					'name' => 'joeseph',
-					'coat' => 'technicolor',
-					'hair_color' => 'brown'
-					),
-					array(
-					'name' => 'Shaft',
-					'coat' => 'black',
-					'hair' => 'black'
-					)
-				)
-			);
+			array(
+				'name' => 'joeseph',
+				'coat' => 'technicolor',
+				'hair_color' => 'brown'
+			),
+			array(
+				'name' => 'Shaft',
+				'coat' => 'black',
+				'hair' => 'black'
+			)
+		));
 		ob_start();
 		Debugger::dump($var);
 		$result = ob_get_clean();
-		$expected = "<pre>array(\n\t\"People\" => array()\n)</pre>";
-		$this->assertEquals($expected, $result);
+		$expected = <<<TEXT
+<pre>array(
+	'People' => array(
+		(int) 0 => array(
+		),
+		(int) 1 => array(
+		)
+	)
+)</pre>
+TEXT;
+		$this->assertTextEquals($expected, $result);
 	}
 
 /**

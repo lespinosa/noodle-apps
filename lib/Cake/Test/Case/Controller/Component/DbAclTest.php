@@ -17,9 +17,8 @@
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 
-App::uses('AclComponent', 'Controller/Component');
+App::uses('DbAcl', 'Controller/Component/Acl');
 App::uses('AclNode', 'Model');
-class_exists('AclComponent');
 
 /**
  * AclNodeTwoTestBase class
@@ -470,6 +469,7 @@ class DbAclTest extends CakeTestCase {
 
 		$this->Acl->deny('Bobs', 'ROOT/printers/DoesNotExist', 'create');
 	}
+
 /**
  * debug function - to help editing/creating test cases for the ACL component
  *

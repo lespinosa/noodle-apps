@@ -26,7 +26,7 @@ class UsersController extends AppController{
 	}
 	function admin_index() {
 		$this->set('title_layout', 'Users Manager');
-		$this->layout = 'admin';
+		
         $this->User->recursive = 0;
         $this->set('users', $this->paginate());
         
@@ -57,7 +57,7 @@ class UsersController extends AppController{
     }
     function admin_view($id) {
     	$this->set('title_layout', 'Users Manager: View Users');
-		$this->layout = 'admin';
+		
         if (!$id) {
             $this->Session->setFlash(__('Invalid User.', true));
             $this->redirect(array('action'=>'index'));
@@ -65,7 +65,7 @@ class UsersController extends AppController{
         $this->set('user', $this->User->read(null, $id));
     }	
 	function login() {
-		$this->layout = 'admin';
+		$this->layout = 'flash';
 		$this->set('title_layout', 'Login');
 	    if ($this->request->is('post')) {
 	        if ($this->Auth->login()) {
@@ -77,14 +77,12 @@ class UsersController extends AppController{
 	}
 
 
-	public function logout() {
-		$this->layout = 'admin';
+	public function logout() {		
     	$this->Session->setFlash(__('Good-Bye', true));
 		$this->redirect($this->Auth->logout());		
 	}
 	function admin_add() {
 		$this->set('title_layout', 'Add New User');
-		$this->layout = 'admin';
 		if (!empty($this->request->data)) {
 			if ($this->User->save($this->request->data)) {
 				$this->Session->setFlash(__('Your User has been saved.', true));
@@ -99,7 +97,6 @@ class UsersController extends AppController{
 	}
  	function admin_edit($id = null) {
  		$this->set('title_layout', 'Users Manager: Edit User');
- 		$this->layout = 'admin';
  		$this->User->id = $id;
         if (!$this->User->id && empty($this->request->data)) {
             $this->Session->setFlash('Invalid User');
@@ -121,7 +118,6 @@ class UsersController extends AppController{
         $this->set(compact('roles'));
     }
 	public function admin_delete($id = null) {
-		$this->layout = 'admin';
         if (!$id) {
 	        throw new MethodNotAllowedException();
 	    }

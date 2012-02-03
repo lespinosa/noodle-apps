@@ -19,7 +19,6 @@ class RolesController extends AppController {
 	}
  	function admin_index() {
  		$this->set('title_layout', 'Role Manager');
- 		$this->layout = 'admin';
         $this->Role->recursive = 0;
         $this->set('roles', $this->paginate());
     }
@@ -27,7 +26,6 @@ class RolesController extends AppController {
  
     function admin_view($id = null) {
     	$this->set('title_layout', 'Role Manager: View Role');
-    	$this->layout = 'admin';
     	$this->Role->id = $id;
         if (!$this->Role->id) {
             $this->Session->setFlash(__('Id Invalido, intentelo neuvamente.', true));
@@ -36,7 +34,6 @@ class RolesController extends AppController {
         $this->set('role', $this->Role->read());
     }
 	public function admin_add() {
-		$this->layout = 'admin';
 		$this->set('title_layout', 'Role Manager: Add Role');
 		if (!empty($this->request->data)) {
 			if ($this->Role->save($this->request->data)) {
@@ -48,7 +45,6 @@ class RolesController extends AppController {
 		}
 	}
 	function admin_edit($id = nul) {
-		$this->layout = 'admin';
 		$this->set('title_layout', 'Role Manager: Edital Rol');
 		$this->Role->id = $id;
         if (!$this->Role->id && empty($this->request->data)) {
@@ -64,10 +60,8 @@ class RolesController extends AppController {
         	}
         }
             
-    }
- 
+    } 
     function admin_delete($id) {
-    	$this->layout = 'admin';
 	    if (!$id) {
 	        throw new MethodNotAllowedException();
 	    }

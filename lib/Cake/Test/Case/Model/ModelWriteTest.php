@@ -24,62 +24,62 @@ require_once dirname(__FILE__) . DS . 'ModelTestBase.php';
  */
 class ModelWriteTest extends BaseModelTest {
 
-	/**
-	 * testInsertAnotherHabtmRecordWithSameForeignKey method
-	 *
-	 * @access public
-	 * @return void
-	 */
-		public function testInsertAnotherHabtmRecordWithSameForeignKey() {
-			$this->loadFixtures('JoinA', 'JoinB', 'JoinAB', 'JoinC', 'JoinAC');
-			$TestModel = new JoinA();
+/**
+ * testInsertAnotherHabtmRecordWithSameForeignKey method
+ *
+ * @access public
+ * @return void
+ */
+	public function testInsertAnotherHabtmRecordWithSameForeignKey() {
+		$this->loadFixtures('JoinA', 'JoinB', 'JoinAB', 'JoinC', 'JoinAC');
+		$TestModel = new JoinA();
 
-			$result = $TestModel->JoinAsJoinB->findById(1);
-			$expected = array(
-				'JoinAsJoinB' => array(
-					'id' => 1,
-					'join_a_id' => 1,
-					'join_b_id' => 2,
-					'other' => 'Data for Join A 1 Join B 2',
-					'created' => '2008-01-03 10:56:33',
-					'updated' => '2008-01-03 10:56:33'
-			));
-			$this->assertEquals($expected, $result);
-
-			$TestModel->JoinAsJoinB->create();
-			$data = array(
+		$result = $TestModel->JoinAsJoinB->findById(1);
+		$expected = array(
+			'JoinAsJoinB' => array(
+				'id' => 1,
 				'join_a_id' => 1,
-				'join_b_id' => 1,
-				'other' => 'Data for Join A 1 Join B 1',
-				'created' => '2008-01-03 10:56:44',
-				'updated' => '2008-01-03 10:56:44'
-			);
-			$result = $TestModel->JoinAsJoinB->save($data);
-			$lastInsertId = $TestModel->JoinAsJoinB->getLastInsertID();
-			$data['id'] = $lastInsertId;
-			$this->assertEquals($result, array('JoinAsJoinB' => $data));
-			$this->assertTrue($lastInsertId != null);
+				'join_b_id' => 2,
+				'other' => 'Data for Join A 1 Join B 2',
+				'created' => '2008-01-03 10:56:33',
+				'updated' => '2008-01-03 10:56:33'
+		));
+		$this->assertEquals($expected, $result);
 
-			$result = $TestModel->JoinAsJoinB->findById(1);
-			$expected = array(
-				'JoinAsJoinB' => array(
-					'id' => 1,
-					'join_a_id' => 1,
-					'join_b_id' => 2,
-					'other' => 'Data for Join A 1 Join B 2',
-					'created' => '2008-01-03 10:56:33',
-					'updated' => '2008-01-03 10:56:33'
-			));
-			$this->assertEquals($expected, $result);
+		$TestModel->JoinAsJoinB->create();
+		$data = array(
+			'join_a_id' => 1,
+			'join_b_id' => 1,
+			'other' => 'Data for Join A 1 Join B 1',
+			'created' => '2008-01-03 10:56:44',
+			'updated' => '2008-01-03 10:56:44'
+		);
+		$result = $TestModel->JoinAsJoinB->save($data);
+		$lastInsertId = $TestModel->JoinAsJoinB->getLastInsertID();
+		$data['id'] = $lastInsertId;
+		$this->assertEquals($result, array('JoinAsJoinB' => $data));
+		$this->assertTrue($lastInsertId != null);
 
-			$updatedValue = 'UPDATED Data for Join A 1 Join B 2';
-			$TestModel->JoinAsJoinB->id = 1;
-			$result = $TestModel->JoinAsJoinB->saveField('other', $updatedValue, false);
-			$this->assertFalse(empty($result));
+		$result = $TestModel->JoinAsJoinB->findById(1);
+		$expected = array(
+			'JoinAsJoinB' => array(
+				'id' => 1,
+				'join_a_id' => 1,
+				'join_b_id' => 2,
+				'other' => 'Data for Join A 1 Join B 2',
+				'created' => '2008-01-03 10:56:33',
+				'updated' => '2008-01-03 10:56:33'
+		));
+		$this->assertEquals($expected, $result);
 
-			$result = $TestModel->JoinAsJoinB->findById(1);
-			$this->assertEquals($result['JoinAsJoinB']['other'], $updatedValue);
-		}
+		$updatedValue = 'UPDATED Data for Join A 1 Join B 2';
+		$TestModel->JoinAsJoinB->id = 1;
+		$result = $TestModel->JoinAsJoinB->saveField('other', $updatedValue, false);
+		$this->assertFalse(empty($result));
+
+		$result = $TestModel->JoinAsJoinB->findById(1);
+		$this->assertEquals($result['JoinAsJoinB']['other'], $updatedValue);
+	}
 
 /**
  * testSaveDateAsFirstEntry method
@@ -435,7 +435,7 @@ class ModelWriteTest extends BaseModelTest {
 		$TestModel2->save(array(
 			'name' => 'Item 7',
 			'syfile_id' => 1,
-			'published'=> true
+			'published' => true
 		));
 
 		$result = $TestModel->findById(1);
@@ -450,7 +450,7 @@ class ModelWriteTest extends BaseModelTest {
 		$TestModel2->save(array(
 			'id' => 1,
 			'syfile_id' => 1,
-			'published'=> false
+			'published' => false
 		));
 
 		$result = $TestModel->findById(1);
@@ -539,6 +539,7 @@ class ModelWriteTest extends BaseModelTest {
 		$result = $Model->save($data);
 		$this->assertFalse($result);
 	}
+
 /**
  * test that beforeSave returning false can abort saves.
  *
@@ -610,11 +611,25 @@ class ModelWriteTest extends BaseModelTest {
 		$this->assertEquals($expected, $result);
 
 		$TestModel->recursive = -1;
-		$result = $TestModel->read(array('id', 'user_id', 'title', 'body'), 1);
+		$TestModel->read(array('id', 'user_id', 'title', 'body'), 1);
 
 		$TestModel->id = 1;
 		$result = $TestModel->saveField('title', '', true);
 		$this->assertFalse($result);
+
+
+		$TestModel->recursive = -1;
+		$TestModel->id = 1;
+		$result = $TestModel->saveField('user_id', 9999);
+		$this->assertTrue((bool)$result);
+
+		$result = $TestModel->read(array('id', 'user_id'), 1);
+		$expected = array('Article' => array(
+			'id' => '1',
+			'user_id' => '9999',
+		));
+		$this->assertEquals($expected, $result);
+
 
 		$this->loadFixtures('Node', 'Dependency');
 		$Node = new Node();
@@ -993,11 +1008,11 @@ class ModelWriteTest extends BaseModelTest {
 		$TestModel->recursive = -1;
 		$result = $TestModel->find('all', array('fields' => array('id', 'title')));
 		$expected = array(
-			array('Article' => array('id' => 1, 'title' => 'First Article' )),
-			array('Article' => array('id' => 2, 'title' => 'Second Article' )),
-			array('Article' => array('id' => 3, 'title' => 'Third Article' )),
-			array('Article' => array('id' => 4, 'title' => 'Fourth Article - New Title' )),
-			array('Article' => array('id' => 5, 'title' => 'Fifth Article - New Title 5' ))
+			array('Article' => array('id' => 1, 'title' => 'First Article')),
+			array('Article' => array('id' => 2, 'title' => 'Second Article')),
+			array('Article' => array('id' => 3, 'title' => 'Third Article')),
+			array('Article' => array('id' => 4, 'title' => 'Fourth Article - New Title')),
+			array('Article' => array('id' => 5, 'title' => 'Fifth Article - New Title 5'))
 		);
 		$this->assertEquals($expected, $result);
 	}
@@ -1795,6 +1810,7 @@ class ModelWriteTest extends BaseModelTest {
 		$this->assertEquals(count($result['NotDoomedSomethingElse']), 2);
 		$this->assertEquals(count($result['DoomedSomethingElse']), 1);
 	}
+
 /**
  * testHabtmSaveKeyResolution method
  *
@@ -2768,7 +2784,7 @@ class ModelWriteTest extends BaseModelTest {
 		$this->assertEquals(count($result['Tag']), 2);
 		$this->assertEquals($result['Tag'][0]['tag'], 'tag1');
 		$this->assertEquals(count($result['Comment']), 1);
-		$this->assertEquals(count($result['Comment'][0]['comment']['Article comment']), 1);
+		$this->assertEquals(count($result['Comment'][0]['comment']), 1);
 	}
 
 /**
@@ -3661,7 +3677,7 @@ class ModelWriteTest extends BaseModelTest {
 				1 => array('title' => 'title 1'),
 				2 => array('title' => 'title 2'),
 			),
-			array('validate'=>'only')
+			array('validate' => 'only')
 		);
 		$this->assertFalse($result);
 		$expected = array(
@@ -3675,7 +3691,7 @@ class ModelWriteTest extends BaseModelTest {
 				1 => array('title' => ''),
 				2 => array('title' => 'title 2'),
 			),
-			array('validate'=>'only')
+			array('validate' => 'only')
 		);
 		$this->assertFalse($result);
 		$expected = array(
@@ -3778,7 +3794,7 @@ class ModelWriteTest extends BaseModelTest {
 			),
 			array(
 				'body' => 3,
-				'published' =>'sd',
+				'published' => 'sd',
 			),
 		);
 		$Something->create();
@@ -3810,7 +3826,7 @@ class ModelWriteTest extends BaseModelTest {
 			array(
 				'title' => 'valid',
 				'body' => 'this body',
-				'published' =>'sd',
+				'published' => 'sd',
 			),
 		);
 		$Something->create();
@@ -4096,7 +4112,7 @@ class ModelWriteTest extends BaseModelTest {
 		$this->assertEquals(count($result['Tag']), 2);
 		$this->assertEquals($result['Tag'][0]['tag'], 'tag1');
 		$this->assertEquals(count($result['Comment']), 1);
-		$this->assertEquals(count($result['Comment'][0]['comment']['Article comment']), 1);
+		$this->assertEquals(count($result['Comment'][0]['comment']), 1);
 	}
 
 /**
@@ -4258,8 +4274,7 @@ class ModelWriteTest extends BaseModelTest {
 					'user_id' => 1
 				),
 				'Attachment' => array('attachment' => '')
-			),
-			array('validate' => 'first')
+			)
 		), false);
 		$expected = array(
 			'Comment' => array('comment' => array('This field cannot be left blank')),
@@ -5083,7 +5098,7 @@ class ModelWriteTest extends BaseModelTest {
 			),
 			array(
 				'body' => 3,
-				'published' =>'sd',
+				'published' => 'sd',
 			),
 		);
 		$Something->create();
@@ -5115,7 +5130,7 @@ class ModelWriteTest extends BaseModelTest {
 			array(
 				'title' => 'valid',
 				'body' => 'this body',
-				'published' =>'sd',
+				'published' => 'sd',
 			),
 		);
 		$Something->create();
@@ -5305,7 +5320,7 @@ class ModelWriteTest extends BaseModelTest {
 		$results = $ProductUpdateAll->find('all', compact('conditions'));
 		$this->assertTrue(!empty($results));
 
-		$ProductUpdateAll->bindModel(array('belongsTo'=>array('Group')));
+		$ProductUpdateAll->bindModel(array('belongsTo' => array('Group')));
 		$ProductUpdateAll->belongsTo = array(
 			'Group' => array(
 				'className' => 'GroupUpdateAll',
@@ -5318,7 +5333,7 @@ class ModelWriteTest extends BaseModelTest {
 		$expected = array(
 			'0' => array(
 				'ProductUpdateAll' => array(
-					'id'  => 1,
+					'id' => 1,
 					'name'	=> 'product one',
 					'groupcode'	 => 120,
 					'group_id'	=> 1),
@@ -5329,7 +5344,7 @@ class ModelWriteTest extends BaseModelTest {
 				),
 			'1' => array(
 				'ProductUpdateAll' => array(
-					'id'  => 2,
+					'id' => 2,
 					'name'	=> 'product two',
 					'groupcode'	 => 120,
 					'group_id'	=> 1),
@@ -5382,7 +5397,7 @@ class ModelWriteTest extends BaseModelTest {
 		$expected = array(
 			'0' => array(
 				'ProductUpdateAll' => array(
-					'id'  => 1,
+					'id' => 1,
 					'name'	=> 'new product',
 					'groupcode'	 => 120,
 					'group_id'	=> 1),
@@ -5393,7 +5408,7 @@ class ModelWriteTest extends BaseModelTest {
 				),
 			'1' => array(
 				'ProductUpdateAll' => array(
-					'id'  => 2,
+					'id' => 2,
 					'name'	=> 'new product',
 					'groupcode'	 => 120,
 					'group_id'	=> 1),
@@ -5410,7 +5425,7 @@ class ModelWriteTest extends BaseModelTest {
  *
  * @return void
  */
-    function testUpdateAllWithoutForeignKey() {
+	public function testUpdateAllWithoutForeignKey() {
 		$this->skipIf(!$this->db instanceof Mysql, 'Currently, there is no way of doing joins in an update statement in postgresql');
 
 		$this->loadFixtures('ProductUpdateAll', 'GroupUpdateAll');
@@ -5418,12 +5433,12 @@ class ModelWriteTest extends BaseModelTest {
 
 		$conditions = array('Group.name' => 'group one');
 
-        $ProductUpdateAll->bindModel(array('belongsTo' => array(
+		$ProductUpdateAll->bindModel(array('belongsTo' => array(
 			'Group' => array('className' => 'GroupUpdateAll')
 		)));
 
-        $ProductUpdateAll->belongsTo = array(
-            'Group' => array(
+		$ProductUpdateAll->belongsTo = array(
+			'Group' => array(
 				'className' => 'GroupUpdateAll',
 				'foreignKey' => false,
 				'conditions' => 'ProductUpdateAll.groupcode = Group.code'
@@ -5431,11 +5446,11 @@ class ModelWriteTest extends BaseModelTest {
 		);
 
 		$ProductUpdateAll->updateAll(array('name' => "'new product'"), $conditions);
-		$resultsFkFalse = $ProductUpdateAll->find('all', array('conditions' => array('ProductUpdateAll.name'=>'new product')));
+		$resultsFkFalse = $ProductUpdateAll->find('all', array('conditions' => array('ProductUpdateAll.name' => 'new product')));
 		$expected = array(
 			'0' => array(
 				'ProductUpdateAll' => array(
-					'id'  => 1,
+					'id' => 1,
 					'name'	=> 'new product',
 					'groupcode'	 => 120,
 					'group_id'	=> 1),
@@ -5446,7 +5461,7 @@ class ModelWriteTest extends BaseModelTest {
 				),
 			'1' => array(
 				'ProductUpdateAll' => array(
-					'id'  => 2,
+					'id' => 2,
 					'name'	=> 'new product',
 					'groupcode'	 => 120,
 					'group_id'	=> 1),
@@ -5492,6 +5507,178 @@ class ModelWriteTest extends BaseModelTest {
 		));
 		$result = $TestModel->save($data);
 		$this->assertSame($result['Article']['id'], $TestModel->id);
+	}
+
+/**
+ * validateSaveAllFieldListBelongsTo
+ *
+ * @return void
+ */
+	public function validateSaveAllFieldListBelongsTo() {
+		$this->loadFixtures('Post', 'Author', 'Comment', 'Attachment');
+		$TestModel = new Post();
+
+		$result = $TestModel->find('all');
+		$this->assertCount(3, $result);
+		$this->assertFalse(isset($result[3]));
+		$ts = date('Y-m-d H:i:s');
+
+		// test belongsTo
+		$fieldList = array(
+			'Post' => array('title', 'author_id'),
+			'Author' => array('user')
+		);
+		$TestModel->saveAll(array(
+			'Post' => array(
+				'title' => 'Post without body',
+				'body' => 'This will not be saved',
+			),
+			'Author' => array(
+				'user' => 'bob',
+				'test' => 'This will not be saved',
+
+		)), array('fieldList' => $fieldList));
+
+		$result = $TestModel->find('all');
+		$expected = array(
+			'Post' =>
+			array (
+				'id' => '4',
+				'author_id' => '5',
+				'title' => 'Post without body',
+				'body' => NULL,
+				'published' => 'N',
+				'created' => $ts,
+				'updated' => $ts,
+			),
+			'Author' =>
+			array (
+				'id' => '5',
+				'user' => 'bob',
+				'password' => NULL,
+				'created' => $ts,
+				'updated' => $ts,
+				'test' => 'working',
+			),
+		);
+		$this->assertEquals($expected, $result[3]);
+		$this->assertCount(4, $result);
+		$this->assertEquals('', $result[3]['Post']['body']);
+		$this->assertEquals('working', $result[3]['Author']['test']);
+
+		// test multirecord
+		$this->db->truncate($TestModel);
+
+		$ts = date('Y-m-d H:i:s');
+		$fieldList = array('title', 'author_id');
+		$TestModel->saveAll(array(
+			array(
+				'title' => 'Multi-record post 1',
+				'body' => 'First multi-record post',
+				'author_id' => 2
+			),
+			array(
+				'title' => 'Multi-record post 2',
+				'body' => 'Second multi-record post',
+				'author_id' => 2
+		)), array('fieldList' => $fieldList));
+
+		$result = $TestModel->find('all', array(
+			'recursive' => -1,
+			'order' => 'Post.id ASC'
+		));
+		$expected = array(
+			array(
+				'Post' => array(
+					'id' => '1',
+					'author_id' => '2',
+					'title' => 'Multi-record post 1',
+					'body' => '',
+					'published' => 'N',
+					'created' => $ts,
+					'updated' => $ts
+				)
+			),
+			array(
+				'Post' => array(
+					'id' => '2',
+					'author_id' => '2',
+					'title' => 'Multi-record post 2',
+					'body' => '',
+					'published' => 'N',
+					'created' => $ts,
+					'updated' => $ts
+				)
+			)
+		);
+		$this->assertEquals($result, $expected);
+	}
+
+/**
+ * testSaveAllFieldListHasMany method
+ *
+ * return @void
+ */
+	public function testSaveAllFieldListHasMany() {
+		$this->loadFixtures('Article', 'Comment');
+		$TestModel = new Article();
+		$TestModel->belongsTo = $TestModel->hasAndBelongsToMany = array();
+
+		$this->db->truncate($TestModel);
+		$this->db->truncate(new Comment());
+
+		$fieldList = array(
+			'Article' => array('id'),
+			'Comment' => array('article_id', 'user_id')
+		);
+		$result = $TestModel->saveAll(array(
+			'Article' => array('id' => 2, 'title' => 'I will not save'),
+			'Comment' => array(
+				array('comment' => 'First new comment', 'published' => 'Y', 'user_id' => 1),
+				array('comment' => 'Second new comment', 'published' => 'Y', 'user_id' => 2)
+			)
+		), array('fieldList' => $fieldList));
+
+		$result = $TestModel->find('all');
+		$this->assertEquals('', $result[0]['Article']['title']);
+		$this->assertEquals('', $result[0]['Comment'][0]['comment']);
+		$this->assertEquals('', $result[0]['Comment'][1]['comment']);
+	}
+
+/**
+ * testSaveAllFieldListHasOne method
+ *
+ * @return void
+ */
+	public function testSaveAllFieldListHasOne() {
+		$this->loadFixtures('Attachment', 'Comment', 'Article', 'User');
+		$TestModel = new Comment();
+
+		$TestModel->validate = array('comment' => 'notEmpty');
+		$TestModel->Attachment->validate = array('attachment' => 'notEmpty');
+
+		$record = array(
+			'Comment' => array(
+				'user_id' => 1,
+				'article_id' => 1,
+				'comment' => '',
+			),
+			'Attachment' => array(
+				'attachment' => ''
+			)
+		);
+		$result = $TestModel->saveAll($record, array('validate' => 'only'));
+		$this->assertFalse($result);
+
+		$fieldList = array(
+			'Comment' => array('id', 'article_id', 'user_id'),
+			'Attachment' => array('comment_id')
+		);
+		$result = $TestModel->saveAll($record, array(
+			'fieldList' => $fieldList, 'validate' => 'only'
+		));
+		$this->assertTrue($result);
+		$this->assertEmpty($TestModel->validationErrors);
 	}
 
 }

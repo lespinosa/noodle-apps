@@ -48,6 +48,7 @@ class OptionEngineHelper extends JsBaseEngineHelper {
 	public function testMap($options = array()) {
 		return $this->_mapOptions('request', $options);
 	}
+
 /**
  * test method for option parsing
  *
@@ -101,7 +102,7 @@ class JsHelperTest extends CakeTestCase {
 		Configure::write('Asset.timestamp', false);
 
 		$controller = null;
-		$this->View = $this->getMock('View', array('addScript'), array(&$controller));
+		$this->View = $this->getMock('View', array('append'), array(&$controller));
 		$this->Js = new JsHelper($this->View, 'Option');
 		$request = new CakeRequest(null, false);
 		$this->Js->request = $request;
@@ -273,8 +274,8 @@ class JsHelperTest extends CakeTestCase {
 		$result = $this->Js->writeBuffer(array('onDomReady' => true, 'cache' => false, 'clear' => false));
 
 		$this->View->expects($this->once())
-			->method('addScript')
-			->with($this->matchesRegularExpression('/one\s\=\s1;\ntwo\s\=\s2;/'));
+			->method('append')
+			->with('script', $this->matchesRegularExpression('/one\s\=\s1;\ntwo\s\=\s2;/'));
 		$result = $this->Js->writeBuffer(array('onDomReady' => false, 'inline' => false, 'cache' => false));
 	}
 
@@ -287,8 +288,8 @@ class JsHelperTest extends CakeTestCase {
 		$this->Js->set('foo', 1);
 
 		$this->View->expects($this->once())
-			->method('addScript')
-			->with($this->matchesRegularExpression('#<script type="text\/javascript">window.app \= \{"foo"\:1\}\;<\/script>#'));
+			->method('append')
+			->with('script', $this->matchesRegularExpression('#<script type="text\/javascript">window.app \= \{"foo"\:1\}\;<\/script>#'));
 
 		$result = $this->Js->writeBuffer(array('onDomReady' => false, 'inline' => false, 'safe' => false));
 	}
@@ -301,10 +302,20 @@ class JsHelperTest extends CakeTestCase {
  */
 	public function testWriteBufferAndXhr() {
 		$this->_useMock();
-		$this->Js->params['isAjax'] = true;
+		$requestWith = null;
+		if (isset($_SERVER['HTTP_X_REQUESTED_WITH'])) {
+			$requestWith = $_SERVER['HTTP_X_REQUESTED_WITH'];
+		}
+		$_SERVER['HTTP_X_REQUESTED_WITH'] = 'XMLHttpRequest';
+
 		$this->Js->buffer('alert("test");');
 		$this->Js->TestJsEngine->expects($this->never())->method('domReady');
 		$result = $this->Js->writeBuffer();
+
+		unset($_SERVER['HTTP_X_REQUESTED_WITH']);
+		if ($requestWith !== null) {
+			$_SERVER['HTTP_X_REQUESTED_WITH'] = $requestWith;
+		}
 	}
 
 /**
@@ -694,9 +705,10 @@ class JsBaseEngineTest extends CakeTestCase {
 	public function setUp() {
 		parent::setUp();
 		$controller = null;
-		$this->View = $this->getMock('View', array('addScript'), array(&$controller));
+		$this->View = $this->getMock('View', array('append'), array(&$controller));
 		$this->JsEngine = new OptionEngineHelper($this->View);
 	}
+
 /**
  * tearDown method
  *
@@ -827,10 +839,10 @@ class JsBaseEngineTest extends CakeTestCase {
 			),
 			'2006' => array(
 				'Spring' => array(
-				    '1' => array('id' => 1, 'name' => 'Josh'), '2' => array('id' => 2, 'name' => 'Becky')
+					'1' => array('id' => 1, 'name' => 'Josh'), '2' => array('id' => 2, 'name' => 'Becky')
 				),
 				'Fall' => array(
-				    '1' => array('id' => 1, 'name' => 'Josh'), '2' => array('id' => 2, 'name' => 'Becky')
+					'1' => array('id' => 1, 'name' => 'Josh'), '2' => array('id' => 2, 'name' => 'Becky')
 				)
 			)
 		));

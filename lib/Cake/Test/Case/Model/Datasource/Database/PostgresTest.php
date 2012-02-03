@@ -206,6 +206,7 @@ class PostgresTest extends CakeTestCase {
 		'core.tag', 'core.articles_tag', 'core.attachment', 'core.person', 'core.post', 'core.author',
 		'core.datatype',
 	);
+
 /**
  * Actual DB connection used in testing
  *
@@ -284,10 +285,10 @@ class PostgresTest extends CakeTestCase {
 		$result = $this->Dbo->fields($this->model, null, array('*', 'PostgresClientTestModel.*'));
 		$expected = array_merge($fields, array(
 			'"PostgresClientTestModel"."id" AS "PostgresClientTestModel__id"',
-    		'"PostgresClientTestModel"."name" AS "PostgresClientTestModel__name"',
-    		'"PostgresClientTestModel"."email" AS "PostgresClientTestModel__email"',
-    		'"PostgresClientTestModel"."created" AS "PostgresClientTestModel__created"',
-    		'"PostgresClientTestModel"."updated" AS "PostgresClientTestModel__updated"'));
+			'"PostgresClientTestModel"."name" AS "PostgresClientTestModel__name"',
+			'"PostgresClientTestModel"."email" AS "PostgresClientTestModel__email"',
+			'"PostgresClientTestModel"."created" AS "PostgresClientTestModel__created"',
+			'"PostgresClientTestModel"."updated" AS "PostgresClientTestModel__updated"'));
 		$this->assertEquals($expected, $result);
 	}
 
@@ -487,22 +488,22 @@ class PostgresTest extends CakeTestCase {
 		$schema = new CakeSchema();
 		$schema->tables = array('i18n' => array(
 			'id' => array(
-			    'type' => 'integer', 'null' => false, 'default' => null,
-			    'length' => 10, 'key' => 'primary'
+				'type' => 'integer', 'null' => false, 'default' => null,
+				'length' => 10, 'key' => 'primary'
 			),
-			'locale' => array('type'=>'string', 'null' => false, 'length' => 6, 'key' => 'index'),
-			'model' => array('type'=>'string', 'null' => false, 'key' => 'index'),
+			'locale' => array('type' => 'string', 'null' => false, 'length' => 6, 'key' => 'index'),
+			'model' => array('type' => 'string', 'null' => false, 'key' => 'index'),
 			'foreign_key' => array(
-			    'type'=>'integer', 'null' => false, 'length' => 10, 'key' => 'index'
+				'type' => 'integer', 'null' => false, 'length' => 10, 'key' => 'index'
 			),
-			'field' => array('type'=>'string', 'null' => false, 'key' => 'index'),
-			'content' => array('type'=>'text', 'null' => true, 'default' => null),
+			'field' => array('type' => 'string', 'null' => false, 'key' => 'index'),
+			'content' => array('type' => 'text', 'null' => true, 'default' => null),
 			'indexes' => array(
-			    'PRIMARY' => array('column' => 'id', 'unique' => 1),
-			    'locale' => array('column' => 'locale', 'unique' => 0),
-			    'model' => array('column' => 'model', 'unique' => 0),
-			    'row_id' => array('column' => 'foreign_key', 'unique' => 0),
-			    'field' => array('column' => 'field', 'unique' => 0)
+				'PRIMARY' => array('column' => 'id', 'unique' => 1),
+				'locale' => array('column' => 'locale', 'unique' => 0),
+				'model' => array('column' => 'model', 'unique' => 0),
+				'row_id' => array('column' => 'foreign_key', 'unique' => 0),
+				'field' => array('column' => 'field', 'unique' => 0)
 			)
 		));
 
@@ -566,7 +567,7 @@ class PostgresTest extends CakeTestCase {
  * @return void
  */
 	public function testIndexGeneration() {
-		$name = $this->Dbo->fullTableName('index_test', false);
+		$name = $this->Dbo->fullTableName('index_test', false, false);
 		$this->Dbo->query('CREATE TABLE ' . $name . ' ("id" serial NOT NULL PRIMARY KEY, "bool" integer, "small_char" varchar(50), "description" varchar(40) )');
 		$this->Dbo->query('CREATE INDEX pointless_bool ON ' . $name . '("bool")');
 		$this->Dbo->query('CREATE UNIQUE INDEX char_index ON ' . $name . '("small_char")');
@@ -579,7 +580,7 @@ class PostgresTest extends CakeTestCase {
 		$this->Dbo->query('DROP TABLE ' . $name);
 		$this->assertEquals($expected, $result);
 
-		$name = $this->Dbo->fullTableName('index_test_2', false);
+		$name = $this->Dbo->fullTableName('index_test_2', false, false);
 		$this->Dbo->query('CREATE TABLE ' . $name . ' ("id" serial NOT NULL PRIMARY KEY, "bool" integer, "small_char" varchar(50), "description" varchar(40) )');
 		$this->Dbo->query('CREATE UNIQUE INDEX multi_col ON ' . $name . '("small_char", "bool")');
 		$expected = array(
@@ -758,7 +759,7 @@ class PostgresTest extends CakeTestCase {
  */
 	function testVirtualFieldAsAConstant() {
 		$this->loadFixtures('Article', 'Comment');
-		$Article =& ClassRegistry::init('Article');
+		$Article = ClassRegistry::init('Article');
 		$Article->virtualFields = array(
 			'empty' => "NULL",
 			'number' => 43,
@@ -870,4 +871,38 @@ class PostgresTest extends CakeTestCase {
 		$result = $this->Dbo->getEncoding();
 		$this->assertEquals('EUC-JP', $result) ;
 	}
+
+/**
+ * Test truncate with a mock.
+ *
+ * @return void
+ */
+	public function testTruncateStatements() {
+		$this->loadFixtures('Article', 'User');
+		$db = ConnectionManager::getDatasource('test');
+		$schema = $db->config['schema'];
+		$Article = new Article();
+
+		$this->Dbo = $this->getMock('Postgres', array('execute'), array($db->config));
+
+		$this->Dbo->expects($this->at(0))->method('execute')
+			->with("DELETE FROM \"$schema\".\"articles\"");
+		$this->Dbo->truncate($Article);
+
+		$this->Dbo->expects($this->at(0))->method('execute')
+			->with("DELETE FROM \"$schema\".\"articles\"");
+		$this->Dbo->truncate('articles');
+
+		// #2355: prevent duplicate prefix
+		$this->Dbo->config['prefix'] = 'tbl_';
+		$Article->tablePrefix = 'tbl_';
+		$this->Dbo->expects($this->at(0))->method('execute')
+			->with("DELETE FROM \"$schema\".\"tbl_articles\"");
+		$this->Dbo->truncate($Article);
+
+		$this->Dbo->expects($this->at(0))->method('execute')
+			->with("DELETE FROM \"$schema\".\"tbl_articles\"");
+		$this->Dbo->truncate('articles');
+	}
+
 }
