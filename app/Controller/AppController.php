@@ -32,15 +32,23 @@ App::uses('Controller', 'Controller');
  * @link http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
-	public $components = array('Acl', 'Auth', 'Session');
+	public $components = array(
+        'Acl',
+        'Auth' => array(
+            'authorize' => array(
+                'Actions' => array('actionPath' => 'controllers')
+            )
+        ),
+        'Session'
+    );
     public $helpers = array('Html', 'Form', 'Session', 'Paginator', 'Layout', 'Js' => 'Jquery', 'Noodle');
 	public $theme = 'Admin_blue';
 	
     function beforeFilter() {
         //Configure AuthComponent
-        $this->Auth->loginAction = array('controller' => 'users', 'action' => 'login');
+        $this->Auth->loginAction = array('controller' => 'users', 'action' => 'login', 'admin' => false);
         $this->Auth->logoutRedirect = array('controller' => 'users', 'action' => 'login');
-        $this->Auth->loginRedirect = array('controller' => 'posts', 'action' => 'add');
+        $this->Auth->loginRedirect = array('controller' => 'pages', 'action' => 'display');
 		$this->Auth->allow('display');
 		$AuthUser = $this->Auth->user('name');
 		$AuthId = $this->Auth->user('id');

@@ -11,10 +11,11 @@
  * @copyright     Copyright 2011, iWebdevelope.com (http://iwebdevelope.com)
  * @link     http://www.cnexuscms.com
  */
+App::uses('AppModel', 'Model');
 App::uses('AuthComponent', 'Controller/Component');
+
 class User extends AppModel
 {
-	public $name = 'User';
 	public $belongsTo = array('Role');
 	public $actsAs = array('Acl' => array('type' => 'requester'), 'Translate' => array('name'));
 	
@@ -23,7 +24,7 @@ class User extends AppModel
 		return true;
 	}
 	
-	function parentNode() {
+	public function parentNode() {
 	    if (!$this->id && empty($this->data)) {
 	        return null;
 	    }
@@ -33,13 +34,18 @@ class User extends AppModel
 	        $roleId = $this->field('role_id');
 	    }
 	    if (!$roleId) {
-	    return null;
+	    	return null;
 	    } else {
 	        return array('Role' => array('id' => $roleId));
 	    }
 	}
-	function bindNode($user) {
-		
+	/**
+	 * implement bindNode() method
+	 * only permissions per-role
+	 * 
+	 * @return void
+	 */
+	public function bindNode($user) {		
 	    return array('model' => 'Role', 'foreign_key' => $user['User']['role_id']);
 	}
 }

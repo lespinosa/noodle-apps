@@ -73,4 +73,5 @@ if ($widgetDir = opendir($dir)){
 	}
 	closedir($widgetDir);
 }
+CakePlugin::load('AclExtras');
 CakePlugin::load('Acl', array('bootstrap' => true));

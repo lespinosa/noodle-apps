@@ -33,6 +33,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 			'reset',
 			'960_12_col',
             'admin/layout',
+            'cake.system',
             'forms',
             'admin/vertical-tabs',           
             'ui/redmond/jquery.ui.all',
@@ -149,7 +150,6 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 <?php 
 echo $this->fetch('scriptBottom');
 echo $this->Js->writeBuffer();?>
-?>
 	<?php echo $this->element('sql_dump'); ?>
 </body>
 </html>
