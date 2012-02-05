@@ -1,5 +1,4 @@
 <?php
-
 /**
  * UsersController.php
  * Luis Manuel
@@ -19,12 +18,11 @@ App::uses('Sanitize', 'Utility');
  * @property User $User
  */
 class UsersController extends AppController{
-	
-	/**
-	 * beforeFilter method
-	 *
-	 * @return void
-	 */
+/**
+ * beforeFilter method
+ *
+ * @return void
+ */
 	public function beforeFilter() {
 		parent::beforeFilter();
 		$this->Auth->allowedActions = array('*');	
@@ -32,17 +30,15 @@ class UsersController extends AppController{
 	 //$this->Auth->allow(array('*', 'logout', 'login'));
 	   
 	}
-	/**
-	 * admin_index method
-	 * 
-	 * @return void
-	 */
+/**
+ * admin_index method
+ * 
+ * @return void
+ */
 	public function admin_index() {
-		$this->set('title_layout', 'Users Manager');
-		
+		$this->set('title_layout', 'Users Manager');		
         $this->User->recursive = 0;
-        $this->set('users', $this->paginate());
-        
+        $this->set('users', $this->paginate());        
         // Filter
 		//$this->data = Sanitize::clean($this->data, array('encode' => false));
 		$name =  $this->request->data('User.name');
@@ -68,11 +64,12 @@ class UsersController extends AppController{
       	$this->set(compact('roles'));
         
     }
-	/**
-	 * Admin view method
-	 * 
-	 * @return void
-	 */
+/**
+ * Admin view method
+ * 
+ * @param string $id
+ * @return void
+ */
     public function admin_view($id = null) {
     	$this->set('title_layout', 'Users Manager: View Users');
 		$this->User->id = $id;
@@ -81,11 +78,11 @@ class UsersController extends AppController{
         }
         $this->set('user', $this->User->read(null, $id));
     }	
-	/**
-	 * admin_add method
-	 * 
-	 * @return void
-	 */
+/**
+ * admin_add method
+ * 
+ * @return void
+ */
 	public function admin_add() {
 		$this->set('title_layout', 'Add New User');
 		if($this->request->is('post')) {
@@ -101,11 +98,12 @@ class UsersController extends AppController{
 		$roles = $this->User->Role->find('list');
         $this->set(compact('roles'));
 	}
-	/**
-	 * admin_edit
-	 * 
-	 * @return void
-	 */
+/**
+ * admin_edit
+ * 
+ * @param string $id
+ * @return void
+ */
  	public function admin_edit($id = null) {
 		$this->set('title_layout', 'Users Manager: Edit User');
  		$this->User->id = $id;
@@ -127,18 +125,17 @@ class UsersController extends AppController{
         $roles = $this->User->Role->find('list');
         $this->set(compact('roles'));
     }
-	/**
-	 * admin_edit method
-	 * 
-	 * @return void
-	 */
+/**
+ * admin_edit method
+ * 
+ * @param string $id
+ * @return void
+ */
 	public function admin_delete($id = null) {
-		if(!$this->request->is('post')){
-			throw MethodNotAllowedException();
-		}
+
 		$this->User->id = $id;
 		if (!$this->User->exists()){
-			throw NotFoundException(__('Invalid user'));
+			throw new NotFoundException(__('Invalid user'));
 		}
 		if ($this->User->detele()) {
 			$this->Session->setFlash(__('User deleted'));
@@ -147,11 +144,11 @@ class UsersController extends AppController{
 		$this->Session->setFlash(__('User was not deleted'));
         $this->redirect(array('action' => 'index'));
     }
-	/**
-	 * login method
-	 * 
-	 * @return void
-	 */
+/**
+ * login method
+ * 
+ * @return void
+ */
 	public function login() {
 	    if ($this->request->is('post')) {
 	        if ($this->Auth->login()) {
@@ -165,11 +162,11 @@ class UsersController extends AppController{
 	        $this->redirect('/', null, false);
 	    }
 	}
-	/**
-	 * logout method
-	 * 
-	 * @return void
-	 */
+/**
+ * logout method
+ * 
+ * @return void
+ */
 	public function logout() {
 		$this->Session->setFlash('Good-Bye');
 		$this->redirect($this->Auth->logout());

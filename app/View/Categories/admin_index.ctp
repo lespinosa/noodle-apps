@@ -43,8 +43,6 @@
 		<th><h3><?php echo $this->Paginator->sort(__('access'));?></h3></th>
 		<th><h3><?php echo $this->Paginator->sort(__('language_id'));?></h3></th>
 		<th><h3><?php echo $this->Paginator->sort(__('Actions'));?></h3></th>
-		
-
 	</tr>
 <?php 
 	$i = 0;

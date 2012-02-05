@@ -1,5 +1,4 @@
 <?php
-
 /**
  * 
  * User.php
@@ -13,18 +12,35 @@
  */
 App::uses('AppModel', 'Model');
 App::uses('AuthComponent', 'Controller/Component');
-
+/**
+ * user Model
+ * 
+ * @property User
+ */
 class User extends AppModel
 {
-	public $belongsTo = array('Role');
+	public $name = 'User';
 	public $actsAs = array('Acl' => array('type' => 'requester'), 'Translate' => array('name'));
 	
+	/**
+	 * belongsTo associations
+	 * 
+	 * @var array
+	 */
+	public $belongsTo = array(
+		'Role' => array (
+			'className' => 'Role',
+			'foreignKey' => 'Role_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		)
+	);	
 	public function beforeSave() {
 		$this->data['User']['password'] = AuthComponent::password($this->data['User']['password']);
 		return true;
-	}
-	
-	public function parentNode() {
+	}	
+	function parentNode() {
 	    if (!$this->id && empty($this->data)) {
 	        return null;
 	    }

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * ContentsController.php
  * Luis Manuel
@@ -10,7 +9,13 @@
  * @copyright     Copyright 2011, iWebdevelope.com (http://iwebdevelope.com)
  * @link     http://www.cnexuscms.com
  */
+App::uses('AppController', 'Controller');
 App::uses('Sanitize', 'Utility');
+/**
+ * Contents Controller
+ * 
+ * @property Content $Content
+ */
 class ContentsController extends AppController
 {
 	public $name = 'Contents';
@@ -20,20 +25,34 @@ class ContentsController extends AppController
 			'Content.lft' => 'asc'
 		)
 	);
-	
-	function beforeFilter() {
+/**
+ * beforeFilter method
+ *
+ * @return void
+ */
+	public function beforeFilter() {
 		parent::beforeFilter();
 		$this->set('location_site', 'contents');
 		$this->Auth->allowedActions = array('*');	
 		//$this->Auth->allow(array('*', 'view'));
 		
 	}
+/**
+ * index method
+ *
+ * @return void
+ */
 	public function index(){
 		$this->set('title_layout', 'Articles Lists');
 		$this->Content->recursive = 0;
 		$contents = $this->Content->find('all');
 		$this->set('contents', $contents);
 	}
+/**
+ * admin index method
+ *
+ * @return void
+ */
 	public function admin_index(){		
 		$this->set('title_layout', 'Articles Manager');
 		$this->Content->recursive = 0;
@@ -99,90 +118,135 @@ class ContentsController extends AppController
 					
 			));
 			$this->set('contents', $contentsData);
-		}		
+		}
+		//GET Categories List		
 		$categories = $this->Content->Category->generateTreeList(null, '_');
+		//GET UserId
 		$contentUserId = $this->Content->find('list', array('fields' => 'user_id'));
+		//GET Access
 		$access = $this->Content->query("SELECT DISTINCT c.access FROM contents as c");
+		//GET Author List
 		$author = $this->Content->User->find('list', array(
 					'conditions' => array (
 						'User.id' => $contentUserId)
 					));
+		//GET All Role
 		$roles = $this->Content->Role->find('list');
-		
+		//SET all var to the View
 		$this->set(compact('categories', 'roles', 'author', 'access'));
 		
 		// Lang Condition
 	}
-	
+/**
+ * admin add method
+ *
+ * @return void
+ */	
 	public function admin_add()
 	{	
 		$this->set('title_layout', 'Articles Manager: Add Article');
-		if($this->request->is('post')) {
+		if ($this->request->is('post')) {
+			$this->Content->create();
 			if ($this->Content->save($this->request->data)) {
-				$this->Session->setFlash(__('Your Article has been saved.', true));
+			  	$this->Session->setFlash(__('The Content has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The Article could not be saved. Please, try again.', true));
-			}
+			  	$this->Session->setFlash(__('The Content could not be saved. Please try again'));
+			}			
 		}
+		//GET all Category
 		$categories = $this->Content->Category->generateTreeList(null, '_');
+		//GET all Roles
 		$roles = $this->Content->Role->find('list');
+		//GET all Users
 		$users = $this->Content->User->find('list');
+		//SET all var for the view
 		$this->set(compact('categories', 'roles', 'users'));
 	}
+/**
+ * admin edit method
+ * 
+ * @param string $id
+ * @return void
+ */
 	public function admin_edit($id = null)
 	{
 		$this->set('title_layout', 'Articles Manager: Edit Article');
 		$this->Content->id = $id;
-		if (!$this->Content->id && empty($this->request->data)) {
-			$this->Session->setFlash(__('Articles invalido.', true));
+		if (!$this->Content->exists()){
+			$this->Session->setFlash(__('Content id not Exists'), 'default', array('class' => 'error'));
 			$this->redirect(array('action' => 'index'));
 		}
-		if ($this->request->is('get')) {
-			$this->request->data = $this->Content->read();
+		if ($this->request->is('post') || $this->request->is('put')) {
+		  	if ($this->Content->save($this->request->data)) {
+		  		$this->Session->setFlash(__('The Content has been update'));
+				$this->redirect(array('action' => 'index'));				
+			  } else {
+				$this->Session->setFlash(__('The Content could not be update'));
+			  }			  
 		} else {
-			if ($this->Content->save($this->request->data)) {
-				$this->Session->setFlash(__('El Article has be update', true));
-				$this->redirect(array('action' => 'index'));
-			}
+		  	$this->request->data = $this->Content->read(null, $id);
 		}
-		//$categories = $this->Content->Category->find('list');
+		
 		$categories = $this->Content->Category->generateTreeList(null, '_');
 		$roles = $this->Content->Role->find('list');
 		$users = $this->Content->User->find('list');
 		$this->set(compact('categories', 'roles', 'users'));
 	}
+/**
+ * admin delete method
+ * 
+ * @param string $id
+ * @return void
+ */
 	public function admin_delete($id = null) {
-		$this->Content->id = $id;
-		if (!$this->Content->id) {
-			$this->Session->setFlash(__('Invalid id for Article', true));
-			$this->redirect(array('action' => 'index'));
+		if($this->request->is('get')){
+			$this->Content->id = $id;
+			if (!$this->Content->exists()) {
+				$this->Session->setFlash(__('Invalid id for Article'), 'default', array('class' => 'error'));
+				$this->redirect(array('action' => 'index'));
+			}
+			if ($this->Content->delete()) {
+				$this->Session->setFlash(__('The Article has been deleted.'));
+				$this->redirect(array('action' => 'index'));
+			}		
 		}
-		if ($this->Content->delete()) {
-			$this->Session->setFlash(__('The Article has been deleted.'));
-			$this->redirect(array('action' => 'index'));
-		}
-		
+		$this->Session->setFlash(__('Content was not deleted'));
+		$this->redirect(array('action' => 'index'));		
 	}
-	public function admin_movedown($id, $step = 1){
-		if(empty($id)){
-			$this->Session->setFlash(__('No hay un ariculo con el id' . $id, true));
+/**
+ * admin movedown method
+ * 
+ * @param string $title
+ * @return void
+ */
+	public function admin_movedown($title, $step = 1){
+		$cont = $this->Content->findByTitle($title);
+		if(empty($cont)){
+			$this->Session->setFlash(__('No hay un ariculo con el id' . $id, true), 'default', array('class' => 'error'));
 			$this->redirect(array('acion' => 'index'), null, true);
 		}
-		$this->Content->id = $id;
+		$this->Content->id = $cont['Content']['id'];
 		if ($step > 0){
 			$this->Content->moveDown($this->Content->id, abs($step));
 		} else {
-			$this->Session->setFlash(__('Por favor indique el numero de posiciones que el nodo debe ser movido hacia abajo.', true));
+			$this->Session->setFlash(__('Por favor indique el numero de posiciones que el nodo debe ser movido hacia abajo.', true), 'defual', array('class' => 'error'));
 		}
 		$this->redirect(array('action' => 'index'), null, true);
 	}
-	public function admin_moveup($id, $step = 1){
-		if(empty($id)){
+/**
+ * admin moveup method
+ * 
+ * @param string $title
+ * @return void
+ */
+	public function admin_moveup($title, $step = 1){
+		$cont = $this->Content->findByTitle($title);
+		if(empty($cont)){
 			$this->Session->setFlash(__('Por favor indique el numero de posiciones que el nodo debe ser movido hacia arriba.', true));
 			$this->redirect(array('acion' => 'index'), null, true);
 		}
-		$this->Content->id = $id;
+		$this->Content->id = $cont['Content']['id'];
 		if($step > 0){
 			$this->Content->moveUp($this->Content->id, abs($step));
 		} else {

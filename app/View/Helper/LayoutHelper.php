@@ -9,7 +9,8 @@
  * @link     http://www.cnexuscms.com
  */
 
-class LayoutHelper extends Helper
+App::uses('Sanitize', 'Utility');
+class LayoutHelper extends AppHelper
 {
 	
 	var $helpers = array('Html', 'Session', 'Form', 'Widgets');
@@ -84,6 +85,14 @@ class LayoutHelper extends Helper
 		return '<span>'.$output['Category']['title']. '</span>';
 		
 	}
+	function getContent($id) {
+		App::import('Controller', 'Contents');
+		$data = new ContentsController;
+		$output = $data->Content->find('first', array(
+				'conditions' => array('Content.id' => $id)));
+		return '<span>'.$output['Content']['title']. '</span>';
+		
+	}
 	function getAccess($id, $type = null){
 		App::import('Controller', 'Roles');
 		switch ($type) {
@@ -135,17 +144,23 @@ class LayoutHelper extends Helper
 		
 	}
 	function getOrdering($modelName = null, $Id, $linksMenuType = null, $type = null, $lft = null){
+		if ($modelName == 'Category'){
+			$title = Sanitize::clean($this->getCategory($Id), array('remove_html' => true));
+		} elseif ($modelName == 'Content') {
+			$title = Sanitize::clean($this->getContent($Id), array('remove_html' => true));
+		}
+		
 		switch ($type) {
 			case 'img':
 				$output = "<ul class='ordering'>";
 				$output .= "<li>";
 				$output .= $this->Html->link($this->Html->image('admin/icons/up_icon.png', array(
-								'alt' => 'Move Up')), array('action' => 'moveup', $Id, $linksMenuType),
+								'alt' => 'Move Up')), array('action' => 'moveup', $title, $linksMenuType),
 								array('escape' => false));
 				$output .= "</li>";
 				$output .= "<li>";
 				$output .= $this->Html->link($this->Html->image('admin/icons/down_icon.png', array(
-								'alt' => 'Move Down')), array('action' => 'movedown', $Id, $linksMenuType),
+								'alt' => 'Move Down')), array('action' => 'movedown', $title, $linksMenuType),
 								array('escape' => false));
 				$output .= "</li>";
 				$output .= "<li>";

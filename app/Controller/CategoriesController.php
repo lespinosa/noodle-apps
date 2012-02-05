@@ -1,5 +1,4 @@
 <?php
-
 /**
  * CategoriesController.php
  * Luis Manuel
@@ -10,20 +9,30 @@
  * @copyright     Copyright 2011, iWebdevelope.com (http://iwebdevelope.com)
  * @link     http://www.cnexuscms.com
  */
+App::uses('AppController', 'Controller');
+/**
+ * Categories Controller
+ * 
+ * @property Category $Category
+ */
 class CategoriesController extends AppController
 {
-	public $name = 'Categories';
-	public $uses = array(
-		'Category',
-		'User',
-		'Role'
-	);
-	function beforeFilter() {
+/**
+ * beforeFilter Method
+ * 
+ * @return void
+ */	
+	public function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->allowedActions = array('*');		
+		//$this->Auth->allowedActions = array('*');		
 		$this->set('location_site', 'categories');
 	}
-	public function admin_index($id = null)
+/**
+ * admin index Method
+ * 
+ * @return void
+ */
+	public function admin_index()
 	{		
 		$this->set('title_layout', 'Category Manager');
 		$this->Category->recursive = 0;
@@ -83,77 +92,115 @@ class CategoriesController extends AppController
 		$roles = $this->Category->Role->find('list');		
 		$this->set(compact('categoryLeft', 'roles'));
 	}	
-	
-	public function admin_add()
-	{
-		
+/**
+ * admin add Method
+ * 
+ * @return void
+ */
+	public function admin_add(){
 		$this->set('title_layout', 'Category Manager: Add Category');
-		if(!empty($this->request->data)) {
+		if($this->request->is('post')){
+			$this->Category->create();
 			if ($this->Category->save($this->request->data)) {
-				$this->Session->setFlash(__('Your Category has been saved.', true));
+				$this->Session->setFlash(__('The Category has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The Category could not be saved. Please try again.', true));
-			}
+				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+			}			
 		}
+		//Get Parents Category
 		$parents = $this->Category->generateTreeList(null, '_');
+		//Get Role list
 		$roles = $this->Category->Role->find('list');
+		//Set variables for view
 		$this->set(compact('parents', 'roles'));
 	}
+/**
+ * admin edit Method
+ * 
+ * @param string $id
+ * @return void
+ */
 	public function admin_edit($id = null) {
 		$this->set('title_layout', 'Category Manager: Edit Category');
 		$this->Category->id = $id;
-		if (!$this->Category->id && empty($this->request->data)) {
-			$this->Session->setFlash(__(' Invalid Category id', true));
-			$this->redirect(array('action' => 'index'));
+		if (!$this->Category->exists()) {
+			throw new NotFoundException(__('Invalid category'));
 		}
-		if ($this->request->is('get')) {
-			$this->request->data = $this->Category->read();
+		if ($this->request->is('post') || $this->request->is('put')) {
+			if ($this->Category->save($this->request->data)) {
+			  	$this->Session->setFlash(__('The Category has been update'));
+				$this->redirect(array('action' => 'index'));
+			} else {
+			  	$this->Session->setFlash(__('The Category could not be update. Please, try again.'));
+			}					  
 		} else {
-			if($this->Category->save($this->request->data)) {
-				$this->Session->setFlash(__('The category has been saved', true));
+		  $this->request->data = $this->Category->read(null, $id);
+		}
+		//Get Parents Category
+		$parents = $this->Category->generateTreeList(null, '_');
+		//Get Role list
+		$roles = $this->Category->Role->find('list');
+		//Set variables for view
+		$this->set(compact('parents', 'roles'));		
+	}
+/**
+ * admin delete Method
+ * 
+ * @param string $id
+ * @return void
+ */
+	public function admin_delete($id = null) {
+		if($this->request->is('get')) {		
+			$this->Category->id = $id;
+			if (!$this->Category->exists()) {
+				throw new NotFoundException(__('Invalid Category'));
+			}
+			if ($this->Category->delete()) {
+				$this->Session->setFlash(__('The Category has been deleted.'));
 				$this->redirect(array('action' => 'index'));
 			}
 		}
-		$parents = $this->Category->generateTreeList(null, '_');
-		$roles = $this->Category->Role->find('list');
-		$this->set(compact('parents', 'roles'));
-		
+		$this->Session->setFlash(__('Category was not deleted'));
+        $this->redirect(array('action' => 'index'));
 	}
-	public function admin_delete($id = null) {
-		$this->Category->id = $id;
-		if (!$this->Category->id) {
-			$this->Session->setFlash(__('Invalid Id for Category', true));
+/**
+ * admin_movedown Method
+ * 
+ * @param string $title
+ * @return void
+ */
+	public function admin_movedown($title, $step = 1) {
+		$cat = $this->Category->findByTitle($title);
+		if(empty($cat)) {
+			$this->Session->setFlash(__('There is no category named ' . $title));
 			$this->redirect(array('action' => 'index'));
 		}
-		if ($this->Category->delete()) {
-			$this->Session->setFlash(__('The Category has been deleted.'));
-			$this->redirect(array('action' => 'index'));
-		}
-	}
-	public function admin_movedown($id, $step = 1) {
-		if(empty($id)) {
-			$this->Session->setFlash(__('Invalid id for Category'));
-			$this->redirect(array('action' => 'index'));
-		}
-		$this->Category->id = $id;
+		$this->Category->id = $cat['Category']['id'];
 		if ($step > 0) {
 			$this->Category->moveDown($this->Category->id, abs($step));
 		} else {
-			$this->Session->setFlash(__('Por favor indique el numero de posiciones que la categoria debe ser movida hacia abajo.', true));
+			$this->Session->setFlash(__('Please provide the number of positions the field should be moved down.', true));
 		}
 		$this->redirect(array('action' => 'index'), null, true);
 	}
-	public function admin_moveup($id, $step = 1){
-		if(empty($id)){
-			$this->Session->setFlash(__('Por favor indique el numero de posiciones que el nodo debe ser movido hacia arriba.', true));
-			$this->redirect(array('acion' => 'index'), null, true);
-		}
-		$this->Category->id = $id;
+/**
+ * admin moveup Method
+ * 
+ * @param string $title
+ * @return void
+ */
+	public function admin_moveup($title, $step = 1){
+		$cat = $this->Category->findByTitle($title);
+        if (empty($cat)) {
+            $this->Session->setFlash('There is no category named ' . $title);
+            $this->redirect(array('action' => 'index'), null, true);
+        }
+		$this->Category->id = $cat['Category']['id'];
 		if($step > 0){
 			$this->Category->moveUp($this->Category->id, abs($step));
 		} else {
-			$this->Session->setFlash(__('Por favor indique el numero de posiciones que el nodo debe ser movido hacia arriba.', true));
+			$this->Session->setFlash('Please provide a number of positions the category should be moved up.');
 		}
 		$this->redirect(array('action' => 'index'), null, true);
 	}

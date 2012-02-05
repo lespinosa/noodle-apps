@@ -8,6 +8,12 @@
  * @link     http://www.cnexuscms.com
  */
 App::uses('AppModel', 'Model');
+
+/**
+ * role Model
+ * 
+ * @propertu Role
+ */
 class Role extends AppModel {
 	var $actsAs = array('Acl' => array('type' => 'requester')); 
 	public function parentNode() {
