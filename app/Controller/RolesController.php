@@ -21,8 +21,7 @@ class RolesController extends AppController {
  * @return void
  */
 	public function beforeFilter() {
-	    parent::beforeFilter(); 
-		$this->Auth->allowedActions = array('*');
+	    parent::beforeFilter();
 	  	$this->set('location_site', 'roles');
 	}
 /**

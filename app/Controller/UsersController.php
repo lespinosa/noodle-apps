@@ -25,9 +25,8 @@ class UsersController extends AppController{
  */
 	public function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->allowedActions = array('*');	
 		$this->set('location_site', 'users');
-	 //$this->Auth->allow(array('*', 'logout', 'login'));
+		$this->Auth->allow(array('logout', 'login'));
 	   
 	}
 /**

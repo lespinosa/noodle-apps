@@ -33,7 +33,6 @@ class ContentsController extends AppController
 	public function beforeFilter() {
 		parent::beforeFilter();
 		$this->set('location_site', 'contents');
-		$this->Auth->allowedActions = array('*');	
 		//$this->Auth->allow(array('*', 'view'));
 		
 	}

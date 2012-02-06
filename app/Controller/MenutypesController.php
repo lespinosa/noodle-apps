@@ -19,7 +19,6 @@ class MenutypesController extends AppController
 	
 	function beforeFilter() {
 	  parent::beforeFilter(); 
-	  $this->Auth->allowedActions = array('*');	
 	  $this->set('location_site', 'menuTypes');
 	 // $this->Auth->allow(array('*', 'logout', 'login'));	   
 	}

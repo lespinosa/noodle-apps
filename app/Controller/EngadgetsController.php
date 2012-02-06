@@ -24,7 +24,6 @@ class EngadgetsController extends AppController
 	var $fileSetup = '';
 	function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->allowedActions = array('*');	
 		//$this->Auth->allow(array('*', 'view'));
 	}
 	public function admin_index(){

@@ -21,9 +21,7 @@ class DashboardController extends AppController
 	public $theme = 'default';	
 	function beforeFilter() {
 	    parent::beforeFilter(); 	 	
-		$this->set('location_site', 'admin');
-	 	$this->Auth->allow(array('index', 'logout', 'login'));
-	   
+		$this->set('location_site', 'admin');	   
 	}
 /**
  * index method

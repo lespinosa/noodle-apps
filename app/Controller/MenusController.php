@@ -19,9 +19,8 @@ class MenusController extends AppController
 	var $helpers = array('Html', 'Tree', 'Menu');
 	
 	function beforeFilter() {
-	   parent::beforeFilter(); 
-	  $this->Auth->allowedActions = array('*');	
-	  $this->set('location_site', 'menus');
+	   parent::beforeFilter();
+	   $this->set('location_site', 'menus');
 	 // $this->Auth->allow(array('*', 'logout', 'login'));	   
 	}
 /**
