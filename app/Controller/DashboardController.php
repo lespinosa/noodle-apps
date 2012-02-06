@@ -18,7 +18,7 @@ App::uses('AppController', 'Controller');
 class DashboardController extends AppController
 {
 	public $name = 'Dashboard';
-	public $theme = 'default';	
+	
 	function beforeFilter() {
 	    parent::beforeFilter(); 	 	
 		$this->set('location_site', 'admin');	   
@@ -29,6 +29,7 @@ class DashboardController extends AppController
  * @return void
  */	
 	public function index(){
+		$this->theme = 'default';
 		//importamos RolesController
 		App::import('Controller', 'Roles');
 		//Intanciamos la Clase RolesController 
@@ -52,7 +53,7 @@ class DashboardController extends AppController
  * @return void
  */	
 	public function admin_index(){
-		$this->theme = 'admin_blue';
+		$this->theme = 'Admin_blue';
 		$this->set('title_layout', 'Dashboard');
 	}
 }

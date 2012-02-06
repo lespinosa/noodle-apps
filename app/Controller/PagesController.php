@@ -51,8 +51,8 @@ class PagesController extends AppController {
  * @var array
  */
 	public $uses = array();
+	public $theme = 'Default';
 
-	public $theme = 'default';
 /**
  * Displays a view
  *
