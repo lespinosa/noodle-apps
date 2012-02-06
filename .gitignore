@@ -1,6 +1,6 @@
 .settings
 .project
-/app/tmpapp/tmp
+app/tmp
 app/tmp/cache
 app/tmp/engadgets
 app/tmp/logs
