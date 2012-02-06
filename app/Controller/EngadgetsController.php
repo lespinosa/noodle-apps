@@ -1,5 +1,4 @@
 <?php
-
 /**
  * EngadgetsController.php
  * Luis Manuel
@@ -10,6 +9,7 @@
  * @copyright     Copyright 2011, iWebdevelope.com (http://iwebdevelope.com)
  * @link     http://www.cnexuscms.com
  */
+
 class EngadgetsController extends AppController
 {
 	public $name = 'Engadgets';

@@ -15,31 +15,31 @@ App::uses('AppController', 'Controller');
  */
 class RolesController extends AppController {
 	public $name = 'Roles';
-	/**
-	 * beforeFilter method
-	 * 
-	 * @return void
-	 */
+/**
+ * beforeFilter method
+ * 
+ * @return void
+ */
 	public function beforeFilter() {
 	    parent::beforeFilter(); 
 		$this->Auth->allowedActions = array('*');
 	  	$this->set('location_site', 'roles');
 	}
-	/**
-	 * admin_index method
-	 * 
-	 * @return void
-	 */
+/**
+ * admin_index method
+ * 
+ * @return void
+ */
  	public function admin_index() {
  		$this->set('title_layout', 'Role Manager');
         $this->Role->recursive = 0;
         $this->set('roles', $this->paginate());
     }
-	/**
-	 * admin_view method
-	 * 
-	 * @return void
-	 */ 
+/**
+ * admin_view method
+ * 
+ * @return void
+ */ 
     public function admin_view($id = null) {
     	$this->set('title_layout', 'Role Manager: View Role');
     	$this->Role->id = $id;
@@ -48,11 +48,11 @@ class RolesController extends AppController {
         }
         $this->set('role', $this->Role->read(null, $id));
     }
-	/**
-	 * admin_add method
-	 * 
-	 * @return void
-	 */
+/**
+ * admin_add method
+ * 
+ * @return void
+ */
 	public function admin_add() {
 		$this->set('title_layout', 'Role Manager: Add Role');
 		if ($this->request->is('post')) {
@@ -65,11 +65,11 @@ class RolesController extends AppController {
 			}			
 		}
 	}
-	/**
-	 * admin_edit method
-	 * 
-	 * @return void
-	 */
+/**
+ * admin_edit method
+ * 
+ * @return void
+ */
 	public function admin_edit($id = nul) {
 		$this->set('title_layout', 'Role Manager: Edital Rol');
 		$this->Role->id = $id;
@@ -87,11 +87,11 @@ class RolesController extends AppController {
 		  $this->request->data = $this->Role->read(null, $id);
 		}        
     }
-	/**
-	 * admin_delete method
-	 * 
-	 * @return void
-	 */
+/**
+ * admin_delete method
+ * 
+ * @return void
+ */
     public function admin_delete($id) {
     	if ($this->request->is('post')){
     		throw new MethodNotAllowedException();

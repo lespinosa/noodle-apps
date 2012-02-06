@@ -29,28 +29,35 @@ class Content extends AppModel
 	 * @var array
 	 */
 	public $belongsTo = array(
-		'Category' => array (
+		'Category' => array(
 			'className' => 'Category',
-			'foreignKey' => 'Category_id',
+			'foreignKey' => 'category_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
 		),
-		'User' => array (
+		'User' => array(
 			'className' => 'User',
-			'foreignKey' => 'User_id',
+			'foreignKey' => 'user_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
 		),
-		'Role' => array (
+		/*'Language' => array(
+			'className' => 'Language',
+			'foreignKey' => 'language_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		),*/
+		'Role' => array(
 			'className' => 'Role',
-			'foreignKey' => 'Role_id',
+			'foreignKey' => 'role_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
 		)
-	);	
+	);
 	function parentNode() {
 		return null;
 	}

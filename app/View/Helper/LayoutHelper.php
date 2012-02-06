@@ -93,6 +93,24 @@ class LayoutHelper extends AppHelper
 		return '<span>'.$output['Content']['title']. '</span>';
 		
 	}
+	function getMenuItem($id) {
+		App::import('Controller', 'Menus');
+		$data = new MenusController;
+		$output = $data->Menu->find('first', array(
+				'conditions' => array('Menu.id' => $id)));
+		return '<span>'.$output['Menu']['title']. '</span>';
+		
+	}
+	//GET all Widget
+	//Nota: remplace la antigua getWidget por getAllWidget, buscar mas abajo getAllWidget
+	function getWidget($id) {
+		App::import('Controller', 'Widgets');
+		$data = new WidgetsController;
+		$output = $data->Widget->find('first', array(
+				'conditions' => array('Widget.id' => $id)));
+		return '<span>'.$output['Widget']['title']. '</span>';
+		
+	}
 	function getAccess($id, $type = null){
 		App::import('Controller', 'Roles');
 		switch ($type) {
@@ -146,10 +164,16 @@ class LayoutHelper extends AppHelper
 	function getOrdering($modelName = null, $Id, $linksMenuType = null, $type = null, $lft = null){
 		if ($modelName == 'Category'){
 			$title = Sanitize::clean($this->getCategory($Id), array('remove_html' => true));
-		} elseif ($modelName == 'Content') {
+		}
+		if ($modelName == 'Content') {
 			$title = Sanitize::clean($this->getContent($Id), array('remove_html' => true));
 		}
-		
+		if ($modelName == 'Menu') {
+			$title = Sanitize::clean($this->getMenuItem($Id), array('remove_html' => true));
+		}
+		if ($modelName == 'Widget') {
+			$title = Sanitize::clean($this->getWidget($Id), array('remove_html' => true));
+		}
 		switch ($type) {
 			case 'img':
 				$output = "<ul class='ordering'>";
@@ -270,8 +294,8 @@ class LayoutHelper extends AppHelper
 		return $output;
 	}
 	
-	// get Widget
-	public function getWidget($position = '', $options = array()){
+	// get all Widget
+	public function getAllWidget($position = '', $options = array()){
 		App::import('Controller', 'Widgets');		
 		$this->App = new WidgetsController;
 		$widget = $this->App->Widget->find('all', array(

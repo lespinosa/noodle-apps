@@ -150,6 +150,7 @@ class UsersController extends AppController{
  * @return void
  */
 	public function login() {
+		$this->theme = 'default';
 	    if ($this->request->is('post')) {
 	        if ($this->Auth->login()) {
 	            $this->redirect($this->Auth->redirect());
@@ -168,6 +169,7 @@ class UsersController extends AppController{
  * @return void
  */
 	public function logout() {
+		$this->theme = 'default';
 		$this->Session->setFlash('Good-Bye');
 		$this->redirect($this->Auth->logout());
 	}

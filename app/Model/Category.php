@@ -24,39 +24,66 @@ class Category extends AppModel
 			'spacer' => '├─ '
 		)
 	);
-	/**
-	 * hasMany associations
-	 * 
-	 * @var array
-	 */
-	public $hasMany = array (
-		'Content' => array (
-				'className' => 'Content',
-				'foreignKey' => 'Category_id',
-				'conditions' => '',
-				'fields' => '',
-				'order' => ''
-			),
-	);
-	/**
-	 * belongsTo associations
-	 * 
-	 * @var array
-	 */
+/**
+ * belongsTo associations
+ *
+ * @var array
+ */
 	public $belongsTo = array(
-		'User' => array (
-			'className' => 'User',
-			'foreignKey' => 'User_id',
+		'Parentcategory' => array(
+			'className' => 'category',
+			'foreignKey' => 'parent_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
 		),
-		'Role' => array (
+		'Role' => array(
 			'className' => 'Role',
-			'foreignKey' => 'Role_id',
+			'foreignKey' => 'role_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		),
+		'User' => array(
+			'className' => 'User',
+			'foreignKey' => 'user_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
 		)
-	);	
+	);
+
+/**
+ * hasMany associations
+ *
+ * @var array
+ */
+	public $hasMany = array(
+		'Childcategory' => array(
+			'className' => 'category',
+			'foreignKey' => 'parent_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'Content' => array(
+			'className' => 'Content',
+			'foreignKey' => 'category_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		)
+	);
 }

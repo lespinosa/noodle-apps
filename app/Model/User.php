@@ -28,18 +28,100 @@ class User extends AppModel
 	 * @var array
 	 */
 	public $belongsTo = array(
-		'Role' => array (
+		'Role' => array(
 			'className' => 'Role',
-			'foreignKey' => 'Role_id',
+			'foreignKey' => 'role_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
 		)
-	);	
+	);
+	/**
+ * hasMany associations
+ *
+ * @var array
+ */
+	public $hasMany = array(
+		'Category' => array(
+			'className' => 'Category',
+			'foreignKey' => 'user_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'Content' => array(
+			'className' => 'Content',
+			'foreignKey' => 'user_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'Menu' => array(
+			'className' => 'Menu',
+			'foreignKey' => 'user_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'Post' => array(
+			'className' => 'Post',
+			'foreignKey' => 'user_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'Widget' => array(
+			'className' => 'Widget',
+			'foreignKey' => 'user_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		)
+	);
+	/**
+	 * beforeSave() method
+	 * 
+	 * @return void
+	 */
 	public function beforeSave() {
 		$this->data['User']['password'] = AuthComponent::password($this->data['User']['password']);
 		return true;
-	}	
+	}
+	/**
+	 * parentNode() method
+	 * 
+	 * @return void
+	 */	
 	function parentNode() {
 	    if (!$this->id && empty($this->data)) {
 	        return null;

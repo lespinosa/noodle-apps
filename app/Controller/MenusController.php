@@ -7,29 +7,31 @@
  * @copyright     Copyright 2011, iWebdevelope.com (http://iwebdevelope.com)
  * @link     http://www.cnexuscms.com
  */
-
+App::uses('AppController', 'Controller');
+/**
+ * Menus Controller
+ * 
+ * @property Menu $Menu
+ */
 class MenusController extends AppController
 {
-	var $name = 'Menus';
+	public $name = 'Menus';
 	var $helpers = array('Html', 'Tree', 'Menu');
-	 public $uses = array(
-        'Menu',
-        'Menutype',
-        'Role',
-    );
+	
 	function beforeFilter() {
 	   parent::beforeFilter(); 
-	  $this->Auth->allowedActions = array('*');
-	  
-	
+	  $this->Auth->allowedActions = array('*');	
 	  $this->set('location_site', 'menus');
 	 // $this->Auth->allow(array('*', 'logout', 'login'));	   
 	}
-	function index($id = null) {
-		
-	}
+/**
+ * admin index method
+ * 
+ * @param int id
+ * @return void
+ */
 	public function admin_index($id = 7){
-		   
+		//Filter Conditions  
 		if ($id == null) {
 			$menuId = $this->request->data('Menu.filter_menutype');
 		} elseif($this->request->data('Menu.filter_menutype') == 0) {
@@ -41,9 +43,11 @@ class MenusController extends AppController
  		
 		$menuType = $menuId;
         $this->Menu->recursive = 0;
+		//GET All Menu
 		$linksTree = $this->Menu->generateTreeList(array(
 				'Menu.menutype_id' => $menuId,
 				));
+		//GET all Menu 
 		$linksMenuType = $this->Menu->find('list', array(
             'conditions' => array(
                 'Menu.menutype_id' => $menuId,
@@ -53,12 +57,13 @@ class MenusController extends AppController
                 'Menu.menutype_id',
             ),
         ));
-		$roles = $this->Role->find('list', array('order' => array('Role.id' => 'asc')));
+		//GET all Role
+		$roles = $this->Menu->Role->find('list', array('order' => array('Role.id' => 'asc')));
 		$menutypes = $this->Menu->Menutype->find('list');
         $this->set('menus', $this->paginate());
 		$this->set(compact('linksTree', 'linksMenuType', 'menuType', 'roles', 'menutypes'));
 				
-		// Filtle
+		// GET all Data Filtle
 		$filter_title		= $this->request->data('Menu.filter_search');
 		$filter_status		= $this->request->data('Menu.filter_status');
 		$filter_menutype	= $this->request->data('Menu.filter_menutype');
@@ -108,40 +113,67 @@ class MenusController extends AppController
 			));
 			
 			$this->set(compact('linksTree'));
-		}
-		
-		
+		}		
 	}
-	function admin_liststype($id = null, $menuTypeId = null, $link_type = null){
+/**
+ * admin listtype method
+ * 
+ * @param init $id
+ * @param ini $menuTypeId
+ * @param string $link_type
+ * @return ajax void
+ */
+	public function admin_liststype($id = null, $menuTypeId = null, $link_type = null){
 		$this->set('title_layout', '');
 		$this->layout = 'clear';
 		$itemId = $id;
 		$this->set(compact('itemId', 'menuTypeId', '$link_type'));
 	}
+/**
+ * admin add method
+ * 
+ * @param init $id
+ * @param ini $menuTypeId
+ * @param string $linkType
+ * @return void
+ */
 	public function admin_add($id = null, $menuTypeId = null, $linkType = null){
 		$this->set('title_layout', 'Menu Manager: Add Link');
 		$itemId = $id;
 		$link_type = $linkType;
-		if (!empty($this->request->data)){
-			if ($this->Menu->save($this->request->data)){
-				$this->Session->setFlash(__('El enlace fue salvado.', true));
+		if ($this->request->is('post')) {
+			$this->Menu->create();
+			if ($this->Menu->save($this->request->data)) {
+			  	$this->Session->setFlash(__('The link has been saved.'));
 				$this->redirect(array('action' => 'index', $id));
 			} else {
-				$this->Session->setFlash(__('El enlace no ha podido ser guardado.', true));
-			}
-		}
-		
+			  	$this->Session->setFlash(__('The link could not be saved. Please, try again.'), 'default', array('class' => 'error'));
+			}			
+		}		
 		$menuTypeId = $id;
+		//GET all Menutype
 		$menutypes = $this->Menu->Menutype->find('list');
+		//GET all Menu Items
 		$parentLinks = $this->Menu->generateTreeList(array(
 				'Menu.menutype_id' => $menuTypeId
 				), '_');
+		//GET all Users
       	$users = $this->Menu->User->find('list');
+		//GET all Roles
 		$roles = $this->Menu->Role->find('list', array('order' => array('Role.id' => 'asc')));
+		//SET all variable
       	$this->set(compact('menutypes', 'menuTypeId', 'parentLinks', 'roles', 'users', 'link_type', 'itemId'));
 		
 		
 	}
+/**
+ * admin edit method
+ * 
+ * @param init $id
+ * @param ini $menuTypeId
+ * @param string $linkType
+ * @return void
+ */
 	public function admin_edit($id = null, $menuTypeId = null, $linkType = null){
 		$this->set('title_layout', 'Menu Manager: Edit Link');
 		$data = new stdClass();
@@ -155,50 +187,69 @@ class MenusController extends AppController
 			$link_type = $this->request->data('Menu.link_type');
 		} else {
 			$link_type = $linkType;
+		}		
+		if (!$this->Menu->exists()) {
+			$this->Session->setFlash(__('Menu invalido.', true), 'default', array('class' => 'error'));
+			$this->redirect(array('action' => 'index', $menuTypeId));			
 		}
-		
-		if (!$this->Menu->id && empty($this->request->data)) {
-			$this->Session->setFlash(__('Menu invalido.', true));
-			$this->redirect(array('action' => 'index', $menuTypeId));
-			
-		}
-		if ($this->request->is('get')) {
-			$this->request->data = $this->Menu->read();
-			
+		if ($this->request->is('post') || $this->request->is('put')) {
+				if ($this->Menu->save($this->request->data)) {
+					//SAVE all Params
+					$this->Menu->saveField('params', json_encode($data));
+					$this->Session->setFlash(__('The link has been update.', true));
+					$this->redirect(array('action' => 'index', $menuTypeId));				
+				} else {
+				  	$this->Session->setFlash(__('The link could not be update. Please, try again.'), 'default', array('class' => 'error'));
+				}			
 		} else {
-			if ($this->Menu->save($this->request->data)) {
-				$this->Menu->saveField('params', json_encode($data));
-				$this->Session->setFlash(__('El Menu ha sido actualizado.', true));
-				$this->redirect(array('action' => 'index', $menuTypeId));
-				
-			}
-			
+			$this->request->data = $this->Menu->read(null, $id);
 		}
 		$menuTypeId = $menuTypeId;
-		$roles = $this->Role->find('list', array('order' => array('Role.id' => 'asc')));
+		// GET all Roles
+		$roles = $this->Menu->Role->find('list', array('order' => array('Role.id' => 'asc')));
+		// GET all Menutype
 		$menutypes = $this->Menu->Menutype->find('list');
+		// GET all Menu Items
 		$parentLinks = $this->Menu->generateTreeList(array(
 				'Menu.menutype_id' => $menuTypeId
-				), '_');
+				), '_');				
+		//SET all Variable
       	$this->set(compact('menutypes', 'menuTypeId', 'parentLinks', 'roles', 'link_type', 'itemId'));
-
 	}
+/**
+ * admin delete method
+ * 
+ * @param init $id
+ * @param init $menuTypeId
+ * @return void
+ */
 	public function admin_delete($id = null, $menuTypeId = null) {
-		if (!$id) {
-			$this->Session->setFlash(__('Invalid id for link', true));
+		$this->Menu->id = $id;
+		if (!$this->Menu->exists()) {
+		  	$this->Session->setFlash(__('Invalid id for link', true), 'default', array('class' => 'error'));
 			$this->redirect(array('action' => 'index', $menuTypeId));
 		}
-		if ($this->Menu->delete($id)) {
+		if($this->Menu->delete()){
 			$this->Session->setFlash(__('Link eliminado.', true));
 			$this->redirect(array('action' => 'index', $menuTypeId));
 		}
+		$this->Session->setFlash(__('Link was not deleted'), 'defualt', array('action' => 'error'));
+		$this->redirect(array('action' => 'index', $menuTypeId));
 	}
-	public function admin_movedown($linkId, $menuType, $step = 1){
-		if(empty($linkId)){
-			$this->Session->setFlash(__('No hay un enlace con el id' . $linkId, true));
+/**
+ * admin movedown method
+ * 
+ * @param string $title
+ * @param init $menuTypeId
+ * @return void
+ */
+	public function admin_movedown($title = null, $menuType, $step = 1){
+		$link = $this->Menu->findByTitle($title);
+		if(empty($link)){
+			$this->Session->setFlash(__('No hay un enlace con el titulo' . $link, true));
 			$this->redirect(array('acion' => 'index',$menuType), null, true);
 		}
-		$this->Menu->id = $linkId;
+		$this->Menu->id = $link['Menu']['id'];
 		if ($step > 0){
 			$this->Menu->moveDown($this->Menu->id, abs($step));
 		} else {
@@ -206,19 +257,25 @@ class MenusController extends AppController
 		}
 		$this->redirect(array('action' => 'index',$menuType), null, true);
 	}
-	public function admin_moveup($linkId, $menuType, $step = 1){
-		if(empty($linkId)){
+/**
+ * admin moveup method
+ * 
+ * @param string $title
+ * @param init $menuTypeId
+ * @return void
+ */
+	public function admin_moveup($title = null, $menuType, $step = 1){
+		$link = $this->Menu->findByTitle($title);
+		if(empty($link)){
 			$this->Session->setFlash(__('Por favor indique el numero de posiciones que el nodo debe ser movido hacia arriba.', true));
 			$this->redirect(array('acion' => 'index',$menuType), null, true);
 		}
-		$this->Menu->id = $linkId;
+		$this->Menu->id = $link['Menu']['id'];
 		if($step > 0){
 			$this->Menu->moveUp($this->Menu->id, abs($step));
 		} else {
 			$this->Session->setFlash(__('Por favor indique el numero de posiciones que el nodo debe ser movido hacia arriba.', true));
 		}
 		$this->redirect(array('action' => 'index',$menuType), null, true);
-	}
-
-	
+	}	
 }
