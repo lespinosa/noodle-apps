@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 06, 2012 at 03:28 AM
+-- Generation Time: Feb 07, 2012 at 04:14 PM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -483,7 +483,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 INSERT INTO `users` (`id`, `username`, `password`, `role_id`, `created`, `modified`, `name`, `email`, `status`) VALUES
 (3, 'luismaster', '2e74c99c776c8f5640b2c50f2d7d1ac14e823831', 6, '2012-02-04 03:07:36', '2012-02-04 03:07:36', 'Luis Manuel Espinosa', 'luismaster809@hotmail.com', 1),
 (4, 'admin', '304a778d3dfe6e3810d16788ed48d91528c535d8', 7, '2012-02-04 16:54:26', '2012-02-04 17:55:28', 'Administrator', 'admin@adi.com', 0),
-(5, 'demo', '8f29a31b85c95e9496995be0b74bbdc5e4623bcb', 9, '2012-02-04 18:02:21', '2012-02-06 01:36:43', 'demo', 'demo', 1),
+(5, 'demo', 'c52846cdab39a2855923dd41a0a020dc60481085', 9, '2012-02-04 18:02:21', '2012-02-06 01:36:43', 'demo', 'demo', 1),
 (6, 'managers', '2e74c99c776c8f5640b2c50f2d7d1ac14e823831', 8, '2012-02-04 18:34:43', '2012-02-04 18:58:20', 'manager', 'admin@adi.com', 0);
 
 -- --------------------------------------------------------
@@ -514,7 +514,7 @@ CREATE TABLE IF NOT EXISTS `widgets` (
   `role_id` int(11) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `widgets`
