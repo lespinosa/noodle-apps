@@ -29,6 +29,8 @@ class DashboardController extends AppController
  * @return void
  */	
 	public function index(){
+		
+		$this->noodleThemePath = 'Site';
 		$this->theme = 'default';
 		//importamos RolesController
 		App::import('Controller', 'Roles');
@@ -53,7 +55,8 @@ class DashboardController extends AppController
  * @return void
  */	
 	public function admin_index(){
-		$this->theme = 'Admin_blue';
+		$this->noodleThemePath = 'Admin';
+		$this->theme = 'Blue';
 		$this->set('title_layout', 'Dashboard');
 	}
 }

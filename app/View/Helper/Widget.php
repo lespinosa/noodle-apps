@@ -1,9 +1,10 @@
 <?php
 App::uses('View', 'View');
 
-class WidgetsHelper extends View
+class Widget extends View
 {
-	public function element($name, $dir, $data = array(), $options = array()) {
+	public $Layout = null;
+	/*public function element($name, $dir, $data = array(), $options = array()) {
 		$file = $plugin = $key = null;
 		$callbacks = false;
 
@@ -76,5 +77,5 @@ class WidgetsHelper extends View
 			}
 		}
 		return false;
-	}
+	}*/
 }

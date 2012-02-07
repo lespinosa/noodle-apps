@@ -51,7 +51,8 @@ class PagesController extends AppController {
  * @var array
  */
 	public $uses = array();
-	public $theme = 'Default';
+	public $noodleThemePath = 'Site';
+	public $theme = 'Blue';
 
 /**
  * Displays a view
