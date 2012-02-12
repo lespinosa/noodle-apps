@@ -186,3 +186,8 @@ You can also add some CSS styles for your pages at: APP/webroot/css.');
 	<li><a href="http://cakephp.lighthouseapp.com/"><?php echo __d('cake_dev', 'CakePHP Lighthouse'); ?> </a>
 	<ul><li><?php echo __d('cake_dev', 'CakePHP Tickets, Wiki pages, Roadmap'); ?></li></ul></li>
 </ul>
+<?php
+$this->start('menu');
+echo $this->getWidget('widget_menu/widget_menu', array('params' => array('')));
+$this->end();
+?>

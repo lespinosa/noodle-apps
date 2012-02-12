@@ -1,6 +1,6 @@
 <?php
-class MenusHelper extends AppHelper {
-	var $helpers = array('Html', 'Session', 'Form', 'Menus', 'Noodle');
+App::uses('NoodleHelper', 'View/Helper');
+class WidgetMenuHelper extends NoodleHelper{	
 
 	public function getTabLink(){
 		$output = "<li class='vertical-tab-button'>";
@@ -39,11 +39,11 @@ class MenusHelper extends AppHelper {
 		
 
 		
-		$options->select_menu = $this->Noodle->params('menutype_id', array('label' => 'Select Menu','options' => array(0 => 'Select Menu', 'Menu List' => $list)));
+		$options->select_menu = $this->params('menutype_id', array('label' => 'Select Menu','options' => array(0 => 'Select Menu', 'Menu List' => $list)));
 		
-		$options->start_level = $this->Noodle->params('startlevel', array('label' => 'Start Level','options' => array(1,2,3,4,5,6,7,8,9,10)));
-		$options->end_level = $this->Noodle->params('endlevel', array('label' => 'End Level','options' => array(0 => 'All',1,2,3,4,5,6,7,8,9,10)));
-		$options->show_submenu_items = $this->Noodle->params('show_submenu_items', array('label' => 'Show Sub-menu Items','options' => array(0 => 'No',1 => 'Yes')));
+		$options->start_level = $this->params('startlevel', array('label' => 'Start Level','options' => array(1,2,3,4,5,6,7,8,9,10)));
+		$options->end_level = $this->params('endlevel', array('label' => 'End Level','options' => array(0 => 'All',1,2,3,4,5,6,7,8,9,10)));
+		$options->show_submenu_items = $this->params('show_submenu_items', array('label' => 'Show Sub-menu Items','options' => array(0 => 'No',1 => 'Yes')));
 		
 		//pasamos todas las variables a $output var
 		$output = '<div id="tabs-2">';
@@ -53,4 +53,7 @@ class MenusHelper extends AppHelper {
 		
 		return $output;
 	}
+public function luis(){
+	echo 'luis';
+}
 }

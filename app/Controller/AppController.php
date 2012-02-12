@@ -21,12 +21,11 @@ public $components = array(
         ),
         'Session'
     );
-    public $helpers = array('Html', 'Form', 'Session', 'Paginator', 'Layout', 'Js' => 'Jquery', 'Noodle');
+    public $helpers = array('Html', 'Form', 'Session', 'Paginator', 'Widget', 'Layout', 'Js' => 'Jquery', 'Noodle');
 	public $noodleThemePath = 'Admin';
 	public $theme = 'Blue';
 
     function beforeFilter() {
-	
 	
         //Configure AuthComponent
         $this->Auth->loginAction = array('controller' => 'users', 'action' => 'login', 'admin' => false);

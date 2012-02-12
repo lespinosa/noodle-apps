@@ -315,5 +315,17 @@ class LayoutHelper extends AppHelper
 		}	
 		
 	}
+	/**
+	 * getBlock method
+	 * 
+	 * @param string $name
+	 * @param string $style
+	 * @param array $options
+	 * @return void
+	 */
+	public function getBlock($name, $style, $options = array()){
+		
+	}
+	
 	
 }

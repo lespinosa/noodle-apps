@@ -13,7 +13,7 @@ $links = $this->App->Menu->find('list', array(
 				
 			)
 		);
-foreach ($links as $linkID => $link):;
+foreach ($links as $linkID => $link):
 ?>
 <ul>
 	<li><?php echo $link;?></li>

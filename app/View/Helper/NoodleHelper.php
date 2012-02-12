@@ -11,10 +11,12 @@
  */
 define('ROOT_WIDGETS', APP.'widgets'.DS);
 
+App::uses('Folder', 'Utility');
+App::uses('File', 'Utility');
 class NoodleHelper extends AppHelper
 {
-	var $helpers = array('Html', 'Session', 'Form', 'Menus');
-	
+	var $helpers = array('Html', 'Session', 'Form', 'WidgetMenu');
+	public $helperName;
 	function getListType($itemId, $menuTypeId){
 		$output = "<fieldset class='link_type'>";
 		$output .= "<div id='list_type'>";
@@ -130,19 +132,72 @@ class NoodleHelper extends AppHelper
 				break;
 		}
 	}
-	public function modOptions($type = null){
+	public function modOptions($type = null, $wHelper = ''){
+		$dir = new Folder (ROOT_WIDGETS.$wHelper.DS.'Helper');
+		$helperFile = $dir->find('.*\.php');
+		foreach ($helperFile as $key => $value) {
+			$this->helperName = $value;
+		}
+		$widgetHelper = str_replace('Helper.php', '', $this->helperName);
 		switch ($type) {
 			case 'tab-links':				
-				return $this->Menus->getTabLink();
+				return $this->$widgetHelper->getTabLink();
 				break;
 			
 			case 'tab-contents':
-				return $this->Menus->getTabContents();
+				return $this->$widgetHelper->getTabContents();
 				break;
-		}		
-	
+		}	
 	}
-	
+	public function assignment(){
+		echo $this->getAllMenuType();
+	}
+	public function getAllMenuType(){
+		App::import('Controller', 'Menutypes');
+		$data = new MenutypesController;
+		$data->Menutype->recursive = 0;
+		$menus = $data->Menutype->find('all', array(
+				'conditions' => array(
+					'Menutype.status' => 1,
+				),
+				'fields' => array ('Menutype.id', 'Menutype.title'),
+				'order'	=> array(
+					'Menutype.id' => 'ASC'
+				)
+			)
+		);
+		$output = '<ul>'; 
+		for ($i=0; $i < count($menus); $i++) {
+			$output .= '<li><a href="#tabs-'.$i.'">' .$menus[$i]['Menutype']['title'] .'</a></li>';
+		}
+		$output .= '</ul>';		
+		for ($i=0; $i < count($menus); $i++) {
+			$id = $menus[$i]['Menutype']['id'];
+
+			$menuItem = $this->getAllMenuItems($id);
+			$output .= '<div id="tabs-'.$i.'">';
+			foreach ($menuItem as $itemId => $itemTitle) {				
+			 //	$output .= $this->Form->select('', array($itemTitle));
+			 	$output .= $this->Form->input('Assignment.'.$itemId, array('type' => 'checkbox', 'label' => $itemTitle, 'value' => $itemId));
+				//$this->params('menutype_id', array('label' => 'Select Menu','options' => array(0 => 'Select Menu', 'Menu List' => $list)));
+			}
+			$output .= '</div>';			
+		}
+		return $output;
+		
+	}
+	public function getAllMenuItems($id){
+		App::import('Controller', 'Menus');
+		$data = new MenusController;
+		
+		$menuItem = $data->Menu->generateTreeList(array(
+					'Menu.menutype_id' => $id,
+					'Menu.status' => 1,
+				)
+		);
+		return $menuItem;
+
+	}
 	// Get params $this->Noodle->params('menutype', array('type'=>'text', 'label' => 'sample'), 'set');
 	public function params($fieldName = null, $options = array()){
 		$getparams = new stdClass();		

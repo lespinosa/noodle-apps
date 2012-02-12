@@ -67,14 +67,15 @@ class WidgetsController extends AppController
 		$this->set('location_site', 'widgets_Manager');	
 		$this->set('title_layout', 'Add Widget');
 		//GET all params
-		$data = $this->request->data('Params');
-		
+		$params = $this->request->data('Params');
+		$assignment = $this->request->data('Assignment');
 		//SAVE DATA
 		if ($this->request->is('post')) {
 			$this->Widget->create();
 			if ($this->Widget->save($this->request->data)) {
 				//SAVE all params
-				$this->Widget->saveField('params', json_encode($data));
+				$this->Widget->saveField('params', json_encode($params));
+				$this->Widget->saveField('assignment', json_encode($assignment));
 			  	$this->Session->setFlash(__('El Widget ha sido guardado!'));
 				$this->redirect(array('action' => 'index'));
 			} else {

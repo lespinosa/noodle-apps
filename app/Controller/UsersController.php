@@ -131,7 +131,6 @@ class UsersController extends AppController{
  * @return void
  */
 	public function admin_delete($id = null) {
-
 		$this->User->id = $id;
 		if (!$this->User->exists()){
 			throw new NotFoundException(__('Invalid user'));
@@ -143,6 +142,35 @@ class UsersController extends AppController{
 		$this->Session->setFlash(__('User was not deleted'));
         $this->redirect(array('action' => 'index'));
     }
+	
+/**
+ * admin login method
+ * 
+ * @return void
+ */
+	public function admin_login() {
+	    if ($this->request->is('post')) {
+	        if ($this->Auth->login()) {
+	            $this->redirect($this->Auth->redirect());
+	        } else {
+	            $this->Session->setFlash('Your username or password was incorrect.');
+	        }
+	    }
+		if ($this->Session->read('Auth.User')) {
+	        $this->Session->setFlash('You are logged in!');
+	        $this->redirect('/', null, false);
+	    }
+	}
+/**
+ * admin logout method
+ * 
+ * @return void
+ */
+	public function admin_logout() {
+		$this->theme = 'default';
+		$this->Session->setFlash('Good-Bye');
+		$this->redirect($this->Auth->logout());
+	}
 /**
  * login method
  * 

@@ -1,4 +1,4 @@
-<div id="form" class="content">
+<div id="form" class="widgets">
 	<?php echo $this->Form->create('Widget');?>
 <div class="vertical-tabs">
 	
@@ -6,7 +6,7 @@
 		<li class="vertical-tab-button first">
 			<a href="#tabs-1"><strong><?php echo __('Details', true);?></strong><span class="summary"><?php echo __('Title, etc', true);?></span></a>
 		</li>		
-		<?php echo $this->Noodle->modOptions('tab-links', $engadgets['Engadget']['name']);?>
+		<?php echo $this->Noodle->modOptions('tab-links',$engadgets['Engadget']['name']);?>
 	</ul>
 <div class="vertical-tabs-panes"> 
 	<div id="tabs-1">
@@ -35,6 +35,13 @@
 </div>
 <?php echo $this->Form->input('engadget_id', array('type' => 'hidden','value' => $engadgets['Engadget']['id']));?>
 		</fieldset>
+		
+			<fieldset class="assignment">
+				<div id="tabs">
+				<?php echo $this->Noodle->assignment();?>
+				</div>			
+			</fieldset>
+		
 	</div>
 <?php echo $this->Noodle->modOptions('tab-contents');?>
 </div>

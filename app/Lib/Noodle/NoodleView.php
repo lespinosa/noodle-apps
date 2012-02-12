@@ -21,6 +21,7 @@ App::uses('HelperCollection', 'View');
 App::uses('AppHelper', 'View/Helper');
 App::uses('Router', 'Routing');
 App::uses('ViewBlock', 'View');
+App::uses('NoodleBlock', 'Lib/Noodle');
 App::uses('CakeEvent', 'Event');
 App::uses('CakeEventManager', 'Event');
 
@@ -417,6 +418,9 @@ class NoodleView extends Object {
 		if (Configure::read('debug') > 0) {
 			return "Element Not Found: " . $file;
 		}
+	}
+	public function getWidget($name, $data = array(), $options = array()){
+		return $this->element($name, $data, $options);
 	}
 
 /**
@@ -1056,12 +1060,15 @@ class NoodleView extends Object {
 			foreach ($paths as $path) {
 				if (file_exists($path . 'Elements' . DS . $name . $ext)) {
 					return $path . 'Elements' . DS . $name . $ext;
+				} 
+				if (file_exists( APP . 'Widgets' . DS . $name . $ext)) {
+					return APP . 'Widgets' . DS . $name . $ext;
 				}
 			}
 		}
 		return false;
 	}
-
+	
 /**
  * Return all possible paths to find view files in order
  *

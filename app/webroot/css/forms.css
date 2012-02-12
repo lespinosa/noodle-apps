@@ -1,301 +1,307 @@
 #form{
-	float: left;
-	margin: 0 0 10px 0;
-	padding:6px 12px;
-	width: 100%;
-	border: 4px solid #D3EBF9;
-	border-radius: 8px;
-	-moz-border-radius: 8px;
-	-webkit-border-radius: 8px;	
+    float: left;
+    margin: 0 0 10px 0;
+    padding:6px 12px;
+    width: 100%;
+    border: 4px solid #D3EBF9;
+    border-radius: 8px;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px; 
 }
 #form h3{
-	float: left;
-	margin: 0 0 0 8px;
-	text-transform: uppercase;
-	color: #21759B;
+    float: left;
+    margin: 0 0 0 8px;
+    text-transform: uppercase;
+    color: #21759B;
 }
 
 fieldset{
-	float:left;
-	margin:0;
-	padding:0;
-	border: 1px solid #DFDFDF;
+    float:left;
+    margin:0;
+    padding:0;
+    border: 1px solid #DFDFDF;
 }
 fieldset legend {
-	margin:0 0 0 12px;
-	padding:4px 10px;
-	font-size:16px;
-	color: #227297;
-	background: #fff;
+    margin:0 0 0 12px;
+    padding:4px 10px;
+    font-size:16px;
+    color: #227297;
+    background: #fff;
 }
 fieldset.details {
-	width: 60%;
+    width: 60%;
 }
 fieldset.link_options{
-	margin: 0 0 12px 12px;
-	width: 38%;
+    margin: 0 0 12px 12px;
+    width: 38%;
 }
 fieldset.link_type{
-	width: 98%;
-	border: none;
+    width: 98%;
+    border: none;
 }
 fieldset.link_type ul{
-	margin:0 0 8px 8px;
-	padding: 0;
-	font-size: 18px;
-	color: #1F7297;
+    margin:0 0 8px 8px;
+    padding: 0;
+    font-size: 18px;
+    color: #1F7297;
 }
 fieldset.link_type ul li{
-	float:left;
-	margin:0;
-	padding: 8px 0;
-	border-bottom:1px solid #DFDFDF;
-	width: 100%;	
+    float:left;
+    margin:0;
+    padding: 8px 0;
+    border-bottom:1px solid #DFDFDF;
+    width: 100%;    
 }
 fieldset.link_type ul li span{
-	margin:8px 0;
-	padding: 0 0 0 22px;
-	background: url(../img/admin/arow.png) no-repeat left;
+    margin:8px 0;
+    padding: 0 0 0 22px;
+    background: url(../img/admin/arow.png) no-repeat left;
 }
 fieldset.link_type ul.sub{
-	font-size: 13px;
-	margin: 0 0 -8px -8px;
+    font-size: 13px;
+    margin: 0 0 -8px -8px;
 }
 fieldset.link_type ul.sub li{
-	float:left;
-	margin:0;
-	padding:0 12px;
-	border-bottom:none;
-	clear:none;
-	background: url(../img/admin/list-sep.png) no-repeat right;
-	width:auto;
+    float:left;
+    margin:0;
+    padding:0 12px;
+    border-bottom:none;
+    clear:none;
+    background: url(../img/admin/list-sep.png) no-repeat right;
+    width:auto;
 }
 fieldset.link_type ul.sub li.last{
-	background: none;
+    background: none;
 }
 #form .list-type{
-	float: left;
-	margin: 0 0 0 8px;
-	color: #227297;
+    float: left;
+    margin: 0 0 0 8px;
+    color: #227297;
 }
 
 #form label {
-	float:left;
-	margin:2px 0 0 8px;
-	width: 100px;
-	color:#646464;
-	font-weight: bold;
+    float:left;
+    margin:2px 0 0 8px;
+    width: 100px;
+    color:#646464;
+    font-weight: bold;
 }
 #form div.input, #form div.status, #form div.role_id{
-	float: left;
-	width:100%;
-	padding: 8px 0;	
-	font-weight: bold;
+    float: left;
+    width:100%;
+    padding: 8px 0; 
+    font-weight: bold;
 }
 #form input#MenuLinkType{
-	width: 200px;
-	margin:0;
-	padding: 6px 8px;
-	color:#646464;
-	border:1px solid #DFDFDF;
-	background: #fff;
+    width: 200px;
+    margin:0;
+    padding: 6px 8px;
+    color:#646464;
+    border:1px solid #DFDFDF;
+    background: #fff;
 }
 .input.textarea {
-	margin: 0 6px;
+    margin: 0 6px;
 }
 
 #form div.input input{
-	margin: 0;
-	padding: 2px 8px;
-	color:#646464;
-	border:1px solid #DFDFDF;
-	background: #fff;
+    margin: 0;
+    padding: 2px 8px;
+    color:#646464;
+    border:1px solid #DFDFDF;
+    background: #fff;
 }
 #form select{
-	margin: 0;
-	padding:2px;
-	border:1px solid #ccc;
-	width:160px;
-	background: #fff;
+    margin: 0;
+    padding:2px;
+    border:1px solid #ccc;
+    width:160px;
+    background: #fff;
 }
 #form div.submit input, #form .cancel, .button {
-	float:left;
-	margin:4px 8px;
-	padding: 2px 8px;
-	border:3px solid #D3EBF9;
-	border-radius: 4px;
-	color:#21759B;
-	-moz-border-radius: 4px;
-	-webkit-border-radius: 4px;
-	background: #fff;
+    float:left;
+    margin:4px 8px;
+    padding: 2px 8px;
+    border:3px solid #D3EBF9;
+    border-radius: 4px;
+    color:#21759B;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    background: #fff;
 }
 /* Details link*/
 #form.link fieldset.details {
-	margin:0 12px 0 0;
-	padding:8px;
+    margin:0 12px 0 0;
+    padding:8px;
 }
 #form.link fieldset.details label {
-	float:left;
-	margin:0;
-	width: 100%;
+    float:left;
+    margin:0;
+    width: 100%;
 }
 #form.link fieldset.details input,
 #form.link fieldset.details textarea {
-	float:left;
-	margin:0;
-	padding:6px 0;
-	width: 94%;
+    float:left;
+    margin:0;
+    padding:6px 0;
+    width: 94%;
 }
 #form.link fieldset.details select {
-	padding: 6px;
+    padding: 6px;
 }
 #form.link fieldset.details textarea {
-	border: 1px solid #ccc;
+    border: 1px solid #ccc;
 }
 #form.link fieldset.details  div.checkbox label{
-	float: left;
-	margin: 0;
-	padding: 0;
-	font-size:18px;
-	width: 90px;
-	
+    float: left;
+    margin: 0;
+    padding: 0;
+    font-size:18px;
+    width: 90px;
+    
 }
 #form.link fieldset.details  div.checkbox input#MenuStatus{
-	float: left;
-	margin:7px 8px 0 0;
-	padding: 0;
-	width: 15px;
+    float: left;
+    margin:7px 8px 0 0;
+    padding: 0;
+    width: 15px;
 }
 
 /* Details Contents*/
 #form.contents fieldset.details {
-	width: 99%;
-	padding: 0;
-	margin: 0;
+    width: 99%;
+    padding: 0;
+    margin: 0;
 }
 #form.contents fieldset.details label {
-	float:left;
-	margin:0;
-	width: 99%;
+    float:left;
+    margin:0;
+    width: 99%;
 }
 #form input#ContentTitle,
 #form input#ContentAlias{
-	padding:12px 0;
+    padding:12px 0;
 }
 
 #form.contents fieldset.details input,
 #form.contents fieldset.details textarea {
-	float:left;
-	margin:0;
-	padding:4px 0;
-	text-indent:8px;
-	width: 100%;
+    float:left;
+    margin:0;
+    padding:4px 0;
+    text-indent:8px;
+    width: 100%;
 }
 #form.contents fieldset.details textarea {
-	border: 1px solid #DFDFDF;
+    border: 1px solid #DFDFDF;
 }
 #form.contents fieldset.details  div.checkbox label{
-	float: left;
-	margin: 0;
-	padding: 0;
-	font-size:18px;
-	width: 90px;
-	
+    float: left;
+    margin: 0;
+    padding: 0;
+    font-size:18px;
+    width: 90px;
+    
 }
 #form.contents fieldset.details  div.checkbox input#MenuStatus{
-	float: left;
-	margin:7px 8px 0 0;
-	padding: 0;
-	width: 15px;
+    float: left;
+    margin:7px 8px 0 0;
+    padding: 0;
+    width: 15px;
 }
 #form.contents fieldset.options{
-	margin: 0 0 12px 12px;
-	width: 30%;
+    margin: 0 0 12px 12px;
+    width: 30%;
 }
 #form select.multi-cat{
-	width: 300px;
-	height: 300px;
+    width: 300px;
+    height: 300px;
 }
 /* Filtle*/
 #filtle {
-	float: left;
-	margin: 0 0 10px 0;
-	padding:6px 0;
-	width: 100%;
-	border: 4px solid #D3EBF9;
-	border-radius: 8px;
-	-moz-border-radius: 8px;
-	-webkit-border-radius: 8px;	
+    float: left;
+    margin: 0 0 10px 0;
+    padding:6px 0;
+    width: 100%;
+    border: 4px solid #D3EBF9;
+    border-radius: 8px;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px; 
 }
 #filtle h3{
-	float: left;
-	margin: 0;
-	text-transform: uppercase;
-	color: #21759B;
+    float: left;
+    margin: 0;
+    text-transform: uppercase;
+    color: #21759B;
 }
 
 #filtle label {
-	float:left;
-	margin:2px 6px 0 0px;
+    float:left;
+    margin:2px 6px 0 0px;
 }
 #filtle div.input, #filtlediv.status, #filtle div.role_id{
-	float: left;
-	padding: 8px 0;
-	color:#646464;
-	font-weight: bold;
+    float: left;
+    padding: 8px 0;
+    color:#646464;
+    font-weight: bold;
 }
 
 #filtle div.input input{
-	margin: 0;
-	padding: 2px 8px;
-	color:#646464;
-	border:1px solid #DFDFDF;
-	background: #fff;
+    margin: 0;
+    padding: 2px 8px;
+    color:#646464;
+    border:1px solid #DFDFDF;
+    background: #fff;
 }
 #filtle select{
-	float:left;
-	margin: 0;
-	padding:2px;
-	font-size: 11px;
-	border:1px solid #ccc;
-	width:110px;
-	background: #fff;
+    float:left;
+    margin: 0;
+    padding:2px;
+    font-size: 11px;
+    border:1px solid #ccc;
+    width:110px;
+    background: #fff;
 }
 #filtle div.submit input, #form .cancel, .button {
-	float:left;
-	margin:4px 8px;
-	padding: 2px 8px;
-	border:3px solid #D3EBF9;
-	border-radius: 4px;
-	color:#21759B;
-	-moz-border-radius: 4px;
-	-webkit-border-radius: 4px;
-	background: #fff;
+    float:left;
+    margin:4px 8px;
+    padding: 2px 8px;
+    border:3px solid #D3EBF9;
+    border-radius: 4px;
+    color:#21759B;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    background: #fff;
 }
 #filtle fieldset.filtle-title {
-	float:left;
-	margin:0 0 0 8px;
-	padding:0;
-	border: none;
+    float:left;
+    margin:0 0 0 8px;
+    padding:0;
+    border: none;
 }
 #filtle fieldset.select_option {
-	float:right;
-	margin:0 6px 0 0;
-	padding:0;
-	border: none;
+    float:right;
+    margin:0 6px 0 0;
+    padding:0;
+    border: none;
 
+}
+/* Details Widget*/
+#form.widgets fieldset.details {
+    width:35%;
+    padding: 0;
+    margin: 0 0 12px 0;
 }
 /*General Style*/
 #form .datetime {
-	float:left;
-	margin:4px 0;
-	padding:0 22px 0 0;
-	display: inline;
-	background:url(../img/admin/icons/calendar.gif)no-repeat right;
+    float:left;
+    margin:4px 0;
+    padding:0 22px 0 0;
+    display: inline;
+    background:url(../img/admin/icons/calendar.gif)no-repeat right;
 
 }
 #form .datetime input{
-	color: #646464;
+    color: #646464;
     margin: 0;
     padding: 2px 8px;  
     border: 1px solid #DFDFDF;    

@@ -11,5 +11,7 @@
 		<date>20/01/11</date>
 		<author>Luis Master</author>
 		<desc>This module displays a menu on the frontend.</desc>
+	    <helper>Menu</helper>
 	</info>
+	
 </engadget>
