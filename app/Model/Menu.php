@@ -29,6 +29,15 @@ class Menu extends AppModel
 			));
 
 /**
+ * Validate field
+ */
+public $validate = array(
+	'alias' => array(
+		'rule' => 'isUnique',
+		'message' => 'This Alia has already been taken.',
+	)
+);
+/**
  * belongsTo associations
  *
  * @var array
@@ -84,4 +93,12 @@ class Menu extends AppModel
 			'counterQuery' => ''
 		)
 	);
+/**
+ * Find alia Menu method
+ * 
+ * @param string $alias
+ */
+	public function findAliaMenu($alia){
+		
+	}
 }

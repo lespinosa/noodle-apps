@@ -31,7 +31,15 @@ class NoodleHelper extends AppHelper
 		
 		return $output;
 	}
-	function getLinkSettings($link_type = null, $itemId = null){
+/**
+ * Required Settings
+ * getLinkSettings method
+ * 
+ * @param string $link_type 
+ * @param string $itemId
+ * @return void
+ */
+	public function getLinkSettings($link_type = null, $itemId = null){
 		App::import('Controller', 'Menus');
 		$dataMenu = new MenusController;
 		$item = $dataMenu->Menu->find('first', array(
@@ -48,6 +56,14 @@ class NoodleHelper extends AppHelper
 		App::import('Controller', 'Contents');
 		$data = new ContentsController;
 		switch ($value) {
+			case 'home':
+				$output = $data->Content->find('list', array(
+					'conditions' => array('Content.status' => 1),
+					'order' => array('Content.title' => 'Desc'),
+					'fields' => 'Content.title',
+					));
+				return $this->Form->input('Menu.link_type_id', array('div' => false, 'label'=> false,'options' => array(0 => 'Select Article', 'Articles List' => $output)));
+				break;
 			case 'single_article':
 				$output = $data->Content->find('list', array(
 					'conditions' => array('Content.status' => 1),
@@ -56,7 +72,6 @@ class NoodleHelper extends AppHelper
 					));
 				return $this->Form->input('Menu.link_type_id', array('div' => false, 'label'=> false,'options' => array(0 => 'Select Article', 'Articles List' => $output)));
 				break;
-			
 			case 'featured_articles':
 				
 				break;
@@ -65,13 +80,23 @@ class NoodleHelper extends AppHelper
 				break;
 		}
 	}
-	function getLink($link_type = null){
+/**
+ * getLink() method
+ * 
+ * @param string $link_type
+ * @return void
+ */
+	public function getLink($link_type = null){
 		$value = strtolower($link_type);
 		switch ($value) {
+			case 'home':
+				$output = $this->Form->input('link', array('value' =>'{"controller":"pages","action":"display"}'));
+				return $output;
+				break;
 			case 'single_article':
-				$output = $this->Form->input('link', array('value' => $this->setLink('', array(
-							'controller' => 'contents', 'action' => 'view', 'admin' => false))
-				));
+				$output = $this->Form->input('link', array('value' =>'{"controller":"contents","action":"article"}')
+				);
+			
 				return $output;
 				break;
 			
@@ -173,7 +198,6 @@ class NoodleHelper extends AppHelper
 		$output .= '</ul>';		
 		for ($i=0; $i < count($menus); $i++) {
 			$id = $menus[$i]['Menutype']['id'];
-
 			$menuItem = $this->getAllMenuItems($id);
 			$output .= '<div id="tabs-'.$i.'">';
 			foreach ($menuItem as $itemId => $itemTitle) {				

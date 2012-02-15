@@ -1,7 +1,3 @@
 <?php
-
-$param = $options['params']['params'];
-
-$pp = json_decode($param);
-echo $pp->menutype_id;
+$this->param = json_decode($params);
 require 'tmpl/default.ctp';

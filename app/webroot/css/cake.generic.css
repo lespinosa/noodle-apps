@@ -34,7 +34,12 @@ a {
 	text-decoration: underline;
 	font-weight: bold;
 }
-a:hover {
+#header a {
+    color: #fff;
+    text-decoration: underline;
+    font-weight: bold;
+}
+a:hover, #header a:hover { 
 	color: #367889;
 	text-decoration:none;
 }
@@ -71,7 +76,18 @@ ul, li {
 p {
 	margin: 0 0 1em 0;
 }
-
+/** Header **/
+#header ul{
+    float:left;
+    margin: 0;
+    padding: 0;
+}
+#header ul li {
+    float:left;
+    margin:0 12px 12px;
+    padding: 0;
+    list-style: none;
+}
 /** Layout **/
 #container {
 	text-align: left;

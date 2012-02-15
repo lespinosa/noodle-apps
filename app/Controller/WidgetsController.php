@@ -101,7 +101,8 @@ class WidgetsController extends AppController
 		$this->set('title_layout', 'Edit Widget');
 		$this->Widget->id = $Id;
 		//GET all Params
-		$data = $this->request->data('Params');
+		$params = $this->request->data('Params');
+		$assignment = $this->request->data('Assignment');
 		if (!$this->Widget->exists()) {
 		  	$this->Session->setFlash(__('Invalid Widget'), 'default', array('class' => 'error'));
 			$this->redirect(array('action' => 'index'));
@@ -109,7 +110,8 @@ class WidgetsController extends AppController
 		if ($this->request->is('post') || $this->request->is('put')) {
 		  	if ($this->Widget->save($this->request->data)) {
 		  		//SAVE all params
-		  		$this->Widget->saveField('params', json_encode($data));
+		  		$this->Widget->saveField('params', json_encode($params));
+				$this->Widget->saveField('assignment', json_encode($assignment));
 				$this->Session->setFlash(__('The Widget has been update.'));
 				$this->redirect(array('action' => 'index'));
 			} else {

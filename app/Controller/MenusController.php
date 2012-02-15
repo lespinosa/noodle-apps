@@ -129,6 +129,20 @@ class MenusController extends AppController
 		$this->set(compact('itemId', 'menuTypeId', '$link_type'));
 	}
 /**
+ * admin edit type method
+ * 
+ * @param init $id
+ * @param ini $menuTypeId
+ * @param string $link_type
+ * @return ajax void
+ */
+	public function admin_edittype($id = null, $menuTypeId = null, $link_type = null){
+		$this->set('title_layout', '');
+		$this->layout = 'clear';
+		$itemId = $id;
+		$this->set(compact('itemId', 'menuTypeId', '$link_type'));
+	}
+/**
  * admin add method
  * 
  * @param init $id

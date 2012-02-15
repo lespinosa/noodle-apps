@@ -30,7 +30,7 @@
 			<?php else:?>
 			<?php echo $this->Form->input('link_type', array('disabled' => 'disabled', 'label' => 'Menu Item Type', 'div' => false));?>
 			<?php endif;?>
-			<?php echo $this->Html->link('Select', array('action' => 'liststype',$itemId, $menuTypeId), array('class' =>'list-type button', 'title' => 'Menu Item Type'));?>
+			<?php echo $this->Html->link('Select', array('action' => 'edittype',$itemId, $menuTypeId), array('class' =>'list-type button', 'title' => 'Menu Item Type'));?>
 			<?php if(!empty($link_type)): ?>
 				<?php echo $this->Form->input('title');?>
 			<?php else:?>

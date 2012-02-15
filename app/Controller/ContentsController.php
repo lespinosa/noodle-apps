@@ -34,7 +34,33 @@ class ContentsController extends AppController
 		parent::beforeFilter();
 		$this->set('location_site', 'contents');
 		//$this->Auth->allow(array('*', 'view'));
+		$this->Auth->allow(array('index', 'view'));
 		
+	}
+/**
+ * Article method
+ * 
+ * @param string $arg
+ * @return void
+ */
+	public function article($arg){
+		$this->noodleThemePath = 'Site';
+		$this->theme = 'Blue';
+		$id = $this->Content->findAliaMenu($arg, 'link_type_id');
+		//encaso de que el id no exista
+		
+		$this->Content->id = $id;
+		if(!$this->Content->exists()){
+			$this->redirect(array('controller' => 'errors', 'action' => 'no_fond'));
+		}
+		$contents = $this->Content->find('first', array(
+				'condictions' => array (
+					'Content.status' => 2,
+					'Content.id' => $id
+				)
+			)
+		);
+		$this->set('contents', $contents);
 	}
 /**
  * index method
@@ -42,6 +68,8 @@ class ContentsController extends AppController
  * @return void
  */
 	public function index(){
+		$this->noodleThemePath = 'Site';
+		$this->theme = 'Blue';
 		$this->set('title_layout', 'Articles Lists');
 		$this->Content->recursive = 0;
 		$contents = $this->Content->find('all');

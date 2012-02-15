@@ -20,24 +20,42 @@
  * @since         CakePHP(tm) v 0.2.9
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
+
 /**
- * Here, we are connecting '/' (base path) to controller called 'Pages',
- * its action called 'display', and we pass a param to select the view file
- * to use (in this case, /app/View/Pages/home.ctp)...
+ * import Class NoodleRouter
  */
-	Router::connect('/', array('controller' => 'pages', 'action' => 'display', 'home'));
-/**
- * ...and connect the rest of 'Pages' controller's urls.
- */
-	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
-	Router::connect('/admin', array('controller' => 'dashboard', 'action' => 'index', 'admin', 'admin' => true));
-	Router::connect('/dashboard/*', array('controller' => 'dashboard', 'action' => 'index'));
+	App::import('Lib/Noodle', 'NoodleRouter');
 
 /**
  * Load all plugin routes.  See the CakePlugin documentation on 
  * how to customize the loading of plugin routes.
  */
 	CakePlugin::routes();
+	
+	Router::parseExtensions('json', 'rss');
+	
+	NoodleRouter::localize();
+/**
+ * Router
+ */
+	// Installer
+    if (!file_exists(APP . 'Config' . DS.'settings.yml')) {
+       // NoodleRouter::connect('/', array('plugin' => 'install' ,'controller' => 'install'));
+    }
+	// Basic
+	NoodleRouter::connect('/', array('controller' => 'pages', 'action' => 'display', 'home'));
+
+	NoodleRouter::connect(
+		'/:slug',
+		array('controller' => 'contents', 'action' => 'article'),
+		array(
+			'pass' => array('slug')		
+		)
+	);
+
+	NoodleRouter::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
+	NoodleRouter::connect('/admin', array('admin' => true, 'controller' => 'dashboard', 'action' => 'index'));
+	NoodleRouter::connect('/dashboard/*', array('controller' => 'dashboard', 'action' => 'index'));
 
 /**
  * Load the CakePHP default routes. Remove this if you do not want to use

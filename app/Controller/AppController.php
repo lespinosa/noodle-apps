@@ -19,7 +19,8 @@ public $components = array(
                 'Actions' => array('actionPath' => 'controllers')
             )
         ),
-        'Session'
+        'Session',
+        'RequestHandler'
     );
     public $helpers = array('Html', 'Form', 'Session', 'Paginator', 'Widget', 'Layout', 'Js' => 'Jquery', 'Noodle');
 	public $noodleThemePath = 'Admin';

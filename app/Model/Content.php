@@ -19,7 +19,7 @@ App::uses('AppModel', 'Model');
 class Content extends AppModel
 {
 	public $name = 'Content';
-	var $actsAs = array('Tree' => array(
+	public $actsAs = array('Tree' => array(
 			'keyPath' => null,
 			'valuePath' => null,
 			));
@@ -60,5 +60,35 @@ class Content extends AppModel
 	);
 	function parentNode() {
 		return null;
+	}
+/**
+ * Find alia Menu method
+ * 
+ * @param string $arg
+ * @param string $field
+ * @return coid
+ */
+	public function findAliaMenu($arg, $field = ''){
+		//recivimso el alia y le eliminamos posible extension
+		$alia = str_replace('.html', '', $arg);
+		//buscamos el link_type_id
+		App::import('Controller', 'Menus');
+		$data = new MenusController;
+		$link = $data->Menu->findByAlias($alia);
+		switch ($field) {
+		  case 'link_type_id':
+			return $link['Menu']['link_type_id'];
+			break;
+		  case 'id':
+			return $link['Menu']['id'];
+			break;
+		  case 'title':
+			return $link['Menu']['title'];
+			break;
+		  default:
+			
+			break;
+		}
+
 	}
 }

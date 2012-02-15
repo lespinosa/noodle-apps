@@ -285,44 +285,73 @@ class LayoutHelper extends AppHelper
 					break;
 		}
 	}
-	function getTitle($layout_title, $location_site) {
+/**
+ * getTitle() method
+ * 
+ * @param string $layout_title
+ * @param string  $layout_title
+ * @return void
+ */
+	public function getTitle($layout_title, $location_site) {
 		$ctlName = strtolower($location_site);
 		$class = $ctlName."_title";
 		$output = "<h2 class='$class'>";
 		$output .= $layout_title;
 		$output .= "</h2>";
 		return $output;
+	}	
+/**
+ * Nested Links
+ * 
+ * @param array $links
+ * @param array $options
+ */
+	public function nestedLinks($links, $options = array()){
+		// pasamos todos los atributos a un array;
+		 $linkAttr = array(
+		 	'id' => 'link-' . $links['Menu']['id'],
+			'rel' => $links['Menu']['rel'],
+			'target' => $links['Menu']['target'],
+			'title' => $links['Menu']['title'],
+			'alias' => $links['Menu']['alias'],
+			'class' => $links['Menu']['link_class'],
+			'image' => $links['Menu']['link_image']
+         );
+		//obtenemos los enlaces y lo descodificamos
+		$type = json_decode($links['Menu']['link']);
+
+		switch ($type->controller) {
+		  case 'categories':
+			return $this->Html->link($linkAttr['title'], array());
+			break;
+		  case 'pages':
+			return $this->Html->link($linkAttr['title'], array(
+					'controller' => $type->controller,
+					'action' => $type->action,
+					'slug' => 'home'
+				),$linkAttr
+			);
+			break;
+		 case 'contents':
+			return $this->Html->link($linkAttr['title'], array(
+					'controller' => $type->controller,
+					'action' => $type->action,
+					'slug' => $linkAttr['alias'],
+					'ext' => 'html'
+				),$linkAttr
+			);
+			break;
+		}
 	}
 	
-	// get all Widget
-	public function getAllWidget($position = '', $options = array()){
-		App::import('Controller', 'Widgets');		
-		$this->App = new WidgetsController;
-		$widget = $this->App->Widget->find('all', array(
-							'fields' => array('Widget.title','Widget.id','Widget.widget', 'Widget.params', 'Widget.position', 'Widget.status'),
-							'conditions' => array('Widget.position' => $position, 'Widget.status' => 1),							
-							'order' => array('Widget.lft' => 'desc') 
-						)
-					);
-	//print_r($this->App->Widget->query("SELECT * FROM widgets AS W LIMIT 2;"));
-	//	print_r($widget);
-		
-		$numWidget = $this->App->Widget->find('count');
-		for ($i = 1; $i <= $numWidget; $i++) {
-    		$n = ($i - 1);
-			echo $this->Widgets->element($widget[$n]['Widget']['widget'], $widget[$n]['Widget']['widget'], array(
-    "options" => array('params' => $widget[$n]['Widget'], 'position' =>$position)));
-		}	
-		
-	}
-	/**
-	 * getBlock method
-	 * 
-	 * @param string $name
-	 * @param string $style
-	 * @param array $options
-	 * @return void
-	 */
+/**
+ * getBlock method
+ * 
+ * @param string $name
+ * @param string $style
+ * @param array $options
+ * @return void
+ */
 	public function getBlock($name, $style, $options = array()){
 		
 	}

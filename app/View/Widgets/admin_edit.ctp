@@ -35,6 +35,12 @@
 </div>
 <?php echo $this->Form->input('engadget_id', array('type' => 'hidden'));?>
 		</fieldset>
+		<fieldset class="assignment">
+				<div id="tabs">
+				<?php echo $this->Noodle->assignment();?>
+				</div>			
+			</fieldset>
+		
 	</div>
 <?php echo $this->Noodle->modOptions('tab-contents');?>
 </div>
