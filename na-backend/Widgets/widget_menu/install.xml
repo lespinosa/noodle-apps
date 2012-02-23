@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<engadget>
+	<info>
+		<title>Widget Menu</title>
+		<name>widget_menu</name>
+		<type>widget</type>
+		<status>1</status>		
+		<version>0.1</version>
+		<location>site</location>
+		<method>upgrade</method>
+		<date>20/01/11</date>
+		<author>Luis Master</author>
+		<desc>This module displays a menu on the frontend.</desc>
+	    <helper>Menu</helper>
+	</info>
+	
+</engadget>

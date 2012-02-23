@@ -76,7 +76,6 @@ class ModelReadTest extends BaseModelTest {
  * @return void
  */
 	public function testGroupBy() {
-		$db = ConnectionManager::getDataSource('test');
 		$isStrictGroupBy = $this->db instanceof Postgres || $this->db instanceof Sqlite || $this->db instanceof Oracle || $this->db instanceof Sqlserver;
 		$message = 'Postgres, Oracle, SQLite and SQL Server have strict GROUP BY and are incompatible with this test.';
 
@@ -6769,6 +6768,7 @@ class ModelReadTest extends BaseModelTest {
 		$this->db->fullDebug = true;
 		$TestModel->order = 'User.id';
 		$result = $TestModel->find('count');
+		$this->db->fullDebug = $fullDebug;
 		$this->assertEquals($result, 4);
 
 		$log = $this->db->getLog();
@@ -7784,4 +7784,27 @@ class ModelReadTest extends BaseModelTest {
 		$this->assertEquals($Post->getVirtualField('other_field'), $Post->virtualFields['other_field']);
 		$this->assertEquals($Post->getVirtualField('Post.other_field'), $Post->virtualFields['other_field']);
 	}
+	
+	
+/**
+ * test that checks for error when NOT condition passed in key and a 1 element array value
+ *
+ * @return void
+ */	
+	public function testNotInArrayWithOneValue() {
+		$this->loadFixtures('Article');
+		$Article = new Article();
+		$Article->recursive = -1;
+		
+		$result = $Article->find(
+			'all',
+			array(
+				'conditions' => array(
+					'Article.id NOT' => array(1)
+				)
+			)
+		);
+		
+		$this->assertTrue(is_array($result) && !empty($result));
+    }
 }
