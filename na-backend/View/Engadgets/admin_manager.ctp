@@ -1,21 +1,24 @@
-<?php echo $this->Form->create('Engadgets', array('action' => 'uninstall'));?>
 <div class="engadgats manager">
 
-	<?php echo $this->Form->submit('Uninstall', array('onclick' => 'this.form.submit()'));?>
+	<?php // echo $this->Form->submit('Uninstall', array('onclick' => 'this.form.submit()'));?>
+	<?php echo $this->Form->create('Engadget', array('action' => 'batch_process'));?>
+	<ul>
+		<li><?php echo $this->Form->button(__('Publish'), array('class' => 'publish','type' => 'submit')); ?></li>
+		<li><?php echo $this->Form->button(__('Unpublish'), array('class' => 'unpublish','type' => 'submit')); ?></li>
+		<li><?php echo $this->Form->button(__('Uninstall'), array('class' => 'uninstall','type' => 'submit')); ?></li>
+	</ul>
 <div id="table-content">
-	<table  cellpadding="0" cellspacing="0">
-		<tr>
-			<th>
-				<input type="checkbox" id="paradigm_all">
-			</th>
+	<table>
+		<tr class="header">
+			<th><input type="checkbox" id="paradigm_all"></th>
+			<th><h3><?php echo $this->Paginator->sort(__('id'));?></h3></th>
 			<th><h3><?php echo $this->Paginator->sort(__('title'));?></h3></th>
 			<th><h3><?php echo $this->Paginator->sort(__('location'));?></h3></th>
 			<th><h3><?php echo $this->Paginator->sort(__('status'));?></h3></th>
 			<th><h3><?php echo $this->Paginator->sort(__('type'));?></h3></th>
 			<th><h3><?php echo $this->Paginator->sort(__('version'));?></h3></th>
 			<th><h3><?php echo $this->Paginator->sort(__('date'));?></h3></th>
-			<th><h3><?php echo $this->Paginator->sort(__('author'));?></h3></th><br/>
-			<th><h3><?php echo $this->Paginator->sort(__('folder'));?></h3></th>
+			<th><h3><?php echo $this->Paginator->sort(__('author'));?></h3></th>
 			<th><h3><?php echo $this->Paginator->sort(__('action'));?></h3></th>
 		</tr>
 		<?php
@@ -29,8 +32,8 @@
 		<tr <?php echo $class;?>>
 			<td class="select-all">
 			<?php $id = $engadget['Engadget']['id'];
-			echo $this->Form->checkbox('checkbox['.$engadget['Engadget']['id'].']');?></td>
-
+			echo $this->Form->checkbox('Engadget.'.$id.'.id', array('class' => 'select_all'));?></td>
+			<td class="id"><?php echo $engadget['Engadget']['id'];?></td>
 			<td><?php echo $engadget['Engadget']['title'];?></td>
 			<td><?php echo $engadget['Engadget']['location'];?></td>
 			<td><?php echo $this->Layout->getStatus(null, null, $engadget['Engadget']['status'], 'img');?></td>
@@ -38,7 +41,6 @@
 			<td><?php echo $engadget['Engadget']['version'];?></td>
 			<td><?php echo $engadget['Engadget']['date'];?></td>
 			<td><?php echo $engadget['Engadget']['author'];?></td>
-			<td><?php echo $engadget['Engadget']['folder'];?></td>
 			<td>
 					<?php echo $this->Html->link(
 							$this->Html->image('admin/icons/canc_icon.png', array('alt' => 'Uninstall')), 
@@ -49,6 +51,18 @@
 		<?php endforeach;?>
 	</table>
 </div>
+ <?php
+        echo $this->Form->input('Engadget.action', array(
+            'label' => false,
+            'style' => 'display:none',
+            'options' => array(
+                'publish' => __('Publish'),
+                'unpublish' => __('Unpublish'),
+                'delete' => __('Delete'),
+            ),
+            'empty' => true,
+        ));?>
+	<?php echo $this->Form->end(array('type' => 'hidden'));?>
+	
 </div>
 <div class="clear"></div>
-<?php echo $this->Form->end(array('type' => 'hidden'));?>

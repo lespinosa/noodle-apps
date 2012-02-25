@@ -10,6 +10,7 @@
  * @link     http://www.cnexuscms.com
  */
 App::uses('AppModel', 'Model');
+App::uses('Folder', 'Utility');
 /**
  * engadget Model
  *
@@ -18,6 +19,7 @@ App::uses('AppModel', 'Model');
 class Engadget extends AppModel
 {
 	public $name = 'Engadget';
+	public $uses = array('Widget');
 /**
  * hasMany associations
  *
@@ -46,4 +48,47 @@ class Engadget extends AppModel
 	public function parentNode() {
 	    return null;
 	}
+/**
+ * uninstall all method
+ * 
+ * @param array $ids
+ * @param array $types
+ * @return void
+ */
+	public function uninstallAll($ids, $types){
+	
+		if ($this->deleteAll(array('Engadget.id' => $ids), true, true)) {
+			//GET Engadget
+			if (in_array('widget', $types)) {
+				//Delete all widget
+				App::import('Model', 'Widget');
+				$widget = new Widget;					
+				$widget->deleteAll(array('Widget.engadget_id' => $ids), true, true);
+				
+			}
+		}
+	}
+/**
+ * delWidget method
+ * 
+ * @param string $name
+ * @param string $location
+ * @param string $types
+ * @return void
+ */
+	public function delWidget($name, $location, $types){
+		if($location == 'site'){
+			$appPath = ROOT . DS;
+		}
+		if($location == 'admin'){
+			$appPath = ROOT . DS . APP_DIR . DS;
+		}
+	
+		$folder = new Folder($appPath.'Widgets'.DS.$name);
+		if ($folder->delete()) {
+			print $name . 'delted';
+		}
+		
+	}
+	
 }

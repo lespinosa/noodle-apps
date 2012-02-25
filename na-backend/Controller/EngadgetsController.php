@@ -40,7 +40,6 @@ class EngadgetsController extends AppController
 	}
 	public function admin_install()
 	{
-		
 		$this->set('location_site', 'Engadget_install');
 		$this->set('title_layout', 'Engadget install');	
 		
@@ -85,7 +84,6 @@ class EngadgetsController extends AppController
 						if($this->zipStatus == 1 && $packError == 0){
 							App::import('Lib', 'Spyc/Spyc');
 							$ymlSetup = Spyc::YAMLLoad($uploaddir . $this->fileSetup);
-							var_dump($ymlSetup);
 							//GET type							
 							$engadgetType = $ymlSetup['info']['type'];
 							
@@ -147,7 +145,14 @@ class EngadgetsController extends AppController
 			$this->Session->setFlash(__('Invalid id for Engadget'));
 			$this->redirect(array('action' => 'manager'));
 		}
-		$appPath = ROOT . DS . APP_DIR . DS;
+		//GET Location
+		if($engadget['Engadget']['location'] == 'site'){
+			$appPath = ROOT . DS;
+		}
+		if($engadget['Engadget']['location'] == 'admin'){
+			$appPath = ROOT . DS . APP_DIR . DS;
+		}
+		
 		$type = strtolower($engadget['Engadget']['type']);
 		$nameWidget = $engadget['Engadget']['name'];
 		switch ($type) {
@@ -159,13 +164,56 @@ class EngadgetsController extends AppController
 				$souser = $appPath . 'Widgets' . DS . $nameWidget;
 				$this->Noodle->clearAll($souser, false);
 				$this->Noodle->uninstall($id, $type);
-				$this->redirect(array('action' => 'manager'));
+				//$this->redirect(array('action' => 'manager'));
 				
 				break;
 			case 'theme':
 				break;
 			case 'language':
 				break;
+		}
+	}
+/**
+ * process method
+ * 
+ * @return void
+ */
+	public function admin_batch_process(){
+		//GET Action		
+		$action = $this->request->data['Engadget']['action'];
+		//Declare var
+		$ids = array();
+		$types = array();
+		$name = array();
+		$location = array();
+		foreach ($this->request->data['Engadget'] as $id => $value) {
+
+			if($id != 'action' && $value['id'] == 1) {
+				$ids[] = $id;
+				$engadget = $this->Engadget->find('first', array(
+					'conditions' => array(
+						'Engadget.id' => $id
+					)
+				));
+				$name[] = $engadget['Engadget']['name'];
+				$location[] = $engadget['Engadget']['location'];
+				$types[] = $engadget['Engadget']['type'];				
+			}				  
+		}
+		if (count($ids) == 0 || $action == null) {
+			$this->Session->setFlash(__('No items selected.'), 'default', array('class' => 'error'));
+            $this->redirect(array('action' => 'manager'));
+		}
+		if ($action == 'publish'){
+			echo ' es publish ';
+		}
+		if ($action == 'delete') {
+				$this->Engadget->uninstallAll($ids, $types);         	
+				for ($i=0; $i < count($ids); $i++) {					
+					$this->Engadget->delWidget($name[$i], $location[$i],$types[$i]);
+				}
+				$this->Session->setFlash(__('Engadget Uninstall.'), 'default', array('class' => 'success'));
+				$this->redirect(array('action' => 'manager'));		
 		}
 	}
 

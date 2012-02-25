@@ -88,15 +88,29 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 		$( "#tabs" ).tabs();
 	});
 </script>
-		
 <script>
-		
+	<!--Engadget Toolbar-->
+    	$("button.publish").click(function(){
+    		var value = 'publish';
+    		$("select#EngadgetAction").val(value);
+    	});
+    	$("button.uninstall").click(function(){
+    		var value = 'delete';
+    		$("select#EngadgetAction").val(value);
+    	});
+    	$("button.unpublish").click(function(){
+    		var value = 'unpublish';
+    		$("select#EngadgetAction").val(value);
+    	});
+    <!--EndToolbar-->
+</script>	
+<script>		
 		$(document).ready(function()
 		{
 			$("#paradigm_all").click(function()				
 			{
 				var checked_status = this.checked;
-				$("input[name=id]").each(function()
+				$("input.select_all").each(function()
 				{
 					this.checked = checked_status;
 				});
@@ -117,14 +131,12 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
       	var value = $(this).val();
       		$("span").value;
     	}).keyup();
-    	
     
-    	  $("select#ContentRoleId, select#MenuRoleId").change(function () {
-          var str = "";
-          $("select#ContentRoleId option:selected, select#MenuRoleId option:selected").each(function () {
-                str += $(this).text() + " ";
-              });
-          $("input#ContentAccess, input#MenuAccess").val(str);
+		$("select#ContentRoleId, select#MenuRoleId").change(function () {
+		var str = "";
+		$("select#ContentRoleId option:selected, select#MenuRoleId option:selected").each(function () {
+            str += $(this).text() + " ";});
+			$("input#ContentAccess, input#MenuAccess").val(str);
         })
         .change();
         $("select#ContentUserId, select#MenuUserId").change(function (){
