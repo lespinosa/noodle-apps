@@ -93,8 +93,8 @@ App::build(array('Controller' => array(SITE.DS.'Controller/')));
 App::build(array('Lib' => array(SITE.DS.'Lib/')));
 
 //Search Helpers
-App::build(array('View/Helper' => array(SITE.DS.'View'.DS.'Helper'.DS)));
-
+//App::build(array('View/Helper' => array(SITE.DS.'View'.DS.'Helper'.DS, APP.'View'.DS.'Helper'.DS)));
+//var_dump(App::objects('View/Helper'));
 /**
  * Custom Inflector rules, can be set to correctly pluralize or singularize table, model, controller names or whatever other
  * string is passed to the inflection functions

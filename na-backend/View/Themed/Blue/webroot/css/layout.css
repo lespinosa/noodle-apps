@@ -538,6 +538,18 @@ div.desc{
 	padding: 0;
 	display: block;
 }
+/*ToolBar Style */
+ul.toolbar {
+    float: right;
+    margin:6px 0;
+    padding:0;
+}
+ul.toolbar li{
+    float: left;
+    margin:0 0 0 16px;
+    padding:0;
+    list-style: none;
+}
 /*Foter Style */
 #footer {
 	margin: 0;

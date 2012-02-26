@@ -1,12 +1,8 @@
 <div class="engadgats manager">
 
-	<?php // echo $this->Form->submit('Uninstall', array('onclick' => 'this.form.submit()'));?>
 	<?php echo $this->Form->create('Engadget', array('action' => 'batch_process'));?>
-	<ul>
-		<li><?php echo $this->Form->button(__('Publish'), array('class' => 'publish','type' => 'submit')); ?></li>
-		<li><?php echo $this->Form->button(__('Unpublish'), array('class' => 'unpublish','type' => 'submit')); ?></li>
-		<li><?php echo $this->Form->button(__('Uninstall'), array('class' => 'uninstall','type' => 'submit')); ?></li>
-	</ul>
+	<?php echo $this->Layout->toolBar('engadget');?>
+	
 <div id="table-content">
 	<table>
 		<tr class="header">

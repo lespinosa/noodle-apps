@@ -301,3 +301,28 @@ fieldset.link_type ul.sub li.last{
     border: 1px solid #DFDFDF;    
     background: #FFFFFF;
 }
+/*ToolBar Style */
+.toolbar button{
+    color:#000;
+    font-size: 18px;
+    border:none;
+    cursor:pointer;
+    background: none;
+}/*
+ul.toolbar li.publish{
+    padding:0 0 0 12px;
+    background: url(../img/toolbar.png) left;
+}*/
+.toolbar button.publish,
+.toolbar button.unpublish, .toolbar button.uninstall{
+    padding: 3px 0 3px 35px;
+}
+.toolbar button.publish{
+    background: url(../img/toolbar.png) 0% 51% no-repeat;
+}
+.toolbar button.unpublish{  
+    background: url(../img/toolbar.png) 0% 0% no-repeat;
+}
+.toolbar button.uninstall{  
+    background: url(../img/toolbar.png) 0% 104% no-repeat;
+}

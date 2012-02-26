@@ -355,6 +355,32 @@ class LayoutHelper extends AppHelper
 	public function getBlock($name, $style, $options = array()){
 		
 	}
-	
+/**
+ * ToolBar method
+ * @param string $type
+ * @return void
+ */
+	public function toolBar($type){
+		switch ($type) {
+		  case 'engadget':
+			$output = '<ul class="toolbar">';
+			$output .= '<li class="publish">';
+			$output .= $this->Form->button(__('Publish'), array('class' => 'publish','type' => 'submit'));
+			$output .= '</li>';
+			$output .= '<li>';
+			$output .= $this->Form->button(__('Unpublish'), array('class' => 'unpublish','type' => 'submit'));
+			$output .= '</li>';
+			$output .= '<li>';
+			$output .= $this->Form->button(__('Uninstall'), array('class' => 'uninstall','type' => 'submit'));
+			$output .= '</li>';
+			$output .= '</ul>';
+			return $output;
+			break;
+		  
+		  default:
+			
+			break;
+		}
+	}
 	
 }
