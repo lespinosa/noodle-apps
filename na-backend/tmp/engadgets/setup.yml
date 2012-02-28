@@ -1,0 +1,20 @@
+info:
+	title: Acl2
+	name: Acl2
+	type: plugin
+	status: 1		
+	version: 2.1.0
+	method: upgrade
+	date: 2012-02-04
+	author: Nicolas Rod 
+	email: <nico@alaxos.com>
+	website: http://www.alaxos.net/blaxos/pages/view/plugin_acl
+	description: This module displays a menu on the frontend.
+site:
+	files: [CHANGELOG, setup.yml]
+	folders:[Config, Controller, Lib, Locale, View, webroot]
+admin:
+	files: [CHANGELOG, setup.yml]
+	folders:[Config, Controller, Lib, Locale, View, webroot]
+config:
+	bootstrap: 1

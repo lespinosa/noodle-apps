@@ -351,3 +351,87 @@
 #3 E:\wamp2.2\www\noodleapps\lib\Cake\Routing\Dispatcher.php(86): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
 #4 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #5 {main}
+2012-02-28 01:01:43 Error: [MissingViewException] View file "E:\wamp2.2\www\noodleapps\na-backend\View\Themed\Blue\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp2.2\www\noodleapps\lib\Cake\View\View.php(460): View->_getViewFileName(NULL)
+#1 E:\wamp2.2\www\noodleapps\lib\Cake\Controller\Controller.php(938): View->render(NULL, NULL)
+#2 E:\wamp2.2\www\noodleapps\lib\Cake\Routing\Dispatcher.php(111): Controller->render()
+#3 E:\wamp2.2\www\noodleapps\lib\Cake\Routing\Dispatcher.php(86): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-02-28 01:04:22 Error: [MissingViewException] View file "E:\wamp2.2\www\noodleapps\na-backend\View\Themed\Blue\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp2.2\www\noodleapps\lib\Cake\View\View.php(460): View->_getViewFileName(NULL)
+#1 E:\wamp2.2\www\noodleapps\lib\Cake\Controller\Controller.php(938): View->render(NULL, NULL)
+#2 E:\wamp2.2\www\noodleapps\lib\Cake\Routing\Dispatcher.php(111): Controller->render()
+#3 E:\wamp2.2\www\noodleapps\lib\Cake\Routing\Dispatcher.php(86): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-02-28 01:09:35 Error: [MissingViewException] View file "E:\wamp2.2\www\noodleapps\na-backend\View\Themed\Blue\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp2.2\www\noodleapps\lib\Cake\View\View.php(460): View->_getViewFileName(NULL)
+#1 E:\wamp2.2\www\noodleapps\lib\Cake\Controller\Controller.php(938): View->render(NULL, NULL)
+#2 E:\wamp2.2\www\noodleapps\lib\Cake\Routing\Dispatcher.php(111): Controller->render()
+#3 E:\wamp2.2\www\noodleapps\lib\Cake\Routing\Dispatcher.php(86): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-02-28 01:12:09 Error: [MissingViewException] View file "E:\wamp2.2\www\noodleapps\na-backend\View\Themed\Blue\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp2.2\www\noodleapps\lib\Cake\View\View.php(460): View->_getViewFileName(NULL)
+#1 E:\wamp2.2\www\noodleapps\lib\Cake\Controller\Controller.php(938): View->render(NULL, NULL)
+#2 E:\wamp2.2\www\noodleapps\lib\Cake\Routing\Dispatcher.php(111): Controller->render()
+#3 E:\wamp2.2\www\noodleapps\lib\Cake\Routing\Dispatcher.php(86): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-02-28 01:13:42 Error: [MissingViewException] View file "E:\wamp2.2\www\noodleapps\na-backend\View\Themed\Blue\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp2.2\www\noodleapps\lib\Cake\View\View.php(460): View->_getViewFileName(NULL)
+#1 E:\wamp2.2\www\noodleapps\lib\Cake\Controller\Controller.php(938): View->render(NULL, NULL)
+#2 E:\wamp2.2\www\noodleapps\lib\Cake\Routing\Dispatcher.php(111): Controller->render()
+#3 E:\wamp2.2\www\noodleapps\lib\Cake\Routing\Dispatcher.php(86): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-02-28 01:14:41 Error: [MissingViewException] View file "E:\wamp2.2\www\noodleapps\na-backend\View\Themed\Blue\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp2.2\www\noodleapps\lib\Cake\View\View.php(460): View->_getViewFileName(NULL)
+#1 E:\wamp2.2\www\noodleapps\lib\Cake\Controller\Controller.php(938): View->render(NULL, NULL)
+#2 E:\wamp2.2\www\noodleapps\lib\Cake\Routing\Dispatcher.php(111): Controller->render()
+#3 E:\wamp2.2\www\noodleapps\lib\Cake\Routing\Dispatcher.php(86): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-02-28 01:16:52 Error: [MissingViewException] View file "E:\wamp2.2\www\noodleapps\na-backend\View\Themed\Blue\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp2.2\www\noodleapps\lib\Cake\View\View.php(460): View->_getViewFileName(NULL)
+#1 E:\wamp2.2\www\noodleapps\lib\Cake\Controller\Controller.php(938): View->render(NULL, NULL)
+#2 E:\wamp2.2\www\noodleapps\lib\Cake\Routing\Dispatcher.php(111): Controller->render()
+#3 E:\wamp2.2\www\noodleapps\lib\Cake\Routing\Dispatcher.php(86): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-02-28 01:17:53 Error: [MissingViewException] View file "E:\wamp2.2\www\noodleapps\na-backend\View\Themed\Blue\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp2.2\www\noodleapps\lib\Cake\View\View.php(460): View->_getViewFileName(NULL)
+#1 E:\wamp2.2\www\noodleapps\lib\Cake\Controller\Controller.php(938): View->render(NULL, NULL)
+#2 E:\wamp2.2\www\noodleapps\lib\Cake\Routing\Dispatcher.php(111): Controller->render()
+#3 E:\wamp2.2\www\noodleapps\lib\Cake\Routing\Dispatcher.php(86): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-02-28 01:18:41 Error: [MissingViewException] View file "E:\wamp2.2\www\noodleapps\na-backend\View\Themed\Blue\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp2.2\www\noodleapps\lib\Cake\View\View.php(460): View->_getViewFileName(NULL)
+#1 E:\wamp2.2\www\noodleapps\lib\Cake\Controller\Controller.php(938): View->render(NULL, NULL)
+#2 E:\wamp2.2\www\noodleapps\lib\Cake\Routing\Dispatcher.php(111): Controller->render()
+#3 E:\wamp2.2\www\noodleapps\lib\Cake\Routing\Dispatcher.php(86): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-02-28 01:19:38 Error: [MissingViewException] View file "E:\wamp2.2\www\noodleapps\na-backend\View\Themed\Blue\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp2.2\www\noodleapps\lib\Cake\View\View.php(460): View->_getViewFileName(NULL)
+#1 E:\wamp2.2\www\noodleapps\lib\Cake\Controller\Controller.php(938): View->render(NULL, NULL)
+#2 E:\wamp2.2\www\noodleapps\lib\Cake\Routing\Dispatcher.php(111): Controller->render()
+#3 E:\wamp2.2\www\noodleapps\lib\Cake\Routing\Dispatcher.php(86): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-02-28 01:24:28 Error: [MissingViewException] View file "E:\wamp2.2\www\noodleapps\na-backend\View\Themed\Blue\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp2.2\www\noodleapps\lib\Cake\View\View.php(460): View->_getViewFileName(NULL)
+#1 E:\wamp2.2\www\noodleapps\lib\Cake\Controller\Controller.php(938): View->render(NULL, NULL)
+#2 E:\wamp2.2\www\noodleapps\lib\Cake\Routing\Dispatcher.php(111): Controller->render()
+#3 E:\wamp2.2\www\noodleapps\lib\Cake\Routing\Dispatcher.php(86): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-02-28 01:26:37 Error: [MissingViewException] View file "E:\wamp2.2\www\noodleapps\na-backend\View\Themed\Blue\Engadgets\admin_uninstall.ctp" is missing.
+#0 E:\wamp2.2\www\noodleapps\lib\Cake\View\View.php(460): View->_getViewFileName(NULL)
+#1 E:\wamp2.2\www\noodleapps\lib\Cake\Controller\Controller.php(938): View->render(NULL, NULL)
+#2 E:\wamp2.2\www\noodleapps\lib\Cake\Routing\Dispatcher.php(111): Controller->render()
+#3 E:\wamp2.2\www\noodleapps\lib\Cake\Routing\Dispatcher.php(86): Dispatcher->_invoke(Object(EngadgetsController), Object(CakeRequest), Object(CakeResponse))
+#4 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}

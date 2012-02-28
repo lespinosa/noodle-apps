@@ -20,7 +20,6 @@ App::uses('File', 'Utility');
 class EngadgetsController extends AppController
 {
 	public $name = 'Engadgets';
-	var $components = array('Noodle');
 	var $paginate = array(
 		'limit' => 25,
 		'order' => array(
@@ -155,7 +154,6 @@ class EngadgetsController extends AppController
 		
 	}
 	public function admin_uninstall($id = null){
-		//$id = array_keys($this->request->data('Engadgets.checkbox'));		
 		$engadget = $this->Engadget->find('first', array(
 			'conditions' => array(
 				'Engadget.id' => $id
@@ -165,45 +163,19 @@ class EngadgetsController extends AppController
 			$this->Session->setFlash(__('Invalid id for Engadget'), 'default', array('class' => 'error'));
 			$this->redirect(array('action' => 'manager'));
 		}
-		//GET Location
-		if($engadget['Engadget']['location'] == 'site'){
-			$appPath = ROOT . DS;
-		}
-		if($engadget['Engadget']['location'] == 'admin'){
-			$appPath = ROOT . DS . APP_DIR . DS;
-		}
-		
+			
 		$type = strtolower($engadget['Engadget']['type']);
 		$nameWidget = $engadget['Engadget']['name'];
 		switch ($type) {
 			case 'plugin':
-				$this->Engadget->id = $id;
-				$dirName = $engadget['Engadget']['name'];
-				$path = array('admin', 'site');
-				$folder = new Folder();
-				for ($i=0; $i < 2; $i++) {
-					if ($path[$i] == 'admin') {
-					  	$dir = APP . 'Plugin' . DS . $dirName;
-					}
-					if ($path[$i] == 'site') {
-					  	$dir = ROOT . DS . 'Plugin' . DS . $dirName;	
-					}				
-					$folder->delete($dir);			  
-				}
-				if ($this->Engadget->delete()) {
-				  	$this->Session->setFlash(__('Plugin has been delete'));
-					$this->redirect(array('action' => 'manager'));
-				}
-				
-				break;
-			
+				$this->Engadget->uninstall($id, $type);
+				$this->Session->setFlash(__('Plugin has been delete'));
+				$this->redirect(array('action' => 'manager'));				
+				break;			
 			case 'widget':
-				$souser = $appPath . 'Widgets' . DS . $nameWidget;
-				$this->Noodle->clearAll($souser, false);
-				$this->Noodle->uninstall($id, $type);
+				$this->Engadget->uninstall($id, $type);
 				$this->Session->setFlash(__('Widget has been delete'));
-				$this->redirect(array('action' => 'manager'));
-				
+				$this->redirect(array('action' => 'manager'));		
 				break;
 			case 'theme':
 				break;
@@ -222,8 +194,6 @@ class EngadgetsController extends AppController
 		//Declare var
 		$ids = array();
 		$types = array();
-		$name = array();
-		$location = array();
 		foreach ($this->request->data['Engadget'] as $id => $value) {
 
 			if($id != 'action' && $value['id'] == 1) {
@@ -233,8 +203,6 @@ class EngadgetsController extends AppController
 						'Engadget.id' => $id
 					)
 				));
-				$name[] = $engadget['Engadget']['name'];
-				$location[] = $engadget['Engadget']['location'];
 				$types[] = $engadget['Engadget']['type'];				
 			}				  
 		}
@@ -245,10 +213,9 @@ class EngadgetsController extends AppController
 		if ($action == 'publish'){
 			echo ' es publish ';
 		}
-		if ($action == 'delete') {
-				$this->Engadget->uninstallAll($ids, $types);         	
+		if ($action == 'delete') {        	
 				for ($i=0; $i < count($ids); $i++) {					
-					$this->Engadget->delFolder($name[$i], $location[$i],$types[$i]);
+						$this->Engadget->uninstall($ids[$i], $types[$i]);
 				}
 				$this->Session->setFlash(__('Engadget Uninstall.'), 'default', array('class' => 'success'));
 				$this->redirect(array('action' => 'manager'));		

@@ -92,58 +92,54 @@ class Engadget extends AppModel
 		
 	}
 /**
- * uninstall all method
- * 
- * @param array $ids
- * @param array $types
- * @return void
- */
-	public function uninstallAll($ids, $types){
-	
-		if ($this->deleteAll(array('Engadget.id' => $ids), true, true)) {
-			//GET Engadget
-			if (in_array('widget', $types)) {
-				//Delete all widget
-				App::import('Model', 'Widget');
-				$widget = new Widget;					
-				$widget->deleteAll(array('Widget.engadget_id' => $ids), true, true);
-				
-			}
-		}
-	}
-/**
- * delWidget method
+ * uninstall method
  * 
  * @param string $name
  * @param string $location
  * @param string $type
  * @return void
  */
-	public function delFolder($name, $location, $type){
-		if($location == 'site'){
+	public function uninstall($id, $type){
+		$engadget = $this->find('first', array(
+			'conditions' => array(
+				'Engadget.id' => $id
+			)
+		));
+		
+		//GET Location
+		if($engadget['Engadget']['location'] == 'site'){
 			$appPath = ROOT . DS;
 		}
-		if($location == 'admin'){
+		if($engadget['Engadget']['location'] == 'admin'){
 			$appPath = ROOT . DS . APP_DIR . DS;
 		}
 		switch ($type) {
 		  case 'widget':
+		  	App::import('Model', 'Widget');
+			$widget = new Widget;
+			$name = $engadget['Engadget']['name'];	
+			$widget->deleteAll(array('Widget.engadget_id' => $id), true);
 			$folder = new Folder($appPath.'Widgets'.DS.$name);
 			$folder->delete();
+			$this->id = $id;
+			$this->delete();
 			break;		  
-		  case 'plugin':
-			$folder = new Folder();
-			$path = array('admin', 'site');
-			for ($i=0; $i < 2; $i++) {
-				if ($path[$i] == 'admin'){
-					 $dir = APP . 'Plugin' . DS . $name;
+		  case 'plugin':			 	
+				$dirName = $engadget['Engadget']['name'];
+				$path = array('admin', 'site');
+				$folder = new Folder();
+				for ($i=0; $i < 2; $i++) {
+					if ($path[$i] == 'admin') {
+					  	$dir = APP . 'Plugin' . DS . $dirName;
+					}
+					if ($path[$i] == 'site') {
+					  	$dir = ROOT . DS . 'Plugin' . DS . $dirName;	
+					}				
+					$folder->delete($dir);			  
 				}
-				if ($path[$i] == 'site') {
-					  $dir = ROOT . DS . 'Plugin' . DS . $name;	
-				}				
-				$folder->delete($dir);	  
-			}
+				$this->id = $id;
+				$this->delete();				
 			break;
 		}		
-	}	
+	}		
 }
