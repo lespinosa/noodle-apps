@@ -9,7 +9,14 @@
  * @copyright     Copyright 2011, iWebdevelope.com (http://iwebdevelope.com)
  * @link     http://www.cnexuscms.com
  */
-
+App::uses('AppController', 'Controller');
+App::uses('Folder', 'Utility');
+App::uses('File', 'Utility');
+/**
+ * Engadgets Controller
+ *
+ * @property Engadget $Engadget
+ */
 class EngadgetsController extends AppController
 {
 	public $name = 'Engadgets';
@@ -38,101 +45,114 @@ class EngadgetsController extends AppController
 		$this->Engadget->recursive = 0;
 		$this->set('engadgets', $this->paginate());
 	}
+/**
+ * install method
+ * 
+ * @return void
+ */
 	public function admin_install()
 	{
 		$this->set('location_site', 'Engadget_install');
 		$this->set('title_layout', 'Engadget install');	
-		
-	//$ext = strtolower(strrchr($this->request->data['Engadget']['file']['name'], '.'));
-		$tmp = ROOT . DS . APP_DIR . DS . 'tmp' . DS;
-		$uploaddir = $tmp . 'engadgets' . DS;
-		$uploadfile = $uploaddir . basename($this->request->data['Engadget']['file']['name']);
-		$packName = $this->request->data['Engadget']['file']['name'];
-		$packError = $this->request->data['Engadget']['file']['error'];
-		$ext = strtolower(strrchr($packName, '.'));
-		
-		if ($ext == '.zip') {
-			//Clear Temp folder
-			$this->Noodle->clearAll($uploaddir, false);
-			mkdir($uploaddir, 0755);
+		$file = $this->request->data['Engadget']['file'];
+		if ($file['error'] === UPLOAD_ERR_OK){
+			$tmp = APP . 'tmp' . DS;
+			$uploaddir = $tmp . 'engadgets' . DS;
+			$uploadfile = $uploaddir . basename($this->request->data['Engadget']['file']['name']);			
+			$ext = strtolower(strrchr($file['name'], '.'));
 			
 			switch ($ext) {
-				case '.zip':				
-					if (move_uploaded_file($this->request->data['Engadget']['file']['tmp_name'], $uploadfile)) {
-						$zip = new ZipArchive;						
-						if ($zip->open($uploaddir . $packName) == TRUE) {
-							for ($i = 0; $i < $zip->numFiles; $i++){								
-								$fileName = $zip->getNameIndex($i);
-								//verificamos los archivos
-								$extPerm = strtolower(strrchr($fileName, '.'));
-								//buscamos el archivo de instalacion
-								if ($extPerm == '.yml'){
-									$this->fileSetup = $fileName;
-								}
-								// verificamos si existe un .exe o .lnk
-								if ($extPerm == '.exe' or $extPerm == '.lnk') {
-									$this->Session->setFlash(__('Existe un archivo malicioso, dentro del zip', true));
-									$this->redirect(array('action' => 'index'));
-								}
-							}
+			  case '.zip':
+				  	$foder = new Folder();
+			  		$foder->delete($uploaddir);
+				  	$foder->create($uploaddir);
+					$zip = new ZipArchive;
+					//extraemos el zip
+					if (move_uploaded_file($file['tmp_name'], $uploadfile)) {
+					  	if($zip->open($uploaddir . $file['name']) === TRUE) {
 							$zip->extractTo($uploaddir);
 							$zip->close();
-							$this->zipStatus = 1;
-						} else {
-							$this->zipStatus = 0;
-						}
-						if($this->zipStatus == 1 && $packError == 0){
+							$dir = new Folder($uploaddir);
+							$fileSetup = $dir->find('.*\.yml');
+							$fileSetup = $fileSetup[0];
+							//incluimos la libreria Spyc, para leer el file setup
 							App::import('Lib', 'Spyc/Spyc');
-							$ymlSetup = Spyc::YAMLLoad($uploaddir . $this->fileSetup);
-							//GET type							
+							// intaciamos el fileSetup
+							$ymlSetup = Spyc::YAMLLoad($uploaddir . $fileSetup);
+							//GET Type
 							$engadgetType = $ymlSetup['info']['type'];
+							//GET Method
+							$method = $ymlSetup['info']['method'];
 							
-							// verificamos donde se instalara el widget
-							if ($ymlSetup['info']['location'] == 'site') {
-								$dest = ROOT . DS . 'Widgets' . DS;
-							}
-							if ($ymlSetup['info']['location'] == 'admin') {
-								$dest = ROOT . DS . APP_DIR . DS . 'Widgets' . DS;							  
-							}					
-							unlink($uploaddir . $packName); // delete zip file
-							//Endgaget Type
 							switch ($engadgetType) {
-								case 'plugin':
-									
-									break;
+							  case 'widget':
+									 // verificamos donde se instalara el widget
+									 if ($ymlSetup['info']['location'] == 'site') {
+											$dest = ROOT . DS . 'Widgets' . DS;
+									 }
+									 if ($ymlSetup['info']['location'] == 'admin') {
+											$dest = ROOT . DS . APP_DIR . DS . 'Widgets' . DS;							  
+									 }		
+									 $foderWidget = new Folder($uploaddir . $ymlSetup['info']['name'], true, 0777);
+									 for ($i=0; $i < count($ymlSetup['folders']); $i++) {
 								
-								case 'widget':
-									//$dirExt = mkdir($dest.$xmlSetup->info->name, 0755);
-									$source = $uploaddir;
-									$folderWidget = $dest .strtolower($ymlSetup['info']['name']);
-									$this->Noodle->fullMove($source, $folderWidget);
-									//Clear Temp folder
-									$this->Noodle->clearAll($uploaddir, false);
-									mkdir($uploaddir, 0755);
-									$this->Noodle->install($ymlSetup, 'widget');
-									break;
-								case 'theme':
-									
-									break;
-								case 'language':
-									
-									break;
+										 	 $foderCopy = new Folder($uploaddir . $ymlSetup['info']['name'] .DS. $ymlSetup['folders'][$i], true, 0777);
+											 $foderCopy->copy(array(
+											 	'to' => $uploaddir . $ymlSetup['info']['name'].DS. $ymlSetup['folders'][$i],
+											 	'from' => $uploaddir . $ymlSetup['folders'][$i],
+											 	'mode' => 0755
+											 ));
+									 }
+									 for ($i=0; $i < count($ymlSetup['files']); $i++) {
+									 		$fileCopy = new File($uploaddir . $ymlSetup['files'][$i]);
+										 	$fileCopy->copy($uploaddir . $ymlSetup['info']['name'] . DS .  $ymlSetup['files'][$i], true);									   
+									 }
+									 //movemos la carpeta al location install
+									 $folder = new Folder($dest . $ymlSetup['info']['name']);
+									 $foder->move(array(
+									 	'to' => $dest . $ymlSetup['info']['name'],
+									 	'from' => $uploaddir . $ymlSetup['info']['name'],
+									 	'mode' => 0755
+									 ));
+									 // install widget
+									 $this->Engadget->install($ymlSetup, $engadgetType, $method);
+									 
+								
+								break;
+							  
+							case 'plugin':
+								 	// verificamos donde se instalara el widget
+									if(!empty($ymlSetup['site'])){
+										$folder = new Folder(ROOT . DS . 'plugin' . DS . 'site');
+										$foder->move(array(
+										 	'to' => ROOT . DS . 'plugin' . DS . $ymlSetup['info']['name'],
+										 	'from' => $uploaddir . 'site',
+										 	'mode' => 0755
+										));	
+									}
+									if(!empty($ymlSetup['admin'])){
+										$folder = new Folder(APP . 'plugin' . DS . 'admin');
+										$foder->move(array(
+										 	'to' => APP . 'plugin' . DS . $ymlSetup['info']['name'],
+										 	'from' => $uploaddir . 'admin',
+										 	'mode' => 0755
+										));							
+									}
+									// install plugin
+									$this->Engadget->install($ymlSetup, $engadgetType, $method);
+								break;
 							}
+							return true;
+						} else {
+							$this->invalidate('file', 'Failed to upload file');       
+							return false;
 						}
-					    $this->Session->setFlash(__('El Widget %s fue instalado corretamente', $ymlSetup['info']['title']));
-					} else {
-						$this->Session->setFlash(__('El Widget %s no pudo ser instalado', $ymlSetup['info']['title']));
-					}					
-					break;
-				
-				case '.tar':
-					
-					break;
+					}
 			}
 			
-		} else {
-			$this->Session->setFlash(__('Package no valido', true));
-		}		
+		}
+		
+		
 	}
 	public function admin_uninstall($id = null){
 		//$id = array_keys($this->request->data('Engadgets.checkbox'));		
@@ -142,7 +162,7 @@ class EngadgetsController extends AppController
 			)
 		));
 		if($id != $engadget['Engadget']['id']){
-			$this->Session->setFlash(__('Invalid id for Engadget'));
+			$this->Session->setFlash(__('Invalid id for Engadget'), 'default', array('class' => 'error'));
 			$this->redirect(array('action' => 'manager'));
 		}
 		//GET Location
@@ -157,6 +177,23 @@ class EngadgetsController extends AppController
 		$nameWidget = $engadget['Engadget']['name'];
 		switch ($type) {
 			case 'plugin':
+				$this->Engadget->id = $id;
+				$dirName = $engadget['Engadget']['name'];
+				$path = array('admin', 'site');
+				$folder = new Folder();
+				for ($i=0; $i < 2; $i++) {
+					if ($path[$i] == 'admin') {
+					  	$dir = APP . 'Plugin' . DS . $dirName;
+					}
+					if ($path[$i] == 'site') {
+					  	$dir = ROOT . DS . 'Plugin' . DS . $dirName;	
+					}				
+					$folder->delete($dir);			  
+				}
+				if ($this->Engadget->delete()) {
+				  	$this->Session->setFlash(__('Plugin has been delete'));
+					$this->redirect(array('action' => 'manager'));
+				}
 				
 				break;
 			
@@ -164,7 +201,8 @@ class EngadgetsController extends AppController
 				$souser = $appPath . 'Widgets' . DS . $nameWidget;
 				$this->Noodle->clearAll($souser, false);
 				$this->Noodle->uninstall($id, $type);
-				//$this->redirect(array('action' => 'manager'));
+				$this->Session->setFlash(__('Widget has been delete'));
+				$this->redirect(array('action' => 'manager'));
 				
 				break;
 			case 'theme':
@@ -210,7 +248,7 @@ class EngadgetsController extends AppController
 		if ($action == 'delete') {
 				$this->Engadget->uninstallAll($ids, $types);         	
 				for ($i=0; $i < count($ids); $i++) {					
-					$this->Engadget->delWidget($name[$i], $location[$i],$types[$i]);
+					$this->Engadget->delFolder($name[$i], $location[$i],$types[$i]);
 				}
 				$this->Session->setFlash(__('Engadget Uninstall.'), 'default', array('class' => 'success'));
 				$this->redirect(array('action' => 'manager'));		

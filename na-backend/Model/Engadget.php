@@ -19,7 +19,6 @@ App::uses('Folder', 'Utility');
 class Engadget extends AppModel
 {
 	public $name = 'Engadget';
-	public $uses = array('Widget');
 /**
  * hasMany associations
  *
@@ -49,6 +48,50 @@ class Engadget extends AppModel
 	    return null;
 	}
 /**
+ * install method
+ * 
+ * @param array $ymlSetup
+ * @param string $type
+ * @param string $method
+ * @return void
+ */
+	public function install($ymlSetup, $type, $method){
+		switch ($type) {
+		  case 'widget':
+			  if($method == 'upgrade'){
+			  		$engadget = $this->findByName($ymlSetup['info']['name']);
+				  	$this->read(null, $engadget['Engadget']['id']);
+					$this->set($ymlSetup['info']);
+				 	$this->save();
+			  }
+			  if($method == 'install'){
+			  		$this->set($ymlSetup['info']);
+				 	$this->save();
+			  }			
+			break;
+		case 'plugin':
+			  if($method == 'upgrade'){
+			  		$engadget = $this->findByName($ymlSetup['info']['name']);
+					$data = array_merge($ymlSetup['info'], array(
+						'params' => json_encode($ymlSetup['config'])
+					));
+				  	$this->read(null, $engadget['Engadget']['id']);
+					$this->set($data);					
+				 	$this->save();
+			  }
+			  if($method == 'install'){
+			  		$data = array_merge($ymlSetup['info'], array(
+						'params' => json_encode($ymlSetup['config'])
+					));
+			  		$this->set($data);
+				 	$this->save();
+			  }
+			
+			break;
+		}
+		
+	}
+/**
  * uninstall all method
  * 
  * @param array $ids
@@ -73,22 +116,34 @@ class Engadget extends AppModel
  * 
  * @param string $name
  * @param string $location
- * @param string $types
+ * @param string $type
  * @return void
  */
-	public function delWidget($name, $location, $types){
+	public function delFolder($name, $location, $type){
 		if($location == 'site'){
 			$appPath = ROOT . DS;
 		}
 		if($location == 'admin'){
 			$appPath = ROOT . DS . APP_DIR . DS;
 		}
-	
-		$folder = new Folder($appPath.'Widgets'.DS.$name);
-		if ($folder->delete()) {
-			print $name . 'delted';
-		}
-		
-	}
-	
+		switch ($type) {
+		  case 'widget':
+			$folder = new Folder($appPath.'Widgets'.DS.$name);
+			$folder->delete();
+			break;		  
+		  case 'plugin':
+			$folder = new Folder();
+			$path = array('admin', 'site');
+			for ($i=0; $i < 2; $i++) {
+				if ($path[$i] == 'admin'){
+					 $dir = APP . 'Plugin' . DS . $name;
+				}
+				if ($path[$i] == 'site') {
+					  $dir = ROOT . DS . 'Plugin' . DS . $name;	
+				}				
+				$folder->delete($dir);	  
+			}
+			break;
+		}		
+	}	
 }

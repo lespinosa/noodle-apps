@@ -3,15 +3,11 @@ info:
 	name: widget_menu
 	type: widget
 	status: 1		
-	version: 0.1
+	version: 1.0
 	location: site
 	method: upgrade
-	date: 20/01/11
+	date: 2012-01-20
 	author: Luis Master
-	desc: This module displays a menu on the frontend.
-	helper: Menu
-site:
-	files: [widget_menu.ctp]
-	folders: [Helper, tmpl]
-admin:
-	files: [install.yml]
+	description: This module displays a menu on the frontend.
+files: [widget_menu.ctp, install.yml]
+folders: [Helper, tmpl]
