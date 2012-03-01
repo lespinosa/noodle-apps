@@ -104,10 +104,4 @@
 
 </div>
 </div>
-<script type="text/javascript">
-	CKEDITOR.replace( 'ContentBody',
-    {
-       // toolbar : 'Basic',
-       
-    });	
-</script>
+<?php echo $this->element('ckeditor', array('type' => 'Full', 'replace' => 'ContentBody'));?>

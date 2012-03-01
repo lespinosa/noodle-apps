@@ -17,3 +17,4 @@
         ));?>
 </div>
 <div class="clear"></div>
+<?php echo $this->element('ckeditor', array('type' => 'Full', 'replace' => 'MenutypeDescription'));?>

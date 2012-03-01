@@ -63,11 +63,4 @@
         ));
     ?>
 </div>
-<script type="text/javascript">
-	CKEDITOR.replace( 'CategoryDescription',
-    {
-       // toolbar : 'Basic',
-       
-    });
-	
-</script>
+<?php echo $this->element('ckeditor', array('type' => 'Full', 'replace' => 'CategoryDescription'));?>

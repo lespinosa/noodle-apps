@@ -52,7 +52,6 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 				'ui/jquery.ui.position',
 				'ui/jquery.ui.dialog',
 				'ui/jquery.ui.datepicker',*/
-				'../ckeditor/ckeditor',
 				'jquery.colorbox'
 				), array('block' => 'scriptBottom')
 			);
@@ -64,7 +63,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 </head>
 <body>
 <div id="wrapper">
-		<?php echo $this->element('admin/header'); ?>
+		<?php echo $this->element('header'); ?>
          <div class="clear"></div>         
 		<div id="main">
 
@@ -76,7 +75,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 		
 	</div>
 	  <div class="clear"></div>
-    <?php echo $this->element('admin/footer'); ?>
+    <?php echo $this->element('footer'); ?>
     <?php echo $this->fetch('scriptBottom');?>
 	<?php echo $this->Js->writeBuffer();?>
     <!-- JS Tabs -->

@@ -22,7 +22,7 @@ class AppController extends Controller {
         'Session',
         'RequestHandler'
     );
-    public $helpers = array('Html', 'Form', 'Session', 'Paginator', 'Widget', 'Layout', 'Js' => 'Jquery', 'Noodle');
+    public $helpers = array('Html', 'Form', 'Session', 'Paginator', 'Widget', 'Layout', 'Js' => 'Jquery', 'Noodle', 'Ckeditor');
 	public $theme = 'Blue';
 
     function beforeFilter() {
