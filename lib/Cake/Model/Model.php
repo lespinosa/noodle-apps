@@ -699,6 +699,8 @@ class Model extends Object implements CakeEventListener {
 			}
 			$this->_mergeVars($merge, 'AppModel');
 		}
+		$this->_mergeVars(array('findMethods'), 'Model');
+
 		$this->Behaviors = new BehaviorCollection();
 
 		if ($this->useTable !== false) {
@@ -793,7 +795,7 @@ class Model extends Object implements CakeEventListener {
 				$className = empty($this->__backAssociation[$type][$name]['className']) ?
 					$name : $this->__backAssociation[$type][$name]['className'];
 				break;
-			} else if ($type == 'hasAndBelongsToMany') {
+			} elseif ($type == 'hasAndBelongsToMany') {
 				foreach ($this->{$type} as $k => $relation) {
 					if (empty($relation['with'])) {
 						continue;
@@ -2537,19 +2539,23 @@ class Model extends Object implements CakeEventListener {
 	}
 
 /**
- * Returns true if a record with the currently set ID exists.
+ * Returns true if a record with particular ID exists.
  *
- * Internally calls Model::getID() to obtain the current record ID to verify,
+ * If $id is not passed it calls Model::getID() to obtain the current record ID,
  * and then performs a Model::find('count') on the currently configured datasource
  * to ascertain the existence of the record in persistent storage.
  *
+ * @param mixed $id ID of record to check for existence
  * @return boolean True if such a record exists
  */
-	public function exists() {
-		if ($this->getID() === false) {
+	public function exists($id = null) {
+		if ($id === null) {
+			$id = $this->getID();
+		}
+		if ($id === false) {
 			return false;
 		}
-		$conditions = array($this->alias . '.' . $this->primaryKey => $this->getID());
+		$conditions = array($this->alias . '.' . $this->primaryKey => $id);
 		$query = array('conditions' => $conditions, 'recursive' => -1, 'callbacks' => false);
 		return ($this->find('count', $query) > 0);
 	}
@@ -3081,12 +3087,15 @@ class Model extends Object implements CakeEventListener {
 				}
 				$validator = array_merge($default, $validator);
 
-				if (!empty($validator['on'])) {
+				if (!empty($validator['on']) || in_array($validator['required'], array('create', 'update'), true)) {
 					if ($exists === null) {
 						$exists = $this->exists();
 					}
-					if (($validator['on'] == 'create' && $exists) || ($validator['on'] == 'update' && !$exists)) {
+					if ($validator['on'] == 'create' && $exists || $validator['on'] == 'update' && !$exists) {
 						continue;
+					}
+					if ($validator['required'] === 'create' && !$exists || $validator['required'] === 'update' && $exists) {
+						$validator['required'] = true;
 					}
 				}
 

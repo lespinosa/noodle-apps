@@ -2493,3 +2493,398 @@
 2012-03-01 02:34:13 Error: [MissingControllerException] Controller class JsController could not be found.
 #0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+2012-03-01 22:03:32 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:03:43 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:04:00 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:04:00 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:04:00 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:04:00 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:04:00 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:04:00 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:04:01 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:04:01 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:04:01 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:04:01 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:04:01 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:14:14 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:14:14 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:14:14 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:14:14 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:14:14 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:14:14 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:14:15 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:14:15 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:14:15 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:14:15 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:14:15 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:14:23 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:14:23 Error: [MissingControllerException] Controller class ThemeController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:14:23 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:14:27 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:14:27 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:14:27 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:14:28 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:14:28 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:14:28 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:14:28 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:14:28 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:14:28 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:14:28 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:14:28 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:15:35 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:15:35 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:15:35 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:15:35 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:15:35 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:15:35 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:15:35 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:15:35 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:15:35 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:15:35 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:15:35 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:16:02 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:16:02 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:16:02 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:16:02 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:16:02 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:16:02 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:16:03 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:16:03 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:16:03 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:16:03 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:16:03 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:17:20 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:17:20 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:17:20 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:17:20 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:17:20 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:17:38 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:17:38 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:17:38 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:17:38 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:17:38 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:17:57 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:17:57 Error: [MissingControllerException] Controller class ThemeController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:17:57 Error: [MissingControllerException] Controller class ThemeController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:17:58 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:18:10 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:18:10 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:18:10 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:18:10 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:18:10 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:18:16 Error: [PDOException] SQLSTATE[HY000]: General error: 6 Error on delete of 'C:\Windows\TEMP\#sql1f30_25_1.MYD' (Errcode: 13)
+#0 E:\wamp2.2\www\noodleapps\lib\Cake\Model\Datasource\DboSource.php(436): PDOStatement->execute(Array)
+#1 E:\wamp2.2\www\noodleapps\lib\Cake\Model\Datasource\Database\Mysql.php(307): DboSource->_execute('SHOW FULL COLUM...')
+#2 E:\wamp2.2\www\noodleapps\lib\Cake\Model\Model.php(1279): Mysql->describe(Object(Permission))
+#3 E:\wamp2.2\www\noodleapps\lib\Cake\Model\Model.php(838): Model->schema()
+#4 E:\wamp2.2\www\noodleapps\lib\Cake\Model\Model.php(863): Model->__isset('Permission')
+#5 E:\wamp2.2\www\noodleapps\lib\Cake\Controller\Component\Acl\DbAcl.php(74): Model->__get('Permission')
+#6 E:\wamp2.2\www\noodleapps\lib\Cake\Controller\Component\AclComponent.php(111): DbAcl->check(Array, 'controllers/Cat...', '*')
+#7 E:\wamp2.2\www\noodleapps\lib\Cake\Controller\Component\Auth\ActionsAuthorize.php(39): AclComponent->check(Array, 'controllers/Cat...')
+#8 E:\wamp2.2\www\noodleapps\lib\Cake\Controller\Component\AuthComponent.php(379): ActionsAuthorize->authorize(Array, Object(CakeRequest))
+#9 E:\wamp2.2\www\noodleapps\lib\Cake\Controller\Component\AuthComponent.php(330): AuthComponent->isAuthorized(Array)
+#10 [internal function]: AuthComponent->startup(Object(CategoriesController))
+#11 E:\wamp2.2\www\noodleapps\lib\Cake\Utility\ObjectCollection.php(130): call_user_func_array(Array, Array)
+#12 [internal function]: ObjectCollection->trigger(Object(CakeEvent))
+#13 E:\wamp2.2\www\noodleapps\lib\Cake\Event\CakeEventManager.php(245): call_user_func(Array, Object(CakeEvent))
+#14 E:\wamp2.2\www\noodleapps\lib\Cake\Controller\Controller.php(647): CakeEventManager->dispatch(Object(CakeEvent))
+#15 E:\wamp2.2\www\noodleapps\lib\Cake\Routing\Dispatcher.php(101): Controller->startupProcess()
+#16 E:\wamp2.2\www\noodleapps\lib\Cake\Routing\Dispatcher.php(86): Dispatcher->_invoke(Object(CategoriesController), Object(CakeRequest), Object(CakeResponse))
+#17 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#18 {main}
+2012-03-01 22:18:17 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:18:26 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:18:26 Error: [MissingControllerException] Controller class ThemeController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:18:26 Error: [MissingControllerException] Controller class ThemeController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:18:27 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:18:43 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:18:43 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:18:43 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:18:43 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:18:43 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:18:52 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:18:52 Error: [MissingControllerException] Controller class ThemeController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:18:52 Error: [MissingControllerException] Controller class ThemeController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:18:53 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:19:03 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:19:03 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:19:03 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:19:03 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:19:03 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:19:50 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:20:05 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:42:09 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:42:09 Error: [MissingControllerException] Controller class ThemeController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:42:09 Error: [MissingControllerException] Controller class ThemeController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:44:53 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:44:54 Error: [MissingControllerException] Controller class ThemeController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:44:54 Error: [MissingControllerException] Controller class ThemeController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:44:55 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:45:03 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:45:03 Error: [MissingControllerException] Controller class ThemeController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:45:03 Error: [MissingControllerException] Controller class ThemeController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:47:09 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:47:09 Error: [MissingControllerException] Controller class ThemeController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:47:09 Error: [MissingControllerException] Controller class ThemeController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:47:14 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:47:14 Error: [MissingControllerException] Controller class ThemeController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:47:14 Error: [MissingControllerException] Controller class ThemeController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:47:36 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:47:36 Error: [MissingControllerException] Controller class ThemeController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:47:36 Error: [MissingControllerException] Controller class ThemeController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-01 22:47:37 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-02 14:31:39 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-02 14:31:45 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-02 14:31:45 Error: [MissingControllerException] Controller class ThemeController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-02 14:31:46 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-02 14:31:50 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 E:\wamp2.2\www\noodleapps\na-backend\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}

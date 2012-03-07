@@ -1,6 +1,6 @@
 <div class="categories index">
 <ul class="add_icon">
-	<li><?php echo $this->Html->image('admin/icons/add_icon.png', array('alt' => 'Ver Perfil', 'url' => 'add/'));?></li>
+	<li><?php echo $this->Html->image('icons/add_icon.png', array('alt' => 'Ver Perfil', 'url' => 'add/'));?></li>
 	<li class="add-u"><?php echo $this->Html->link(__('Agregar Category', true), array('action'=>'add')); ?></li>
 
 </ul>
@@ -39,7 +39,7 @@
 		<th><h3><?php echo $this->Paginator->sort(__('id'));?></h3></th>
 		<th><h3><?php echo $this->Paginator->sort(__('title'));?></h3></th>
 		<th><h3><?php echo $this->Paginator->sort(__('status'));?></h3></th>
-		<th><h3><?php echo $this->Paginator->sort(__('ordering'));?><?php echo $this->Html->image('admin/icons/save_icon.png', array('alt' => 'Save order', 'class' => 'save-order'));?></h3> </th>
+		<th><h3><?php echo $this->Paginator->sort(__('ordering'));?><?php echo $this->Html->image('icons/save_icon.png', array('alt' => 'Save order', 'class' => 'save-order'));?></h3> </th>
 		<th><h3><?php echo $this->Paginator->sort(__('access'));?></h3></th>
 		<th><h3><?php echo $this->Paginator->sort(__('language_id'));?></h3></th>
 		<th><h3><?php echo $this->Paginator->sort(__('Actions'));?></h3></th>
@@ -62,11 +62,11 @@
 		<td class="access"><?php echo $this->Layout->getAccess($categoryId, 'text');?></td>
 		<td><?php echo "lenguage"?></td>
 		<td class="action"><?php echo $this->Html->link(
-						$this->Html->image('admin/icons/edit_icon.png', array('alt' => 'Editar')),
+						$this->Html->image('icons/edit_icon.png', array('alt' => 'Editar')),
 						array('action' => 'edit', $categoryId), array('escape' => false));?>
 			
 			<?php echo $this->Html->link(
-							$this->Html->image('admin/icons/canc_icon.png', array('alt' => 'Eliminar')), 
+							$this->Html->image('icons/canc_icon.png', array('alt' => 'Eliminar')), 
 							array('action' => 'delete', $categoryId), array('escape' => false, 'confirm' => __('Are you sure you want to delete Link '.$categoryTitle, true), 'class' => ''));?></td>
 		
 	</tr>

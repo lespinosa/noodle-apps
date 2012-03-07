@@ -37,9 +37,9 @@ class LayoutHelper extends AppHelper
 		switch ($type) {
 			case 'img':
 				if($status == 1){
-					$output = '<div class="status">'. $this->Html->image('admin/icons/tick.png', array('alt' => 'Published')) . '</div>';
+					$output = '<div class="status">'. $this->Html->image('icons/tick.png', array('alt' => 'Published')) . '</div>';
 				} else {
-					$output = '<div class="status">'. $this->Html->image('admin/icons/cross.png', array('alt' => 'Unpublished')) . '</div>';
+					$output = '<div class="status">'. $this->Html->image('icons/cross.png', array('alt' => 'Unpublished')) . '</div>';
 				}
 				return $output;			
 				break;
@@ -59,9 +59,9 @@ class LayoutHelper extends AppHelper
 		switch ($type) {
 			case 'img':
 				if($value  == 1){
-					$output = '<div class="featured">'. $this->Html->image('admin/icons/on_star_icon.png', array('alt' => 'Featured')) . '</div>';
+					$output = '<div class="featured">'. $this->Html->image('icons/on_star_icon.png', array('alt' => 'Featured')) . '</div>';
 				} else {
-					$output = '<div class="featured">'. $this->Html->image('admin/icons/off_star_icon.png', array('alt' => 'Featured')) . '</div>';
+					$output = '<div class="featured">'. $this->Html->image('icons/off_star_icon.png', array('alt' => 'Featured')) . '</div>';
 				}
 				return $output;		
 				break;
@@ -178,12 +178,12 @@ class LayoutHelper extends AppHelper
 			case 'img':
 				$output = "<ul class='ordering'>";
 				$output .= "<li>";
-				$output .= $this->Html->link($this->Html->image('admin/icons/up_icon.png', array(
+				$output .= $this->Html->link($this->Html->image('icons/up_icon.png', array(
 								'alt' => 'Move Up')), array('action' => 'moveup', $title, $linksMenuType),
 								array('escape' => false));
 				$output .= "</li>";
 				$output .= "<li>";
-				$output .= $this->Html->link($this->Html->image('admin/icons/down_icon.png', array(
+				$output .= $this->Html->link($this->Html->image('icons/down_icon.png', array(
 								'alt' => 'Move Down')), array('action' => 'movedown', $title, $linksMenuType),
 								array('escape' => false));
 				$output .= "</li>";

@@ -1,6 +1,7 @@
 <?php 
 $this->Ckeditor->basePath ='/js/ckeditor/';
 $this->Ckeditor->config['width'] = '97%';
+
 	switch ($type) {
 	  case 'Full':
 		$this->Ckeditor->config['toolbar'] = array(

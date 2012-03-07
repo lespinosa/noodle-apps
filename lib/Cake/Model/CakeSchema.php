@@ -384,9 +384,9 @@ class CakeSchema extends Object {
 		}
 		$out .= "}\n";
 
-		$file = new SplFileObject($path . DS . $file, 'w+');
-		$content = "<?php\n{$out}";
-		if ($file->fwrite($content)) {
+		$file = new File($path . DS . $file, true);
+		$content = "<?php \n{$out}";
+		if ($file->write($content)) {
 			return $content;
 		}
 		return false;
@@ -575,7 +575,7 @@ class CakeSchema extends Object {
 			foreach ($values as $key => $val) {
 				if (is_array($val)) {
 					$vals[] = "'{$key}' => array('" . implode("', '",  $val) . "')";
-				} else if (!is_numeric($key)) {
+				} elseif (!is_numeric($key)) {
 					$val = var_export($val, true);
 					$vals[] = "'{$key}' => {$val}";
 				}
